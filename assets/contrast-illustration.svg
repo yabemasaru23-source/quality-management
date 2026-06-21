@@ -1,0 +1,25 @@
+<svg width="100%" viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>「社員に聞けない」を社長専属で完全解決</title>
+<desc>左：ひとりで悩み社員に聞けない社長（グレー）。右：専属パートナーがついて解決し自信を持つ社長（青）。</desc>
+<defs>
+<marker id="arc" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#f5b301" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="24" y="30" width="268" height="240" rx="20" fill="#eef1f5"/>
+<rect x="120" y="150" width="50" height="95" rx="24" fill="#aab4c2"/>
+<circle cx="145" cy="128" r="20" fill="#aab4c2"/>
+<circle cx="198" cy="96" r="22" fill="#ffffff" stroke="#cdd5df" stroke-width="2"/>
+<text x="198" y="104" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#8893a3">?</text>
+<text x="158" y="256" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#8893a3">社員に聞けない…</text>
+
+<line x1="304" y1="150" x2="372" y2="150" stroke="#f5b301" stroke-width="7" stroke-linecap="round" marker-end="url(#arc)"/>
+
+<rect x="388" y="30" width="268" height="240" rx="20" fill="#e8f1fb"/>
+<rect x="445" y="150" width="52" height="95" rx="25" fill="#0a4ea3"/>
+<circle cx="471" cy="127" r="21" fill="#0a4ea3"/>
+<circle cx="471" cy="190" r="8" fill="#ffd34d"/>
+<rect x="512" y="166" width="44" height="79" rx="21" fill="#1f86ff"/>
+<circle cx="534" cy="146" r="17" fill="#1f86ff"/>
+<circle cx="598" cy="98" r="24" fill="#1aaf6b"/>
+<path d="M587 98 L595 106 L610 90" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="521" y="256" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0a4ea3">社長専属で完全解決</text>
+</svg>
