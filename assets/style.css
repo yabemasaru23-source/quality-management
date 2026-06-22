@@ -119,6 +119,17 @@ header .nav{padding-left:10px}
 .menu-body li::before{content:"✓";position:absolute;left:0;color:var(--blue-bright);font-weight:800}
 .menu-body .more{margin-top:auto;font-weight:700;color:var(--blue);font-size:.9rem}
 
+/* ===== 業務内容・請負相談 ===== */
+.work-band{background:#fff;border:1px solid var(--line);border-radius:26px;padding:38px;box-shadow:var(--shadow);margin-top:42px;text-align:left}
+.work-band .kicker{display:inline-flex;align-items:center;gap:8px;background:var(--sky2);color:var(--blue);font-size:.78rem;font-weight:800;padding:6px 13px;border-radius:30px;margin-bottom:16px}
+.work-band h3{font-size:1.45rem;font-weight:900;line-height:1.45;margin-bottom:10px}
+.work-band p{color:var(--gray);font-size:.95rem}
+.work-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.work-item{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--sky2)}
+.work-item b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:6px}
+.work-item span{display:block;color:var(--gray);font-size:.82rem;line-height:1.65}
+.work-note{margin-top:18px;padding:14px 16px;border-left:4px solid var(--gold);background:#fffaf0;color:#6b5600;font-size:.86rem;border-radius:8px}
+
 /* ===== 実績・数字バー ===== */
 .stat-bar{background:var(--blue-deep);color:#cfe0f5;padding:40px 0}
 .stat-bar .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;text-align:center}
@@ -222,7 +233,7 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 
 /* レスポンシブ */
 @media(max-width:900px){
-  .grid-3,.grid-2,.menu-grid,.voice-grid,.book-grid,.ceo{grid-template-columns:1fr}
+  .grid-3,.grid-2,.menu-grid,.voice-grid,.book-grid,.ceo,.work-list{grid-template-columns:1fr}
   .book-grid{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr}
   .timeline::before{left:70px}.tl-item{grid-template-columns:70px 1fr;gap:18px}.tl-dot{left:64px}.tl-year{font-size:.9rem}
@@ -234,4 +245,5 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
   .menu-btn{display:block}
   section{padding:64px 0}
   .diff,.cta{padding:40px 24px;border-radius:22px}
+  .work-band{padding:28px 20px}
 }
