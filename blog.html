@@ -38,28 +38,38 @@
 <!-- カテゴリ -->
 <section style="padding-bottom:0">
   <div class="wrap center">
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <span class="btn btn-ghost" style="padding:9px 20px;font-size:.86rem">すべて</span>
-      <span class="btn btn-ghost" style="padding:9px 20px;font-size:.86rem">お知らせ</span>
-      <span class="btn btn-ghost" style="padding:9px 20px;font-size:.86rem">AI活用</span>
-      <span class="btn btn-ghost" style="padding:9px 20px;font-size:.86rem">セミナー</span>
-      <span class="btn btn-ghost" style="padding:9px 20px;font-size:.86rem">感動セールス</span>
+    <div class="cat-filter">
+      <button class="btn btn-ghost active" data-cat="すべて">すべて</button>
+      <button class="btn btn-ghost" data-cat="お知らせ">お知らせ</button>
+      <button class="btn btn-ghost" data-cat="時間コラム">時間コラム</button>
+      <button class="btn btn-ghost" data-cat="経営コラム">経営コラム</button>
+      <button class="btn btn-ghost" data-cat="AI活用">AI活用</button>
+      <button class="btn btn-ghost" data-cat="感動セールス">感動セールス</button>
     </div>
+  </div>
+</section>
+
+<!-- 個別記事 -->
+<section id="postArticle" hidden>
+  <div class="wrap narrow">
+    <a href="blog.html" class="more">← 記事一覧へ戻る</a>
+    <article class="article-card">
+      <div class="post-meta" id="postMeta"></div>
+      <h2 id="postTitle"></h2>
+      <div class="article-body" id="postBody"></div>
+      <div class="article-source" id="postSource"></div>
+    </article>
   </div>
 </section>
 
 <!-- 記事リスト -->
 <section>
   <div class="wrap">
-    <div class="post-list">
-      <a class="post reveal"><div class="date">2026.06.21</div><div><span class="cat">お知らせ</span><h3>総合サイトを公開しました。AI営業DXの無料相談を受付中です。</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.20</div><div><span class="cat">AI活用</span><h3>中小企業がまず消すべき「3つのムダ業務」とは？</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.18</div><div><span class="cat">セミナー</span><h3>タイムマネジメントセミナー、次回開催のご案内。</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.15</div><div><span class="cat">感動セールス</span><h3>「誰が買うか」より「なぜ欲しいか」。感動セールスの第一歩。</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.12</div><div><span class="cat">AI活用</span><h3>営業リスト作成を自動化したら、商談数はどう変わるか。</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.10</div><div><span class="cat">お知らせ</span><h3>新サービス「時間創造部」導入支援を開始しました。</h3></div></a>
+    <div class="post-list" id="postList"></div>
+    <div class="update-guide">
+      <b>毎日更新の運用</b>
+      <span>記事は <code>assets/blog-posts.js</code> に1件追記するだけで増やせます。アメブロ・Facebook投稿と連動する場合は、各記事の <code>sourceUrl</code> に投稿URLを入れます。</span>
     </div>
-    <p class="form-note" style="margin-top:30px;text-align:center;color:var(--gray);font-size:.84rem">※ 各記事は順次公開予定です。記事の中身（個別ページ）・更新の仕組み（CMS等）は、運用方針を決めてから接続します。</p>
   </div>
 </section>
 
@@ -103,5 +113,7 @@
 </footer>
 <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener" class="float-line">💬 LINEで相談</a>
 <script src="assets/site.js"></script>
+<script src="assets/blog-posts.js"></script>
+<script src="assets/blog.js"></script>
 </body>
 </html>
