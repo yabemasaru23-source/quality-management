@@ -130,6 +130,15 @@ header .nav{padding-left:10px}
 .work-item span{display:block;color:var(--gray);font-size:.82rem;line-height:1.65}
 .work-note{margin-top:18px;padding:14px 16px;border-left:4px solid var(--gold);background:#fffaf0;color:#6b5600;font-size:.86rem;border-radius:8px}
 
+/* ===== 写真で見せる現場感 ===== */
+.photo-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px;margin-top:46px;text-align:left}
+.photo-card{position:relative;border-radius:20px;overflow:hidden;min-height:260px;background:var(--sky);box-shadow:var(--shadow);border:1px solid var(--line)}
+.photo-card.large{min-height:360px}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-card .cap{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.92);border:1px solid rgba(10,78,163,.14);border-radius:14px;padding:12px 14px}
+.photo-card .cap b{display:block;color:var(--blue);font-size:.9rem;font-weight:900}
+.photo-card .cap span{display:block;color:var(--gray);font-size:.76rem;line-height:1.55;margin-top:2px}
+
 /* ===== 実績・数字バー ===== */
 .stat-bar{background:var(--blue-deep);color:#cfe0f5;padding:40px 0}
 .stat-bar .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;text-align:center}
@@ -159,7 +168,9 @@ header .nav{padding-left:10px}
 
 /* ===== CEOメッセージ ===== */
 .ceo{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
-.ceo-photo{border-radius:22px;background:linear-gradient(160deg,var(--blue),var(--blue-deep));aspect-ratio:4/4.6;display:grid;place-items:center;color:rgba(255,255,255,.6);box-shadow:var(--shadow-strong);text-align:center;padding:20px;position:relative;overflow:hidden}
+.ceo-photo{border-radius:22px;background:linear-gradient(160deg,var(--blue),var(--blue-deep));aspect-ratio:4/4.6;display:grid;place-items:center;color:rgba(255,255,255,.6);box-shadow:var(--shadow-strong);text-align:center;padding:0;position:relative;overflow:hidden}
+.ceo-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ceo-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(180deg,transparent,rgba(6,47,99,.72))}
 .ceo-photo .big{font-size:2.6rem;font-weight:900;font-family:"Montserrat";color:rgba(255,255,255,.92)}
 .ceo-photo .ph-note{font-size:.78rem;line-height:1.7}
 .ceo h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:900;line-height:1.45;margin-bottom:8px}
@@ -172,6 +183,7 @@ header .nav{padding-left:10px}
 .book{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:.3s}
 .book:hover{transform:translateY(-6px);box-shadow:var(--shadow-strong)}
 .book-cover{aspect-ratio:3/4.3;background:linear-gradient(160deg,var(--blue),var(--blue-deep));color:#fff;display:flex;flex-direction:column;justify-content:center;padding:22px;text-align:center;position:relative}
+.book-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .book-cover .bt{font-weight:900;font-size:1.02rem;line-height:1.45}
 .book-cover::after{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;background:rgba(255,255,255,.25)}
 .book-info{padding:16px 18px}
@@ -233,7 +245,7 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 
 /* レスポンシブ */
 @media(max-width:900px){
-  .grid-3,.grid-2,.menu-grid,.voice-grid,.book-grid,.ceo,.work-list{grid-template-columns:1fr}
+  .grid-3,.grid-2,.menu-grid,.voice-grid,.book-grid,.ceo,.work-list,.photo-grid{grid-template-columns:1fr}
   .book-grid{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr}
   .timeline::before{left:70px}.tl-item{grid-template-columns:70px 1fr;gap:18px}.tl-dot{left:64px}.tl-year{font-size:.9rem}
@@ -246,4 +258,5 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
   section{padding:64px 0}
   .diff,.cta{padding:40px 24px;border-radius:22px}
   .work-band{padding:28px 20px}
+  .photo-card,.photo-card.large{min-height:260px}
 }

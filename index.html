@@ -39,7 +39,15 @@
 .hc-row .t{font-weight:700;font-size:.88rem}
 .hc-row .d{font-size:.72rem;color:var(--gray)}
 .hc-bar{margin-left:auto;font-family:"Montserrat";font-weight:800;color:var(--blue);font-size:1rem}
+.hero-photo{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(6,47,99,.24);background:#fff;border:1px solid rgba(10,78,163,.12)}
+.hero-photo>img{width:100%;height:min(600px,62vw);object-fit:cover;object-position:center 28%;display:block}
+.hero-photo .photo-label{position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.92);border:1px solid rgba(10,78,163,.16);border-radius:18px;padding:14px 16px;max-width:78%;box-shadow:0 14px 34px rgba(6,47,99,.18)}
+.hero-photo .photo-label b{display:block;color:var(--blue);font-weight:900;font-size:.95rem}
+.hero-photo .photo-label span{display:block;color:var(--gray);font-size:.78rem;line-height:1.55;margin-top:2px}
+.hero-ai-mini{position:absolute;right:-18px;top:26px;width:150px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 18px 44px rgba(6,47,99,.18)}
+.hero-ai-mini img{width:100%;height:auto;display:block}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.hero-photo>img{height:auto}.hero-ai-mini{right:12px;top:12px;width:112px}.hero-photo .photo-label{left:14px;bottom:14px;max-width:86%}}
 </style>
 </head>
 <body>
@@ -82,7 +90,11 @@
       <p class="hand" style="margin-top:16px;color:var(--blue);font-size:1.05rem">＼ スローガンは「ご一緒しましょう！」／</p>
     </div>
     <div class="hero-right reveal">
-      <img src="assets/hero-illustration.svg" alt="活気ある経営コンサルティング：上を目指すチームと、右肩上がりの成長、AIの力" style="width:100%;height:auto;display:block">
+      <div class="hero-photo">
+        <img src="assets/photos/yabe-masaru-hero.jpg" alt="経営コンサルタント 矢部大">
+        <div class="hero-ai-mini"><img src="assets/hero-illustration.svg" alt="AIと成長を表す小さな図版"></div>
+        <div class="photo-label"><b>矢部 大が、社長専属で伴走。</b><span>AIを語るだけではなく、現場で一緒に動く経営コンサルティング。</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -188,6 +200,20 @@
   </div>
 </section>
 
+<!-- 写真で見せる現場感 -->
+<section class="bg-sky">
+  <div class="wrap center">
+    <span class="sec-label">Real Field</span>
+    <h2 class="sec-title reveal">AIだけではなく、<span class="hl">人と現場</span>で会社を動かす。</h2>
+    <p class="sec-lead reveal">矢部大の強みは、机上の提案ではなく、経営・営業・現場づくりを自分でやってきたこと。だから中小企業の社長と同じ目線で、実行まで伴走できます。</p>
+    <div class="photo-grid">
+      <div class="photo-card large reveal"><img src="assets/photos/yabe-masaru-field.jpg" alt="ギネス世界記録の現場での矢部大"><div class="cap"><b>現場で実証してきた経営者</b><span>ギネス記録、事業経営、M&A、現場改善まで。机上ではなく実行の経験から話します。</span></div></div>
+      <div class="photo-card reveal"><img src="assets/photos/yabe-hiroshige-office.jpg" alt="創業者 矢部廣重とクオリティマネジメントのロゴ"><div class="cap"><b>創業者の哲学を継承</b><span>矢部廣重の「喜びと感動の経営革命」を、AI時代へつなぎます。</span></div></div>
+      <div class="photo-card reveal"><img src="assets/photos/yabe-hiroshige-portrait.jpg" alt="創業者 矢部廣重"><div class="cap"><b>37年続く経営の土台</b><span>米国企業でのマネジメント経験と帝王学から生まれた、感動セールスの思想。</span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 比較表 -->
 <section>
   <div class="wrap center">
@@ -227,7 +253,7 @@
 <!-- CEOメッセージ -->
 <section>
   <div class="wrap ceo">
-    <div class="ceo-photo reveal"><div><div class="big">矢部 大</div><div class="ph-note">［顔写真を差し込み］<br>yabemasaru.jpg</div></div></div>
+    <div class="ceo-photo reveal"><img src="assets/photos/yabe-masaru-hero.jpg" alt="経営コンサルタント 矢部大"></div>
     <div class="reveal">
       <span class="sec-label">Message</span>
       <h2>「できない」を「できる」に。<br>波が来る前に、乗り込む。</h2>
@@ -246,10 +272,10 @@
     <h2 class="sec-title reveal">考え方は、<span class="hl">書籍</span>に。</h2>
     <p class="sec-lead reveal">矢部大の哲学とノウハウは、4冊の書籍にまとまっています。</p>
     <div class="book-grid">
-      <div class="book reveal"><div class="book-cover"><span class="bt">スーパー<br>タイム<br>マネジメント</span></div><div class="book-info"><div class="t">スーパータイムマネジメント</div><a href="books.html">詳しく見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><span class="bt">戦わずして<br>売り続ける<br>最強営業の法則</span></div><div class="book-info"><div class="t">戦わずして売り続ける 最強営業の法則</div><a href="books.html">詳しく見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><span class="bt">バク転だけで<br>10億円<br>稼げたわけ</span></div><div class="book-info"><div class="t">バク転だけで10億円稼げたわけ</div><a href="books.html">詳しく見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><span class="bt">結局<br>好かれることが<br>最強の武器に<br>なる</span></div><div class="book-info"><div class="t">結局好かれることが最強の武器になる</div><a href="books.html">詳しく見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/time.png" alt="スーパータイムマネジメント 表紙"></div><div class="book-info"><div class="t">スーパータイムマネジメント</div><a href="books.html">詳しく見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/tata.png" alt="戦わずして売り続ける 最強営業の法則 表紙"></div><div class="book-info"><div class="t">戦わずして売り続ける 最強営業の法則</div><a href="books.html">詳しく見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/10oku.png" alt="バク転だけで10億円稼げたわけ 表紙"></div><div class="book-info"><div class="t">バク転だけで10億円稼げたわけ</div><a href="books.html">詳しく見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/lastlove.png" alt="結局好かれることが最強の武器になる 表紙"></div><div class="book-info"><div class="t">結局好かれることが最強の武器になる</div><a href="books.html">詳しく見る →</a></div></div>
     </div>
     <div class="center" style="margin-top:32px"><a href="books.html" class="btn btn-ghost">書籍一覧ページへ →</a></div>
   </div>
