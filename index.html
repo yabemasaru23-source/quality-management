@@ -7,7 +7,7 @@
 <meta name="description" content="AIで作れるのは仕組みだけ。感動を生む人の動かし方まで設計します。営業セミナーの老舗・クオリティマネジメントが、感動創造部の営業をAIで仕組み化（感動工房）し売上を倍増。矢部大がコンサルとして伴走。無料特典あり。">
 <meta name="keywords" content="AI 営業,感動創造部,感動工房,営業の仕組み化,売上倍増,感動セールス,経営コンサルティング,矢部大,矢部廣重,クオリティマネジメント,中小企業">
 <meta property="og:type" content="website">
-<meta property=”og:title” content=”AIで作れるのは仕組みだけ 感動を生む人の動かし方まで設計します｜クオリティマネジメント”>
+<meta property="og:title" content="AIで作れるのは仕組みだけ 感動を生む人の動かし方まで設計します｜クオリティマネジメント">
 <meta property="og:description" content="営業セミナーの老舗が出したAIの答え。感動創造部をAIで仕組み化（感動工房）し、売上を倍増。やべまさるがコンサルとして伴走。">
 <meta property="og:site_name" content="株式会社クオリティマネジメント">
 <meta property="og:locale" content="ja_JP">
@@ -49,6 +49,10 @@
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.hero-photo{max-width:420px;margin:0 auto}.hero-photo>img{height:auto}.hero-ai-mini{right:12px;top:12px;width:112px}.hero-photo .photo-label{left:14px;bottom:14px;max-width:86%}}
 @media(max-width:760px){#freebie .reveal{grid-template-columns:1fr !important;padding:30px !important;text-align:center}}
+.kando-track{display:flex;gap:16px;width:max-content;animation:kscroll 38s linear infinite}
+.kando-track:hover{animation-play-state:paused}
+.kando-track img{height:200px;width:auto;border-radius:12px;box-shadow:var(--shadow-strong);object-fit:cover;flex:0 0 auto}
+@keyframes kscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .qm-field{margin-bottom:16px;text-align:left}
 .qm-field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px}
 .qm-field .req{color:#d6243a;font-size:.74rem;margin-left:6px}
@@ -88,7 +92,7 @@
   <div class="wrap hero-grid">
     <div class="hero-left reveal">
       <span class="hero-badge"><span class="dot"></span>営業セミナーの老舗が出した、AIの答え</span>
-      <h1>AIで作れるのは<br><span class=”marker”>仕組みだけ。</span><br><span class=”grad”>感動を生む人の動かし方まで設計します。</span></h1>
+      <h1>AIで作れるのは<br><span class="marker">仕組みだけ。</span><br><span class="grad">感動を生む人の動かし方まで設計します。</span></h1>
       <p class="sub">ツールを入れただけでは、売上は伸びません。売上をつくるのは「お客様の喜びを100倍考え抜く＝<strong>感動創造部</strong>」。その営業の中身を、<strong>AIで仕組み化（感動工房）</strong>する。だから売上が倍増する——営業の中身を持つクオリティマネジメントだからできる答えです。<strong>矢部大</strong>がコンサルとして伴走します。</p>
       <div class="hero-btns">
         <a href="index.html#freebie" class="btn btn-primary">無料特典を受け取る →</a>
@@ -121,10 +125,10 @@
     <span class="sec-label">AI × Kando</span>
     <div class="bubble reveal">セミナーを受けた社長なら、ピンとくる話</div>
     <h2 class="sec-title reveal">なぜ、AIを入れても<br><span class="marker">売上が上がらない</span>のか？</h2>
-    <p class="sec-lead reveal">答えはシンプルです。AIは「速くする道具」。でも、売上をつくるのは“感動”だから。中身がなければ、速く空回りするだけです。</p>
+    <p class="sec-lead reveal">答えはシンプルです。AIは「速くする道具」。でも、売上をつくるのは"感動"だから。中身がなければ、速く空回りするだけです。</p>
     <div class="grid-3" style="margin-top:46px;text-align:left">
       <div class="card reveal"><div class="c-ico">⚙️</div><h3>AIだけ導入</h3><p>作業は速くなる。けれど「何を・どう伝えて感動させるか」が無ければ、売上にはつながらない。</p></div>
-      <div class="card reveal"><div class="c-ico">❤️‍🔥</div><h3>感動創造部</h3><p>お客様の喜びを100倍考え抜く、営業の“中身”。クオリティマネジメントが磨いてきた原点です。</p></div>
+      <div class="card reveal"><div class="c-ico">❤️‍🔥</div><h3>感動創造部</h3><p>お客様の喜びを100倍考え抜く、営業の"中身"。クオリティマネジメントが磨いてきた原点です。</p></div>
       <div class="card reveal"><div class="c-ico">🚀</div><h3>感動工房（AI化）</h3><p>その感動を、AIで誰でも再現できる仕組みに。属人化が消え、売上が倍増します。</p></div>
     </div>
 
@@ -136,23 +140,33 @@
       <span style="background:linear-gradient(135deg,#e3c25a,#c9a227);color:#3a2e00;font-weight:900;padding:16px 22px;border-radius:16px;line-height:1.3">売上 倍増<small style="display:block;font-weight:600;font-size:.7rem">＝感動工房</small></span>
     </div>
 
-    <div class=”reveal” style=”margin:44px auto 0;max-width:940px”>
-      <div style=”display:grid;grid-template-columns:repeat(3,1fr);gap:14px”>
-        <figure style=”margin:0”>
-          <img src=”assets/photos/kando-real.jpg” alt=”感動創造部の実例：手書きの感謝メッセージとお客様名入りのおもてなし” style=”width:100%;height:200px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-strong);display:block”>
-          <figcaption style=”font-size:.76rem;color:var(--gray);margin-top:8px;text-align:center”>手書きの感謝メッセージ</figcaption>
-        </figure>
-        <figure style=”margin:0”>
-          <img src=”assets/photos/P9270068.JPG” alt=”感動創造部の実例：お客様名入りのおもてなしグッズ一式” style=”width:100%;height:200px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-strong);display:block”>
-          <figcaption style=”font-size:.76rem;color:var(--gray);margin-top:8px;text-align:center”>お名前入りおもてなしグッズ</figcaption>
-        </figure>
-        <figure style=”margin:0”>
-          <img src=”assets/photos/P9150119.JPG” alt=”感動創造部の実例：お客様名入りの扇形グッズ” style=”width:100%;height:200px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-strong);display:block”>
-          <figcaption style=”font-size:.76rem;color:var(--gray);margin-top:8px;text-align:center”>お名前入り手作り扇グッズ</figcaption>
-        </figure>
+    <!-- 感動グッズ カルーセル -->
+    <div class="reveal" style="margin:44px 0 0;overflow:hidden;position:relative">
+      <div class="kando-track">
+        <img src="assets/photos/kando-real.jpg"   alt="感動グッズ実例">
+        <img src="assets/photos/P9270068.JPG"     alt="お名前入りおもてなしグッズ">
+        <img src="assets/photos/P9270072.JPG"     alt="お名前入りビール">
+        <img src="assets/photos/P9150119.JPG"     alt="手作り扇グッズ">
+        <img src="assets/photos/P9150122.JPG"     alt="感動グッズ">
+        <img src="assets/photos/P9150123.JPG"     alt="感動グッズ">
+        <img src="assets/photos/SANY0014.JPG"     alt="感動展示">
+        <img src="assets/photos/SANY0015.JPG"     alt="感動展示">
+        <img src="assets/photos/kando-imai-15.jpg" alt="感動演出">
+        <img src="assets/photos/kando-imai-18.jpg" alt="感動演出">
+        <!-- 無限ループ用に複製 -->
+        <img src="assets/photos/kando-real.jpg"   alt="感動グッズ実例">
+        <img src="assets/photos/P9270068.JPG"     alt="お名前入りおもてなしグッズ">
+        <img src="assets/photos/P9270072.JPG"     alt="お名前入りビール">
+        <img src="assets/photos/P9150119.JPG"     alt="手作り扇グッズ">
+        <img src="assets/photos/P9150122.JPG"     alt="感動グッズ">
+        <img src="assets/photos/P9150123.JPG"     alt="感動グッズ">
+        <img src="assets/photos/SANY0014.JPG"     alt="感動展示">
+        <img src="assets/photos/SANY0015.JPG"     alt="感動展示">
+        <img src="assets/photos/kando-imai-15.jpg" alt="感動演出">
+        <img src="assets/photos/kando-imai-18.jpg" alt="感動演出">
       </div>
-      <p style=”font-size:.82rem;color:var(--gray);margin-top:14px;text-align:center”>▲ これが「感動創造部」。手書きのおもてなし・セミナー・感動演出——この”人の心を動かす中身”を、AIで誰でも再現できる仕組みにします。</p>
     </div>
+    <p style="font-size:.82rem;color:var(--gray);margin-top:14px;text-align:center">▲ これが「感動創造部」。手書きのおもてなし・セミナー・感動演出——この"人の心を動かす中身"を、AIで誰でも再現できる仕組みにします。</p>
 
     <div class="reveal" style="max-width:700px;margin:26px auto 0">
       <p style="font-size:.92rem;color:var(--gray);margin-bottom:14px">感動は「思いつき」ではありません。<strong style="color:var(--ink)">緻密に設計された仕組み</strong>です。クオリティマネジメントが実際に使ってきた、例えば——</p>
@@ -161,11 +175,11 @@
         <span style="background:#fff;border:1.5px solid var(--line);color:var(--blue);font-size:.82rem;font-weight:700;padding:8px 16px;border-radius:24px">感動の6連発シナリオ</span>
         <span style="background:#fff;border:1.5px solid var(--line);color:var(--blue);font-size:.82rem;font-weight:700;padding:8px 16px;border-radius:24px">顧客層別おもてなし設計</span>
       </div>
-      <p style="font-size:.82rem;color:var(--gray);margin-top:12px">この“感動の設計図”を、AIに載せる。だから、誰がやっても再現できる。</p>
+      <p style="font-size:.82rem;color:var(--gray);margin-top:12px">この"感動の設計図"を、AIに載せる。だから、誰がやっても再現できる。</p>
     </div>
 
     <div class="diff reveal" style="margin-top:44px">
-      <div class="x">AIだけでは、<span class="strike">売上は上がらない</span>。<br><span class="o">“感動”をAIで仕組みにすれば、売上は倍増する。</span></div>
+      <div class="x">AIだけでは、<span class="strike">売上は上がらない</span>。<br><span class="o">"感動"をAIで仕組みにすれば、売上は倍増する。</span></div>
       <p>これは、以前セミナーを受けた方ほど深くうなずける話です。その「感動の仕組み化（感動工房）」に、<strong style="color:#ffe14d;font-size:1.05em">矢部大がコンサルとして入ります</strong></p>
     </div>
   </div>
@@ -175,8 +189,8 @@
 <section>
   <div class="wrap">
     <div class="diff reveal">
-      <div class="x">私たちは、<br><span class="strike">“AIを語るだけ”のコンサル</span>では<br>ありません。</div>
-      <p>世の中のAIコンサルには「営業の中身」がありません。私たちは、お客様の喜びを100倍考え抜く<strong style="color:#ffe14d">感動創造部</strong>という“売れる営業の中身”を持っている。<span class="o">中身を持つ会社がAIを使うから、売上が本当に上がるのです。</span></p>
+      <div class="x">私たちは、<br><span class="strike">"AIを語るだけ"のコンサル</span>では<br>ありません。</div>
+      <p>世の中のAIコンサルには「営業の中身」がありません。私たちは、お客様の喜びを100倍考え抜く<strong style="color:#ffe14d">感動創造部</strong>という"売れる営業の中身"を持っている。<span class="o">中身を持つ会社がAIを使うから、売上が本当に上がるのです。</span></p>
     </div>
     <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px">
       <span style="background:var(--sky);color:var(--blue);font-size:.8rem;font-weight:700;padding:7px 16px;border-radius:24px">NHKで紹介</span>
@@ -206,7 +220,7 @@
       <div class="menu-card reveal">
         <div class="menu-head"><div class="ico"><svg viewBox="0 0 48 48" width="42" height="42" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 37C9 27 12 14 20 14c4 0 4 4 4 4s0-4 4-4c8 0 11 13-4 23z"/></svg></div><h3>感動創造部<br>セミナー</h3><div class="sub">原点／お客様の喜びを100倍</div></div>
         <div class="menu-body">
-          <p>創業者・矢部廣重が確立した「感動セールス」。値引きでも押し売りでもなく、心を動かして売上を上げる営業の“中身”。AI化の土台になる研修です。</p>
+          <p>創業者・矢部廣重が確立した「感動セールス」。値引きでも押し売りでもなく、心を動かして売上を上げる営業の"中身"。AI化の土台になる研修です。</p>
           <ul><li>感動マネジメント営業研修</li><li>キーマン攻略・成約率向上</li><li>書籍『戦わずして売り続ける』準拠</li></ul>
           <a href="seminar-sales.html" class="more">セミナー詳細を見る →</a>
         </div>
@@ -214,7 +228,7 @@
       <div class="menu-card reveal">
         <div class="menu-head gold"><div class="ico"><svg viewBox="0 0 48 48" width="42" height="42" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="14"/><path d="M24 26v-8M24 26l6 3"/><path d="M20 8h8M24 8v4"/></svg></div><h3>タイムマネジメント<br>セミナー</h3><div class="sub">サブ／時間を創造する経営</div></div>
         <div class="menu-body">
-          <p>「時間創造部」という組織革命。社長と幹部の時間を生み出し、その時間を売上と意思決定に変える。感動工房を回す“土台の時間”をつくります。</p>
+          <p>「時間創造部」という組織革命。社長と幹部の時間を生み出し、その時間を売上と意思決定に変える。感動工房を回す"土台の時間"をつくります。</p>
           <ul><li>幹部の残業を削り意思決定を加速</li><li>「時間を生む」業務設計</li><li>書籍『スーパータイムマネジメント』準拠</li></ul>
           <a href="seminar-time.html" class="more">セミナー詳細を見る →</a>
         </div>
@@ -402,8 +416,8 @@
     <span class="sec-label">FAQ</span>
     <h2 class="sec-title reveal">よくあるご質問</h2>
     <div class="faq" style="text-align:left">
-      <div class="faq-item"><div class="faq-q">AIツールを導入すれば、売上は上がりますか？</div><div class="faq-a"><div>AI“だけ”では上がりません。AIは作業を速くする道具で、売上をつくるのは「お客様の喜びを100倍考え抜く＝感動」の中身です。私たちはその感動創造部の中身を、AIで再現できる仕組み（感動工房）にします。だから売上が倍増するのです。</div></div></div>
-      <div class="faq-item"><div class="faq-q">「感動創造部」「感動工房」とは何ですか？</div><div class="faq-a"><div>感動創造部は、お客様の喜びを100倍考え抜く“営業の中身（思想）”です。感動工房は、その感動をAIで仕組み化する実践プログラム（メイン商材「AI×感動工房」）を指します。中身（感動創造部）を、形（感動工房）にする、とお考えください。</div></div></div>
+      <div class="faq-item"><div class="faq-q">AIツールを導入すれば、売上は上がりますか？</div><div class="faq-a"><div>AI"だけ"では上がりません。AIは作業を速くする道具で、売上をつくるのは「お客様の喜びを100倍考え抜く＝感動」の中身です。私たちはその感動創造部の中身を、AIで再現できる仕組み（感動工房）にします。だから売上が倍増するのです。</div></div></div>
+      <div class="faq-item"><div class="faq-q">「感動創造部」「感動工房」とは何ですか？</div><div class="faq-a"><div>感動創造部は、お客様の喜びを100倍考え抜く"営業の中身（思想）"です。感動工房は、その感動をAIで仕組み化する実践プログラム（メイン商材「AI×感動工房」）を指します。中身（感動創造部）を、形（感動工房）にする、とお考えください。</div></div></div>
       <div class="faq-item"><div class="faq-q">ITやAIに詳しい社員がいません。それでも大丈夫ですか？</div><div class="faq-a"><div>まったく問題ありません。むしろ「詳しい人がいない会社」こそ、私たちの出番です。社長専属で、専門用語を使わず、ゼロから伴走します。社内に詳しい人を置く必要はありません。</div></div></div>
       <div class="faq-item"><div class="faq-q">今さら聞けない初歩的なことばかりで、恥ずかしいのですが…。</div><div class="faq-a"><div>ご安心ください。最初はみなさん同じです。同じ質問を何度していただいても構いません。社長が「分かったフリ」をしなくていい——そういう関係をつくるのが、私たちの仕事です。社員の前では聞けないことを、ここで全部解消しましょう。</div></div></div>
       <div class="faq-item"><div class="faq-q">AIにまったく詳しくないのですが、大丈夫ですか？</div><div class="faq-a"><div>はい。むしろ「これから」の中小企業のために伴走するのが私たちの役割です。専門用語ではなく、自社の業務に置き換えて一緒に進めます。</div></div></div>
@@ -418,7 +432,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="cta reveal">
-      <h2>AIだけで終わらせない。<br>“感動”を仕組みにして、売上を倍増させる。</h2>
+      <h2>AIだけで終わらせない。<br>"感動"を仕組みにして、売上を倍増させる。</h2>
       <p>まずは無料の「AI×感動創造部 売上倍増の設計図」から。受け取って、自社の伸びしろを確かめてください。</p>
       <div class="cta-btns">
         <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener" class="btn btn-line">LINEで無料特典を受け取る</a>
