@@ -3,11 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>タイムマネジメントセミナー｜時間を創造する経営｜株式会社クオリティマネジメント</title>
-<meta name="description" content="「時間創造部」という新しい組織革命。社長と幹部の時間を生み出し、売上と意思決定に変える。書籍『スーパータイムマネジメント』に基づく、矢部大のタイムマネジメントセミナー。">
+<title>タイムマネジメントセミナー｜時間は第5の経営資産｜株式会社クオリティマネジメント</title>
+<meta name="description" content="時間は第5の経営資産。会議・伝達・上司の指示の無駄を「3つの眼力」で見抜き、時間を輝かせる組織へ。書籍『スーパータイムマネジメント』著者・矢部大による時間創造部セミナー。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;700;800&family=Yomogi&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.eye-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+@media(max-width:760px){.eye-grid{grid-template-columns:1fr}}
+.eye-card{background:var(--blue-deep);color:#fff;border-radius:16px;padding:28px 24px;text-align:left}
+.eye-card .eye-label{font-family:'Montserrat',sans-serif;font-size:.68rem;letter-spacing:.3em;color:var(--blue-bright);margin-bottom:8px}
+.eye-card h3{font-size:1.15rem;font-weight:900;margin-bottom:12px;color:#fff}
+.eye-card p{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.8)}
+.asset-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+.asset-item{background:#fff;border:2px solid var(--blue-light);border-radius:50px;padding:10px 22px;font-size:.88rem;font-weight:700;color:var(--blue-deep)}
+.asset-item.highlight{background:var(--blue-bright);color:#fff;border-color:var(--blue-bright);transform:scale(1.08);box-shadow:var(--shadow-strong)}
+.loss-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;max-width:700px;margin:30px auto 0}
+.loss-box{background:var(--bg-sky);border-radius:12px;padding:20px;text-align:center}
+.loss-box .pct{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;color:var(--blue-deep)}
+.loss-box p{font-size:.82rem;color:var(--gray);margin-top:4px}
+.loss-arrow{font-size:1.5rem;color:var(--blue);text-align:center}
+.story-box{background:linear-gradient(135deg,var(--blue-deep),#1a3a7a);color:#fff;border-radius:20px;padding:48px;text-align:center;position:relative;overflow:hidden}
+.story-box::before{content:'';position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(31,134,255,.3),transparent 70%)}
+.story-box .quote{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;line-height:1.5;margin:20px 0;position:relative;z-index:1}
+.story-box .quote span{color:#ffe14d}
+.story-box p{color:rgba(255,255,255,.8);font-size:.96rem;line-height:1.9;position:relative;z-index:1}
+.weekday-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:28px}
+@media(max-width:760px){.weekday-grid{grid-template-columns:repeat(2,1fr) 1fr;gap:8px}}
+.weekday-item{background:var(--blue-deep);color:#fff;border-radius:10px;padding:14px 10px;text-align:center}
+.weekday-item .day{font-family:'Montserrat',sans-serif;font-size:.68rem;letter-spacing:.1em;color:var(--blue-bright);margin-bottom:5px}
+.weekday-item .theme{font-size:.82rem;font-weight:700;line-height:1.4}
+.trans-funnel{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:500px;margin:28px auto 0}
+.trans-bar{text-align:center;border-radius:6px;padding:10px 0;color:#fff;font-weight:800;font-size:.9rem}
+.stage-block{border-left:3px solid var(--blue);padding-left:16px;margin:16px 0}
+.stage-block h4{font-weight:700;font-size:.92rem;color:var(--blue-deep);margin-bottom:4px}
+.stage-block p{font-size:.88rem;color:var(--gray);line-height:1.8}
+</style>
 </head>
 <body>
 
@@ -27,38 +58,61 @@
   </div>
 </header>
 
+<!-- ヒーロー -->
 <section class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">ホーム</a> ／ サービス ／ タイムマネジメントセミナー</div>
-    <h1>その忙しさ、<span class="marker">本当に必要ですか？</span><br>時間を「創造する」経営へ。</h1>
-    <p>「時間がない」は、社長の宿命ではありません。時間創造部という新しい組織革命で、社長と幹部の時間を生み出し、その時間を売上と意思決定に変えます。</p>
-  </div>
-</section>
-
-<!-- 悩み -->
-<section>
-  <div class="wrap center">
-    <span class="sec-label">Problem</span>
-    <h2 class="sec-title reveal">こんな会社ほど、<span class="hl">時間に殺されています。</span></h2>
-    <div class="grid-3" style="margin-top:46px;text-align:left">
-      <div class="card reveal"><div class="c-ico">🌀</div><h3>社長が全部やっている</h3><p>判断も実務も社長頼み。社長が止まると会社が止まる構造から抜け出せない。</p></div>
-      <div class="card reveal"><div class="c-ico">🌙</div><h3>幹部が残業まみれ</h3><p>会議と確認作業に追われ、本当にやるべき仕事に時間が回らない。</p></div>
-      <div class="card reveal"><div class="c-ico">🐢</div><h3>意思決定が遅い</h3><p>「とりあえず持ち帰り」が続き、決断のスピードが競合に負けている。</p></div>
+    <h1>時間は、<span class="marker">第5の経営資産</span>。<br>使うだけの会社と、輝かせる会社。</h1>
+    <p>人材・お金・モノ・情報……そして<strong>時間</strong>。社員300人の会社の時間資産は年間<strong>63万時間超</strong>。そのうち3分の1が、いま無駄に使われています。矢部大のタイムマネジメントセミナーで「時間創造部」を立ち上げ、眠っている時間を、売上と成長に変えます。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">セミナーに申し込む →</a>
+      <a href="#program" class="btn btn-ghost">内容を見る</a>
     </div>
   </div>
 </section>
 
-<!-- 内容 -->
-<section class="bg-sky">
+<!-- 時間は第5の経営資産 -->
+<section>
   <div class="wrap center">
-    <span class="sec-label">Program</span>
-    <h2 class="sec-title reveal">セミナーで手に入るもの</h2>
-    <p class="sec-lead reveal">書籍『スーパータイムマネジメント』のメソッドを、組織に落とし込みます。</p>
-    <div class="grid-2" style="margin-top:46px;text-align:left">
-      <div class="card reveal"><div class="num">01</div><h3>時間を「生む」業務設計</h3><p>消す・任せる・仕組み化する。三段階で、社長と幹部の時間を物理的に生み出します。</p></div>
-      <div class="card reveal"><div class="num">02</div><h3>時間創造部という組織革命</h3><p>「時間を生むこと」を担う仕組みを社内に作り、属人化から脱却します。</p></div>
-      <div class="card reveal"><div class="num">03</div><h3>意思決定のスピード化</h3><p>決める基準と権限を整理し、「持ち帰り」をなくす。決断の速さが武器になります。</p></div>
-      <div class="card reveal"><div class="num">04</div><h3>生んだ時間を売上に変える</h3><p>創出した時間を、感動セールスやAI営業DXへ再投資。時短で終わらせません。</p></div>
+    <span class="sec-label">Core Concept</span>
+    <h2 class="sec-title reveal">「時間」を経営資産として<span class="hl">意識できている会社はほぼゼロ。</span></h2>
+    <p class="sec-lead reveal">経営に必要な資産は5つ。最後の一つを、多くの会社が見落としています。</p>
+    <div class="asset-row reveal">
+      <div class="asset-item">人材</div>
+      <div class="asset-item">お金</div>
+      <div class="asset-item">モノ</div>
+      <div class="asset-item">情報</div>
+      <div class="asset-item highlight">⏱ 時間</div>
+    </div>
+    <div class="diff reveal" style="margin-top:44px">
+      <div class="x">社員300人・年間<span class="o">63万3,600時間</span>の資産を<br>あなたは把握できていますか？</div>
+      <p>300人×8時間×22日×12か月 ＝ <strong>633,600時間</strong>。そのうち約3分の1、<strong>20万時間超</strong>が会議・伝達の無駄・指示のやり直しに消えています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3つの眼力 -->
+<section class="bg-sky" id="program">
+  <div class="wrap center">
+    <span class="sec-label">3 Eyes Framework</span>
+    <h2 class="sec-title reveal">時間を輝かせる<span class="hl">「3つの眼力」</span></h2>
+    <p class="sec-lead reveal">慧眼・深掘眼・先見眼の三視点で、会社の時間を根本から変える。</p>
+    <div class="eye-grid">
+      <div class="eye-card reveal">
+        <div class="eye-label">EYE 01 ／ 慧眼</div>
+        <h3>本音を見抜く目</h3>
+        <p>出社する本音は「給料をもらう」「家族を養う」「自分のため」。タテマエと本音を見抜き、社員が毎日8時間を<strong>命を削る本番</strong>として向き合える環境をつくる。</p>
+      </div>
+      <div class="eye-card reveal">
+        <div class="eye-label">EYE 02 ／ 深掘眼</div>
+        <h3>無駄を深掘りする目</h3>
+        <p>会議の無駄・コピーの無駄・電話の無駄・上司の指示の無駄――社内の時間資産がどこで消えているかを徹底的に洗い出し、構造から変える。</p>
+      </div>
+      <div class="eye-card reveal">
+        <div class="eye-label">EYE 03 ／ 先見眼</div>
+        <h3>未来を予測する目</h3>
+        <p>18歳人口は30年で半減（205万→109万人）。中小企業の人材難は深刻化する。5年・10年先の時間軸で今の戦略を考え、会社の時間を未来への投資に変える。</p>
+      </div>
     </div>
     <figure class="reveal" style="margin:34px auto 0;max-width:300px">
       <img src="assets/photos/seminar-room.jpg" alt="タイムマネジメント研修の様子" style="width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow);display:block">
@@ -67,8 +121,155 @@
   </div>
 </section>
 
-<!-- 成果 -->
+<!-- 会議・伝達の無駄 -->
 <section>
+  <div class="wrap center">
+    <span class="sec-label">Problem Deep Dive</span>
+    <h2 class="sec-title reveal">なぜ、1回の指示で<span class="hl">終わらないのか。</span></h2>
+    <p class="sec-lead reveal">伝達力の問題を数値で見ると、驚くべき事実が浮かびます。</p>
+    <div class="trans-funnel reveal">
+      <div class="trans-bar" style="width:100%;background:var(--blue-deep)">言いたいこと　100%</div>
+      <div class="trans-bar" style="width:84%;background:#1a5bc4">言葉にすると　70%</div>
+      <div class="trans-bar" style="width:68%;background:#2a6fd4">部下に伝わると　50%</div>
+      <div class="trans-bar" style="width:52%;background:var(--blue-light)">部下が納得すると　30%</div>
+      <div class="trans-bar" style="width:36%;background:#5595e0;color:var(--blue-deep)">さらに人を介すと…　10〜30%</div>
+    </div>
+    <p style="color:var(--gray);font-size:.86rem;margin-top:16px;text-align:center">言いたいことの100%は、部下には30%以下しか届かない。<br>それが「なぜ会議が繰り返されるのか」の根本原因です。</p>
+
+    <div class="grid-2" style="margin-top:44px;text-align:left">
+      <div class="card reveal">
+        <div class="num">会議</div>
+        <h3>会議の無駄をなくす「先手管理術」</h3>
+        <div class="stage-block"><h4>上司の予想質問を先に潰す</h4><p>上司が返してくる質問を事前に想定し、答えを先に用意する。会議の往復回数をゼロに近づける技術。</p></div>
+        <div class="stage-block"><h4>会議の達人になる</h4><p>洞察力を磨く時間／慈悲の大耳で聞く時間／珠玉の言葉で指導する時間——会議の性質を意図的に設計する。</p></div>
+      </div>
+      <div class="card reveal">
+        <div class="num">指示</div>
+        <h3>上司の指示の無駄をなくす</h3>
+        <div class="stage-block"><h4>相手の立場で考え抜く</h4><p>「上司の立場になって考える」＝お客様の立場になって考え抜く感動の提供と同じ発想。これが時間節約の最短距離。</p></div>
+        <div class="stage-block"><h4>伝達ロスを構造から解決</h4><p>引き継ぎ・慣習・前任者の仕事を棚卸しし、「なぜこれが必要か」を根本から問い直す。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 曜日を輝かせる -->
+<section class="bg-sky">
+  <div class="wrap center">
+    <span class="sec-label">Weekly Design</span>
+    <h2 class="sec-title reveal">曜日を<span class="hl">輝かせる</span>。</h2>
+    <p class="sec-lead reveal">月〜金に各テーマを持つだけで、仕事の質が劇的に変わります。</p>
+    <div class="weekday-grid reveal">
+      <div class="weekday-item">
+        <div class="day">MON</div>
+        <div class="theme">自己の魅力を<br>磨く日</div>
+      </div>
+      <div class="weekday-item">
+        <div class="day">TUE</div>
+        <div class="theme">部下を<br>燃やす日</div>
+      </div>
+      <div class="weekday-item">
+        <div class="day">WED</div>
+        <div class="theme">先手管理の日<br>（会議ゼロへ）</div>
+      </div>
+      <div class="weekday-item">
+        <div class="day">THU</div>
+        <div class="theme">戦略思考日<br>（孫子の研究）</div>
+      </div>
+      <div class="weekday-item">
+        <div class="day">FRI</div>
+        <div class="theme">上司を<br>唸らせる日</div>
+      </div>
+    </div>
+    <p style="font-size:.84rem;color:var(--gray);margin-top:18px">各テーマを週ごとに深掘り（帝王学の研究／褒める技術／洞察力の訓練 etc.）。「何を考えるか」が決まると、時間の密度が変わります。</p>
+
+    <div class="grid-2" style="margin-top:44px;text-align:left">
+      <div class="card reveal">
+        <div class="num">⏱</div>
+        <h3>今ある時間を楽しむ設計</h3>
+        <p><strong>5分の愛着</strong> / <strong>20分の情熱</strong> / <strong>1時間の気迫</strong> / <strong>半日の充実感</strong> / <strong>1日の感謝</strong><br><br>時間の長さに応じた姿勢の使い分けが、仕事の質を根底から変えます。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">🔍</div>
+        <h3>1時間ごとの生き方を決める</h3>
+        <p>今日の9時から10時をどう生きるか——ゴールのない仕事はやる気が出ません。時間にゴールを設定し、「今を活きる」状態を仕組みとして作る。それが時間創造部の真髄です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 兄のエピソード -->
+<section>
+  <div class="wrap">
+    <div class="story-box reveal">
+      <p>矢部大が時間の本質に目覚めたきっかけ——</p>
+      <div class="quote">「ボクには時間がないだろう？<br>だから、<span>今、するしかない。</span>」</div>
+      <p style="max-width:600px;margin:0 auto">10歳上の兄から末期癌の告知を受けたとき、兄が言った言葉。仕事を口実にして実行できなかったことが、病気になって初めて「今しかない」と見えた——この体験が、時間創造部の設立につながった。<br><br><strong>病気になって分かったんだよ。心の底から感謝の気持ちをこめた「ありがとう」が言えるようになったのは、この病気になってから。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- セミナー内容 -->
+<section class="bg-sky">
+  <div class="wrap center">
+    <span class="sec-label">Program</span>
+    <h2 class="sec-title reveal">セミナー・研修の<span class="hl">内容構成</span></h2>
+    <p class="sec-lead reveal">矢部廣重のスーパータイムマネジメントをベースに、矢部大が企業向けに体系化。</p>
+    <div class="grid-2" style="margin-top:40px;text-align:left">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>時間を「輝かせる」思想の転換</h3>
+        <p>「管理する」から「輝かせる」へ。時間は削るものではなく、使い方で密度が変わる。慧眼・深掘眼・先見眼の3視点で、自社の時間資産を見直す。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>社内の時間資産の棚卸し</h3>
+        <p>会議の無駄・伝達のロス・上司の指示の往復——数値に落として「うちの会社で何時間が消えているか」を可視化する実践ワーク。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>時間創造部の設置</h3>
+        <p>「時間を生むこと」を担う仕組みを組織内に設置。感動創造部と連携し、生み出した時間を売上に変換する設計まで描く。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">04</div>
+        <h3>曜日設計と1時間ごとのゴール設定</h3>
+        <p>月〜金の曜日テーマ、週次サブテーマ、1時間単位のゴール設定を実際に作成。「今を活きる」体制を個人・チームに落とし込む。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">05</div>
+        <h3>先見眼で5年・10年後を描く</h3>
+        <p>若年層人口の半減、AI時代の人材戦略——10年後の時間軸で見たとき、今の業務設計は正しいか？先見眼を使った中長期時間戦略を立案する。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">06</div>
+        <h3>舞台式ワークショップ（オプション）</h3>
+        <p>「時計メーカーの会議室」を舞台にした体感型演劇研修。各部署の社員が「時間研究者」として登壇し、チームで時間の本質を発見する。<span style="color:var(--blue);font-size:.82rem">※社内研修向けに演出可能</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 書籍紹介 -->
+<section>
+  <div class="wrap center">
+    <span class="sec-label">Book</span>
+    <h2 class="sec-title reveal">セミナーの土台：<span class="hl">『スーパータイムマネジメント』</span></h2>
+    <div style="display:flex;gap:32px;align-items:flex-start;max-width:720px;margin:36px auto 0;text-align:left;flex-wrap:wrap">
+      <div class="book-cover reveal" style="min-width:120px;flex:0 0 120px">
+        <img src="assets/photos/time.png" alt="スーパータイムマネジメント 表紙" style="width:100%;height:auto">
+      </div>
+      <div style="flex:1;min-width:220px">
+        <h3 style="font-size:1.1rem;margin-bottom:10px">スーパータイムマネジメント</h3>
+        <p style="font-size:.9rem;line-height:1.9;color:var(--gray)">矢部廣重（創業者）の超時間発想術を、矢部大が企業研修向けにアレンジ・体系化。「時間を管理する」から「時間を輝かせる」へ——本書がタイムマネジメントセミナーの根幹を成しています。</p>
+        <a href="https://www.amazon.co.jp/s?k=矢部大+スーパータイムマネジメント" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font-size:.85rem;color:var(--blue)">Amazonで見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 成果 -->
+<section class="bg-sky">
   <div class="wrap center">
     <div class="diff reveal">
       <div class="x"><span class="o">幹部の残業 50%削減</span>／<span class="o">意思決定の速度 3倍</span></div>
@@ -82,10 +283,10 @@
   <div class="wrap">
     <div class="cta reveal">
       <h2>「時間がない」を、今日で終わりに。</h2>
-      <p>開催日程・社内研修のご相談は、LINEまたはメールで。まずは無料相談からどうぞ。</p>
+      <p>社内研修・外部セミナーのご相談は、LINEまたはメールで。まずは無料相談からどうぞ。</p>
       <div class="cta-btns">
         <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
-        <a href="mailto:yabemasaru23@gmail.com" class="btn btn-primary">メールで申し込む →</a>
+        <a href="mailto:yabemasaru23@gmail.com?subject=タイムマネジメントセミナーについて" class="btn btn-primary">メールで申し込む →</a>
         <a href="books.html" class="btn btn-ghost">書籍を見る</a>
       </div>
     </div>
