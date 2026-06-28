@@ -291,6 +291,17 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 }
 
 /* =========================================
+   HERO BACKGROUND IMAGE — ページ別background重ね
+   グラデント(88%)＋画像(12%)で文字を視認不可に
+   ========================================= */
+.page-hero.hero-bg-index,.hero.hero-bg-index{background:linear-gradient(rgba(251,253,255,.78),rgba(238,245,255,.78)),url('photos/hero-index.png') center/cover}
+.page-hero.hero-bg-results{background:linear-gradient(rgba(235,248,240,.78),rgba(255,255,255,.78)),url('photos/hero-results.png') center/cover}
+.page-hero.hero-bg-story  {background:linear-gradient(rgba(251,243,232,.78),rgba(255,255,255,.78)),url('photos/hero-story.png')   center/cover}
+.page-hero.hero-bg-books  {background:linear-gradient(rgba(243,238,252,.78),rgba(255,255,255,.78)),url('photos/hero-books.png')   center/cover}
+.page-hero.hero-bg-blog   {background:linear-gradient(rgba(238,241,244,.78),rgba(255,255,255,.78)),url('photos/hero-blog.png')    center/cover}
+.page-hero.hero-bg-company{background:linear-gradient(rgba(232,241,251,.78),rgba(255,255,255,.78)),url('photos/hero-company.png') center/cover}
+
+/* =========================================
    EDITORIAL DESIGN — 全サイト適用
    ① 絵文字→番号  ② SVG削除  ③ フラットカード+左揃え
    ========================================= */
