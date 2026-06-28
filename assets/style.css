@@ -289,3 +289,48 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
   .diff,.cta{padding:40px 24px;border-radius:22px}
   .work-band{padding:28px 20px}
 }
+
+/* =========================================
+   EDITORIAL DESIGN — 全サイト適用
+   ① 絵文字→番号  ② SVG削除  ③ フラットカード+左揃え
+   ========================================= */
+
+/* --- ① カードをフラット化（角丸・影・背景を除去） --- */
+.card{
+  background:transparent;
+  border:none;
+  border-top:1.5px solid var(--line);
+  border-radius:0;
+  box-shadow:none;
+  padding:28px 0;
+  transition:none;
+}
+.card:hover{transform:none;box-shadow:none}
+.card .c-ico{display:none}
+
+/* --- ① グリッドカードに自動番号（01/02/03…）を付与 --- */
+.grid-3,.grid-2{counter-reset:card-num}
+.grid-3>.card,.grid-2>.card{counter-increment:card-num}
+.grid-3>.card::before,.grid-2>.card::before{
+  content:counter(card-num,decimal-leading-zero);
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:.9rem;
+  color:var(--blue);
+  display:block;
+  margin-bottom:12px;
+  letter-spacing:.04em;
+}
+
+/* --- ③ セクションタイトル・リードを左揃えに --- */
+.sec-title{text-align:left}
+.sec-label{display:block;text-align:left}
+.sec-lead{text-align:left;margin-left:0}
+.bubble{text-align:left}
+
+/* --- ② page-heroのデコボックス：絵文字を非表示・影を軽減 --- */
+.deco-box .d-ico{display:none}
+.deco-box{box-shadow:0 8px 28px rgba(0,0,0,.10);border-radius:14px}
+
+/* --- ② hero SVGイラストミニカードを非表示 --- */
+.hero-ai-mini{display:none}
