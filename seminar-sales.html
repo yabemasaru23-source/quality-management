@@ -3,11 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>営業戦略・感動セミナー｜戦わずして売る｜株式会社クオリティマネジメント</title>
-<meta name="description" content="創業者・矢部廣重が確立した『感動セールス』。値引きでも押し売りでもなく、お客様の心を動かして売上を徹底的に上げる。感動マネジメント営業研修で成約率向上・キーマン攻略を実現します。">
+<title>感動マネジメント営業研修｜戦わずして売る｜株式会社クオリティマネジメント</title>
+<meta name="description" content="矢部廣重が確立した「感動セールス」の方程式：予想＜現実＝感動。値引きでも押し売りでもなく、お客様の心を動かして「この人から買いたい」を生み出す。成約率3倍の実績メソッドを研修で。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;700;800&family=Yomogi&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* 感動の方程式 */
+.kando-eq{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:40px auto;max-width:700px}
+.kando-box{background:#fff;border-radius:14px;padding:20px 28px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.09);min-width:130px}
+.kando-box .kb-label{font-size:.72rem;letter-spacing:.08em;color:var(--gray);margin-bottom:6px}
+.kando-box .kb-value{font-size:1.25rem;font-weight:900;color:var(--navy)}
+.kando-arrow{font-size:2rem;color:var(--gold);font-weight:900}
+.kando-result{background:var(--navy);color:#fff;border-radius:14px;padding:20px 28px;text-align:center;min-width:140px;box-shadow:0 6px 24px rgba(21,36,58,.25)}
+.kando-result .kb-label{font-size:.72rem;letter-spacing:.08em;color:#afc;margin-bottom:6px}
+.kando-result .kb-value{font-size:1.4rem;font-weight:900;color:#fff}
+.kando-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:32px auto 0}
+.kando-card{background:#fff;border-radius:12px;padding:22px 20px;text-align:center;box-shadow:var(--shadow)}
+.kando-card.bad{border-top:4px solid #e55;}
+.kando-card.mid{border-top:4px solid #aaa;}
+.kando-card.good{border-top:4px solid #2a9d5c;}
+.kando-card .kc-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.kando-card.bad .kc-tag{color:#e55}
+.kando-card.mid .kc-tag{color:#888}
+.kando-card.good .kc-tag{color:#2a9d5c}
+.kando-card h4{font-size:1rem;font-weight:800;margin:0 0 6px}
+.kando-card p{font-size:.8rem;color:var(--gray);line-height:1.7;margin:0}
+/* 3原則カード */
+.principle-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px}
+@media(max-width:700px){.principle-row{grid-template-columns:1fr}.kando-grid{grid-template-columns:1fr}.kando-eq{gap:8px}.kando-box,.kando-result{min-width:unset;padding:14px 18px}}
+.principle-card{background:#fff;border-radius:16px;padding:30px 26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.principle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px}
+.p01::before{background:linear-gradient(90deg,#e8a020,#f5c842)}
+.p02::before{background:linear-gradient(90deg,#1a73e8,#56acff)}
+.p03::before{background:linear-gradient(90deg,#2a9d5c,#4ecf84)}
+.p-num{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;opacity:.1;position:absolute;top:14px;right:20px;line-height:1}
+.p-icon{font-size:2rem;margin-bottom:12px;display:block}
+.principle-card h3{font-size:1.05rem;font-weight:800;margin:0 0 10px;color:var(--navy)}
+.principle-card p{font-size:.84rem;line-height:1.8;color:#444;margin:0}
+/* ストーリーボックス */
+.story-sales{background:linear-gradient(135deg,#fffdf5 0%,#fff9e8 100%);border:1px solid #e8d89a;border-radius:18px;padding:36px 36px;max-width:820px;margin:40px auto 0;position:relative}
+.story-sales::before{content:'"';font-size:6rem;color:#f5c842;opacity:.25;position:absolute;top:-10px;left:18px;line-height:1;font-family:serif}
+.story-sales p{line-height:2;font-size:.94rem;color:#333;margin-bottom:14px}
+.story-sales .s-author{font-size:.8rem;color:var(--gray);text-align:right;margin:0;padding-top:8px;border-top:1px solid #e8d89a}
+/* 楽と感動の対比 */
+.contrast-bar{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;max-width:680px;margin:36px auto}
+.contrast-col{border-radius:14px;padding:26px 22px;text-align:center}
+.contrast-col.bad-col{background:#f5f5f5}
+.contrast-col.good-col{background:linear-gradient(135deg,#15243a,#1e3554);color:#fff}
+.contrast-col h4{font-size:.9rem;font-weight:700;margin:0 0 14px}
+.contrast-col.bad-col h4{color:#999}
+.contrast-col.good-col h4{color:#f5c842}
+.contrast-col ul{list-style:none;padding:0;margin:0;text-align:left}
+.contrast-col ul li{font-size:.84rem;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.contrast-col.good-col ul li{border-color:rgba(255,255,255,.1)}
+.contrast-col.bad-col ul li::before{content:'✗ ';color:#e55}
+.contrast-col.good-col ul li::before{content:'✓ ';color:#f5c842}
+.contrast-mid{display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold);font-weight:900}
+/* 実績バー */
+.result-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:36px 0 0}
+.res-pill{background:var(--navy);color:#fff;border-radius:50px;padding:14px 32px;text-align:center}
+.res-pill b{display:block;font-size:1.5rem;font-weight:900;color:#f5c842;line-height:1.2}
+.res-pill span{font-size:.75rem;opacity:.8}
+/* 格言引用 */
+.quote-row{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:800px;margin:36px auto 0}
+@media(max-width:600px){.quote-row{grid-template-columns:1fr}.contrast-bar{grid-template-columns:1fr;gap:12px}.contrast-mid{transform:rotate(90deg)}}
+.q-card{background:#fff;border-radius:14px;padding:24px 22px;box-shadow:var(--shadow);border-left:4px solid var(--gold)}
+.q-card blockquote{margin:0 0 10px;font-style:italic;font-size:.88rem;line-height:1.8;color:#333}
+.q-card cite{font-size:.76rem;color:var(--gray)}
+</style>
 </head>
 <body>
 
@@ -31,47 +95,208 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">ホーム</a> ／ サービス ／ 営業戦略・感動セミナー</div>
     <h1><span class="marker">戦わずして、売る。</span><br>感動マネジメント営業研修。</h1>
-    <p>創業者・矢部廣重が確立し、矢部大が継承した「感動セールス」。値引き合戦でも押し売りでもなく、お客様の心を動かして「あなたから買いたい」を生み出す営業の哲学です。</p>
+    <p>矢部廣重が生涯かけて確立し、矢部大が継承した「感動セールス」。<br>
+    値引き合戦でも押し売りでもなく、お客様の感情を動かして<br>
+    「この人から買いたい」を生み出す営業の哲学です。</p>
   </div>
 </section>
 
-<!-- なぜ感動か -->
+<!-- 感動の方程式 -->
 <section>
-  <div class="wrap narrow center">
-    <span class="sec-label">Philosophy</span>
-    <h2 class="sec-title reveal">「誰が買うのか」ではなく、<br><span class="hl">「なぜ欲しいのか」。</span></h2>
-    <div class="letter reveal" style="background:#fffdf5;border:1px solid #ece4c7;border-radius:16px;padding:30px 32px;box-shadow:var(--shadow);text-align:left;line-height:2;max-width:760px;margin:30px auto 0">
-      <p style="margin-bottom:16px">多くの会社は「どうやって売るか」を考えます。でも、本当に売れる会社は「お客様がなぜ欲しくなるのか」を設計しています。</p>
-      <p>感動セールスは、機能や価格で戦いません。お客様の感情を動かし、キーマンの心をつかみ、<span class="marker">「この人から買いたい」</span>という状態をつくる。だから値引きせずに、売上が伸び続けるのです。</p>
+  <div class="wrap center">
+    <span class="sec-label">Formula</span>
+    <h2 class="sec-title reveal">感動には、<span class="hl">方程式がある。</span></h2>
+    <p class="sec-lead reveal">喜びと感動がなぜ起こるのか。矢部廣重が実践で導き出した、感動セールスの核心。</p>
+
+    <div class="kando-eq reveal">
+      <div class="kando-box">
+        <div class="kb-label">お客様の予想</div>
+        <div class="kb-value">予想</div>
+      </div>
+      <div class="kando-arrow">&lt;</div>
+      <div class="kando-box">
+        <div class="kb-label">実際の体験・成果</div>
+        <div class="kb-value">現実</div>
+      </div>
+      <div class="kando-arrow">=</div>
+      <div class="kando-result">
+        <div class="kb-label">購買・紹介・リピート</div>
+        <div class="kb-value">感動・喜び</div>
+      </div>
     </div>
-    <figure class="reveal" style="margin:32px auto 0;max-width:300px">
-      <img src="assets/photos/founder-seminar.jpg" alt="創業者による感動セールス研修の様子" style="width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow);display:block">
-      <figcaption style="font-size:.76rem;color:var(--gray);margin-top:8px">▲ 創業以来続く、現場での感動セールス研修</figcaption>
-    </figure>
+
+    <div class="kando-grid reveal">
+      <div class="kando-card bad">
+        <div class="kc-tag">▼ クレーム発生</div>
+        <h4>予想 ＞ 現実</h4>
+        <p>期待値が現実を上回る。<br>どんなに頑張っても「やって当然」で終わる。</p>
+      </div>
+      <div class="kando-card mid">
+        <div class="kc-tag">△ 当たり前</div>
+        <h4>予想 ＝ 現実</h4>
+        <p>期待通りを届ける。<br>満足はするが、感動も紹介も生まれない。</p>
+      </div>
+      <div class="kando-card good">
+        <div class="kc-tag">◎ 感動・口コミ</div>
+        <h4>予想 ＜ 現実</h4>
+        <p>期待を超えた瞬間、感情が動く。<br>「この人から買いたい」「紹介したい」が生まれる。</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:28px;max-width:680px;margin-left:auto;margin-right:auto;background:#fffdf5;border:1px solid #e8d89a;border-radius:14px;padding:22px 28px;text-align:left;line-height:1.9">
+      <p style="margin:0;font-size:.9rem">感動は「偶然」ではなく、設計できる。<br>
+      この方程式を理解すれば、営業の打ち手はシンプルになる——<span class="marker">「現実をどう期待値より大きくするか」</span>を設計するだけでいい。</p>
+    </div>
   </div>
 </section>
 
-<!-- プログラム -->
+<!-- 楽と感動は対極 -->
 <section class="bg-sky">
   <div class="wrap center">
-    <span class="sec-label">Program</span>
-    <h2 class="sec-title reveal">研修で身につく、4つの力</h2>
-    <p class="sec-lead reveal">書籍『戦わずして売り続ける 最強営業の法則』のノウハウを実践形式で。</p>
-    <div class="grid-2" style="margin-top:46px;text-align:left">
-      <div class="card reveal"><div class="num">01</div><h3>感動を設計する</h3><p>お客様が「心を動かされる」瞬間を、商談のどこで・どう作るかを設計します。</p></div>
-      <div class="card reveal"><div class="num">02</div><h3>キーマン攻略</h3><p>決裁者の心をつかむ。誰に・何を・どの順で伝えるかの「攻略の型」を学びます。</p></div>
-      <div class="card reveal"><div class="num">03</div><h3>戦わない差別化</h3><p>価格競争から抜ける。値引きせずに選ばれる独自ポジションのつくり方。</p></div>
-      <div class="card reveal"><div class="num">04</div><h3>成約率を上げる</h3><p>現場に一緒に入り、トークと提案を磨く。成約率3倍・売上1.8倍の実例も。</p></div>
+    <span class="sec-label">Insight</span>
+    <h2 class="sec-title reveal">楽と感動は、<span class="hl">対極にある。</span></h2>
+    <p class="sec-lead reveal">「楽をし続けると、感動から遠ざかる」——矢部大の言葉。<br>価格を下げて売るのが一番「楽」な営業。だから、一番感動が生まれない。</p>
+
+    <div class="contrast-bar reveal">
+      <div class="contrast-col bad-col">
+        <h4>楽をする営業</h4>
+        <ul>
+          <li>値引きで決める</li>
+          <li>スペックで説明する</li>
+          <li>資料を送るだけ</li>
+          <li>競合と同じ土俵で戦う</li>
+          <li>リピートが来ない</li>
+        </ul>
+      </div>
+      <div class="contrast-mid">→</div>
+      <div class="contrast-col good-col">
+        <h4>感動を設計する営業</h4>
+        <ul>
+          <li>期待値をコントロールする</li>
+          <li>感情に働きかける</li>
+          <li>現場に一緒に入る</li>
+          <li>独自の土俵をつくる</li>
+          <li>紹介が連鎖する</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 成果 -->
+<!-- 感動セールス3原則 -->
 <section>
   <div class="wrap center">
-    <div class="diff reveal">
-      <div class="x"><span class="o">成約率 3倍</span>／<span class="o">売上 1.8倍</span>／<span class="o">新規顧客 前年比2.4倍</span></div>
-      <p>建設業・人材派遣業でのクライアント成果の一例。「矢部さんは口だけじゃなく、一緒に営業現場に入ってくれた」</p>
+    <span class="sec-label">Method</span>
+    <h2 class="sec-title reveal">感動セールス、<span class="hl">3つの原則</span></h2>
+    <p class="sec-lead reveal">矢部廣重が書籍・セミナー・現場で繰り返し語り続けた、本質的な3つの原則。</p>
+
+    <div class="principle-row reveal">
+      <div class="principle-card p01">
+        <span class="p-num">01</span>
+        <span class="p-icon">🔥</span>
+        <h3>心は使うほど豊かになる</h3>
+        <p>心のエネルギーは、使えば減ると思われている。しかし実際は逆だ。恋人に贈り物を選ぶ時間、喜ばれた瞬間——心を使うほど、エネルギーが湧いてくる。感動セールスはこの逆説から始まる。<br><br>「気持ちよく接しようとする人は、心のエネルギーの流れがよくなる」</p>
+      </div>
+      <div class="principle-card p02">
+        <span class="p-num">02</span>
+        <span class="p-icon">🎯</span>
+        <h3>キーマンの「なぜ」を探せ</h3>
+        <p>「誰が買うのか」ではなく「なぜ欲しいのか」を設計する。決裁者の感情が動く瞬間はどこか。その人の喜び・不安・誇りを理解した上で、期待値を正確に把握し、現実で超える。<br><br>決裁者の心をつかめば、価格交渉は不要になる。</p>
+      </div>
+      <div class="principle-card p03">
+        <span class="p-num">03</span>
+        <span class="p-icon">🌱</span>
+        <h3>「今がすべてだ」の現場主義</h3>
+        <p>「今がすべてだ。今ないものは、将来にも絶対にない」——岡本太郎。<br><br>感動セールスは現場で生まれる。資料でも数字でもなく、今この瞬間に相手の感情に触れる行動が、成約を生み、紹介を呼ぶ。矢部大は今も、クライアントと一緒に営業現場に入る。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員を燃やす：組織全体を動かす -->
+<section class="bg-sky">
+  <div class="wrap center">
+    <span class="sec-label">Team</span>
+    <h2 class="sec-title reveal">社員を<span class="hl">「燃やす」</span>——<br>組織全体で感動を量産する仕組み</h2>
+    <p class="sec-lead reveal">トップだけが感動セールスを知っていても、組織は動かない。<br>矢部大が実践してきた「社員モチベーション×感動の仕組み化」。</p>
+
+    <div class="grid-2 reveal" style="margin-top:40px;text-align:left;max-width:880px;margin-left:auto;margin-right:auto">
+      <div class="card">
+        <div class="num">A</div>
+        <h3>社長の自己開示が社員を動かす</h3>
+        <p>社員が本気を出さない最大の原因は「社長が見えない」ことにある。社長が自己開示し、社員の誕生日・挑戦・成果を具体的な言葉で称えると、モチベーションの流れが変わる。「社員を喜ばせるシステム」の設計を支援します。</p>
+      </div>
+      <div class="card">
+        <div class="num">B</div>
+        <h3>ルーチングと業務の明確化</h3>
+        <p>「やることが多すぎて何もできない」状態を解消する。重点顧客への6連発プログラム、週次ルーチング用紙、社員への業務の明確化——当たり前のことを当たり前にやり切る仕組みが、感動を量産する土台になる。</p>
+      </div>
+      <div class="card">
+        <div class="num">C</div>
+        <h3>称号・承認・賞賛の100</h3>
+        <p>「よくやった」で終わらせない。社員への称号100、褒める言葉100——言語化された承認が、個人の誇りと組織の一体感をつくる。感動は顧客だけでなく、社員にも設計できる。</p>
+      </div>
+      <div class="card">
+        <div class="num">D</div>
+        <h3>挑戦を小さく始めて大きく育てる</h3>
+        <p>「いきなり挫折するよりは小さく始めて大きく育てる」——達成できそうな目標から積み上げる。うまくいったことにもう10%追加する。小さな感動体験が積み重なり、「自分ならできる」という自信に変わる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 矢部大のストーリー：現場主義 -->
+<section>
+  <div class="wrap narrow center">
+    <span class="sec-label">Story</span>
+    <h2 class="sec-title reveal">口だけでなく、<span class="hl">現場に入る。</span></h2>
+    <div class="story-sales reveal">
+      <p>「矢部さんは口だけじゃなく、一緒に営業現場に入ってくれた」——建設業の代表からいただいた言葉です。</p>
+      <p>コンサルタントのほとんどは「資料」と「アドバイス」を届ける。でも感動は、現場でしか生まれない。どんなトークが刺さり、どのタイミングでお客様の目が輝くのか。それは、隣に立って初めてわかることです。</p>
+      <p>わたくしが学んだのは、父・矢部廣重の背中です。現場で怒鳴られても、断られても、「もう一度会いに行く」を繰り返した。そのしつこさと誠実さが、最終的に「この人から買いたい」を生み出していた。</p>
+      <p class="s-author">——矢部大</p>
+    </div>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="bg-sky">
+  <div class="wrap center">
+    <span class="sec-label">Results</span>
+    <h2 class="sec-title reveal">感動セールスが生んだ、<span class="hl">実際の数字</span></h2>
+    <div class="result-row reveal">
+      <div class="res-pill"><b>成約率 3倍</b><span>建設業クライアント</span></div>
+      <div class="res-pill"><b>売上 1.8倍</b><span>人材派遣業 18か月</span></div>
+      <div class="res-pill"><b>新規顧客 前年比2.4倍</b><span>サービス業 1期目</span></div>
+    </div>
+    <div class="diff reveal" style="margin-top:36px">
+      <p style="margin:0;font-size:.9rem">「成功するために必要なのは、まず自分に課したことを自分でやり切ること」——矢部廣重が書籍で繰り返した言葉。数字は後からついてくる。まず設計して、まず動く。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 格言 -->
+<section>
+  <div class="wrap center">
+    <span class="sec-label">Words</span>
+    <h2 class="sec-title reveal">感動セールスを支える、<span class="hl">4つの言葉</span></h2>
+    <div class="quote-row reveal">
+      <div class="q-card">
+        <blockquote>「今がすべてだ。今無いものならば、将来にも絶対に無い」</blockquote>
+        <cite>——岡本太郎</cite>
+      </div>
+      <div class="q-card">
+        <blockquote>「真心を持って人を助ければ、必ず自分も人から助けられる」</blockquote>
+        <cite>——エマーソン</cite>
+      </div>
+      <div class="q-card">
+        <blockquote>「仕事は全部失敗の連続である。チャレンジした数だけ失敗と成功がある」</blockquote>
+        <cite>——本田宗一郎</cite>
+      </div>
+      <div class="q-card">
+        <blockquote>「失ったものを数えるな、残ったものを数えよ」</blockquote>
+        <cite>——ベニー・グッドマン</cite>
+      </div>
     </div>
   </div>
 </section>
@@ -88,11 +313,26 @@
   </div>
 </section>
 
+<!-- プログラム詳細 -->
+<section>
+  <div class="wrap center">
+    <span class="sec-label">Program</span>
+    <h2 class="sec-title reveal">研修・講演プログラムの<span class="hl">4ステップ</span></h2>
+    <p class="sec-lead reveal">書籍『戦わずして売り続ける 最強営業の法則』のノウハウを<br>実践形式で体感・定着させる全4ステップ。</p>
+    <div class="grid-2 reveal" style="margin-top:46px;text-align:left">
+      <div class="card"><div class="num">01</div><h3>感動の方程式を理解する</h3><p>「予想 &lt; 現実 = 感動」の方程式を、自社の商品・サービスに当てはめる。今の営業はどこで期待値を上げすぎているか、どこで現実が足りていないかを洗い出す。</p></div>
+      <div class="card"><div class="num">02</div><h3>キーマン攻略の型をつくる</h3><p>決裁者の感情はどこで動くのか。誰に・何を・どの順序で届けるかの「攻略マップ」を自社用にカスタマイズ。価格ではなく感情で決断させる提案の構成を設計する。</p></div>
+      <div class="card"><div class="num">03</div><h3>社員モチベーション×感動の仕組み化</h3><p>感動セールスを組織に根付かせる。社長の自己開示・称号・承認システム・ルーチング——現場が自律的に動く仕組みを整備し、感動を量産できる体制をつくる。</p></div>
+      <div class="card"><div class="num">04</div><h3>現場同行・トーク磨き</h3><p>矢部大が実際の商談・営業現場に同行し、その場でフィードバック。資料では学べない「生きた感動セールス」を体感することで、成約率・単価・紹介率が変わる。</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="cta reveal">
-      <h2>値引きせずに、売上を伸ばす。</h2>
-      <p>研修・講演・社内導入のご相談は、LINEまたはメールで。まずは無料相談からどうぞ。</p>
+      <h2>感動は設計できる。<br>今すぐ、始めよう。</h2>
+      <p>「予想 &lt; 現実」を仕組みにする——研修・講演・現場同行のご相談は、LINEまたはメールで。<br>まずは無料の30分相談から。</p>
       <div class="cta-btns">
         <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
         <a href="mailto:yabemasaru23@gmail.com" class="btn btn-primary">メールで申し込む →</a>
