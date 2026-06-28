@@ -78,10 +78,33 @@ header .nav{padding-left:10px}
 
 /* ===== 下層ページのページヘッダー ===== */
 .page-hero{padding:130px 0 60px;background:radial-gradient(900px 400px at 80% -10%,rgba(31,134,255,.14),transparent 60%),linear-gradient(180deg,#fbfdff,#eef5ff);border-bottom:1px solid var(--line)}
+/* 2カラム ヒーローグリッド */
+.page-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.page-hero-deco{display:grid;place-items:center}
+.deco-box{border-radius:24px;padding:32px 26px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.14);position:relative;overflow:hidden;width:100%;max-width:300px}
+.deco-box .d-ico{font-size:3.2rem;line-height:1;margin-bottom:10px}
+.deco-box .d-big{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;line-height:1.1;margin-bottom:6px}
+.deco-box .d-label{font-size:.78rem;font-weight:700;letter-spacing:.06em}
+@media(max-width:860px){.page-hero-grid{grid-template-columns:1fr}.page-hero-deco{display:none}}
+/* カラーテーマ */
+.page-hero.theme-blue{background:radial-gradient(900px 400px at 80% -10%,rgba(31,134,255,.18),transparent 60%),linear-gradient(180deg,#f4f9ff,#e8f1fb)}
+.page-hero.theme-blue .page-hero-deco .deco-box{background:linear-gradient(160deg,#0a4ea3,#1f86ff);color:#fff}
+.page-hero.theme-gold{background:radial-gradient(900px 400px at 80% -10%,rgba(201,162,39,.22),transparent 60%),linear-gradient(180deg,#fffef7,#fff8e0)}
+.page-hero.theme-gold .page-hero-deco .deco-box{background:linear-gradient(160deg,#7a5c0a,#c9a227);color:#fff}
+.page-hero.theme-navy{background:radial-gradient(900px 400px at 80% -10%,rgba(6,47,99,.18),transparent 60%),linear-gradient(180deg,#f2f6fb,#e4ecf7)}
+.page-hero.theme-navy .page-hero-deco .deco-box{background:linear-gradient(160deg,#062f63,#0a4ea3);color:#fff}
+.page-hero.theme-green{background:radial-gradient(900px 400px at 80% -10%,rgba(30,160,100,.18),transparent 60%),linear-gradient(180deg,#f2fbf7,#e0f4eb)}
+.page-hero.theme-green .page-hero-deco .deco-box{background:linear-gradient(160deg,#0f6b3e,#1aaf6b);color:#fff}
+.page-hero.theme-warm{background:radial-gradient(900px 400px at 80% -10%,rgba(160,80,20,.14),transparent 60%),linear-gradient(180deg,#fffbf5,#fff3e0)}
+.page-hero.theme-warm .page-hero-deco .deco-box{background:linear-gradient(160deg,#7a3a00,#c05a10);color:#fff}
+.page-hero.theme-purple{background:radial-gradient(900px 400px at 80% -10%,rgba(100,60,180,.16),transparent 60%),linear-gradient(180deg,#f8f4ff,#ede8ff)}
+.page-hero.theme-purple .page-hero-deco .deco-box{background:linear-gradient(160deg,#3d1a8e,#7c50d8);color:#fff}
+.page-hero.theme-gray{background:radial-gradient(900px 400px at 80% -10%,rgba(91,107,128,.12),transparent 60%),linear-gradient(180deg,#f8f9fb,#eef1f5)}
+.page-hero.theme-gray .page-hero-deco .deco-box{background:linear-gradient(160deg,#2c3a4a,#5b6b80);color:#fff}
 .breadcrumb{font-size:.78rem;color:var(--gray);margin-bottom:14px}
 .breadcrumb a:hover{color:var(--blue-bright)}
 .page-hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.35;margin-bottom:12px}
-.page-hero p{color:var(--gray);max-width:680px}
+.page-hero p{color:var(--gray);max-width:640px}
 
 /* ===== 差別化（私たちは○○ではありません） ===== */
 .diff{background:var(--blue-deep);color:#eaf2fd;text-align:center;border-radius:26px;padding:54px 40px;max-width:960px;margin:0 auto;position:relative;overflow:hidden}
