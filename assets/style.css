@@ -291,18 +291,6 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 }
 
 /* =========================================
-   HERO BACKGROUND IMAGE — .has-img クラス
-   ========================================= */
-.page-hero.has-img h1,.hero.has-img h1{color:#fff}
-.page-hero.has-img p,.hero.has-img .sub{color:rgba(255,255,255,.88)}
-.page-hero.has-img .breadcrumb{color:rgba(255,255,255,.72)}
-.page-hero.has-img .breadcrumb a{color:#fff}
-.page-hero.has-img .marker,.hero.has-img .marker{background:linear-gradient(transparent 58%,rgba(255,225,77,.80) 58%)}
-.hero.has-img::before{display:none}
-.hero.has-img .hero-badge{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff}
-.hero.has-img .hero-badge .dot{background:#ffe14d;box-shadow:0 0 0 4px rgba(255,225,77,.22)}
-
-/* =========================================
    EDITORIAL DESIGN — 全サイト適用
    ① 絵文字→番号  ② SVG削除  ③ フラットカード+左揃え
    ========================================= */
