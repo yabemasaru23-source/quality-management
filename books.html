@@ -12,6 +12,21 @@
 .hiroshige-books{grid-template-columns:repeat(5,1fr)}
 .genriki-books{grid-template-columns:repeat(3,1fr);max-width:720px;margin:40px auto 0}
 @media(max-width:900px){.hiroshige-books,.genriki-books{grid-template-columns:repeat(2,1fr)}}
+/* NEW バッジ */
+.new-badge{display:inline-block;background:#e53935;color:#fff;font-size:.62rem;font-weight:900;padding:3px 9px;border-radius:20px;letter-spacing:.1em;vertical-align:middle;margin-left:8px;animation:badgeblink 1.1s ease-in-out infinite}
+@keyframes badgeblink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.92)}}
+/* 眼力カード */
+.genriki-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:40px auto 0;max-width:900px}
+.genriki-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.genriki-cover{width:100%;height:200px;border:none;background:#f5f5f5;display:block}
+.genriki-body{padding:16px}
+.genriki-body .gt{font-weight:800;font-size:.92rem;color:var(--ink);margin-bottom:6px}
+.genriki-body .gd{font-size:.8rem;color:var(--gray);line-height:1.7;margin-bottom:10px}
+.genriki-body a{font-size:.78rem;color:var(--blue);font-weight:700}
+@media(max-width:760px){.genriki-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.genriki-grid{grid-template-columns:1fr}}
+/* 眼力サンプル iframe */
+.genriki-sample{width:100%;height:520px;border:1px solid var(--line);border-radius:14px;margin-top:36px;display:block}
 </style>
 </head>
 <body>
@@ -57,11 +72,11 @@
     <span class="sec-label">矢部 大の著書</span>
     <h2 class="sec-title reveal" style="margin-bottom:32px">継承者・矢部大の<span class="hl">5冊</span></h2>
     <div class="book-grid">
-      <div class="book reveal"><div class="book-cover"><img src="assets/photos/book6.png" alt="サトリ 新宿の裏路地、謎の老人が教えるAI時代の覚醒物語 表紙"></div><div class="book-info"><div class="t">サトリ　新宿の裏路地、謎の老人が教えるAI時代の覚醒物語</div><div style="font-size:.72rem;color:var(--gray);margin-bottom:6px">著者：まさる　QM出版</div><a href="https://www.amazon.co.jp/dp/B0GLQ6Y29N" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">Amazonで購入 →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><img src="assets/photos/time.png" alt="スーパータイムマネジメント 表紙"></div><div class="book-info"><div class="t">スーパータイムマネジメント</div><a href="https://www.amazon.co.jp/s?k=矢部大+スーパータイムマネジメント" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><img src="assets/photos/tata.png" alt="戦わずして売り続ける 最強営業の法則 表紙"></div><div class="book-info"><div class="t">戦わずして売り続ける 最強営業の法則</div><a href="https://www.amazon.co.jp/s?k=矢部大+戦わずして売り続ける" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><img src="assets/photos/10oku.png" alt="バク転だけで10億円稼げたわけ 表紙"></div><div class="book-info"><div class="t">バク転だけで10億円稼げたわけ</div><a href="https://www.amazon.co.jp/s?k=矢部大+バク転だけで10億円" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
-      <div class="book reveal"><div class="book-cover"><img src="assets/photos/lastlove.png" alt="結局好かれることが最強の武器になる 表紙"></div><div class="book-info"><div class="t">結局好かれることが最強の武器になる</div><a href="https://www.amazon.co.jp/s?k=矢部大+結局好かれることが最強の武器になる" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/book6.png" alt="サトリ 新宿の裏路地、謎の老人が教えるAI時代の覚醒物語 表紙"></div><div class="book-info"><div class="t">サトリ　新宿の裏路地、謎の老人が教えるAI時代の覚醒物語<span class="new-badge">NEW</span></div><div style="font-size:.72rem;color:var(--gray);margin-bottom:6px">著者：まさる　QM出版</div><p style="font-size:.8rem;color:var(--gray);line-height:1.7;margin:6px 0 10px">新宿の裏路地に現れた謎の老人が語る「AI時代に生き残る覚醒の法則」。ビジネス小説形式で読む、AI×人間の本質。</p><a href="https://www.amazon.co.jp/dp/B0GLQ6Y29N" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">Amazonで購入 →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/time.png" alt="スーパータイムマネジメント 表紙"></div><div class="book-info"><div class="t">スーパータイムマネジメント</div><p style="font-size:.8rem;color:var(--gray);line-height:1.7;margin:6px 0 10px">「時間がない」を終わらせる一冊。時間を"創造"する発想で、社長と幹部が意思決定に集中できる体制をつくる経営哲学の原典。</p><a href="https://www.amazon.co.jp/s?k=矢部大+スーパータイムマネジメント" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/tata.png" alt="戦わずして売り続ける 最強営業の法則 表紙"></div><div class="book-info"><div class="t">戦わずして売り続ける 最強営業の法則</div><p style="font-size:.8rem;color:var(--gray);line-height:1.7;margin:6px 0 10px">値引きでも押し売りでもなく、お客様の心を動かして「この人から買いたい」を生み出す感動セールスの実践書。営業研修の土台テキスト。</p><a href="https://www.amazon.co.jp/s?k=矢部大+戦わずして売り続ける" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/10oku.png" alt="バク転だけで10億円稼げたわけ 表紙"></div><div class="book-info"><div class="t">バク転だけで10億円稼げたわけ</div><p style="font-size:.8rem;color:var(--gray);line-height:1.7;margin:6px 0 10px">元JACスタントマンが26歳で起業し、8社・年商15億円に至るまでの軌跡。「常識の逆」を行く矢部流ビジネスの原点となった一冊。</p><a href="https://www.amazon.co.jp/s?k=矢部大+バク転だけで10億円" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
+      <div class="book reveal"><div class="book-cover"><img src="assets/photos/lastlove.png" alt="結局好かれることが最強の武器になる 表紙"></div><div class="book-info"><div class="t">結局好かれることが最強の武器になる</div><p style="font-size:.8rem;color:var(--gray);line-height:1.7;margin:6px 0 10px">テクニックより人間関係。「信頼で選ばれ続ける人」になるための、ビジネスにおける人としてのあり方を説く実践書。</p><a href="https://www.amazon.co.jp/s?k=矢部大+結局好かれることが最強の武器になる" target="_blank" rel="noopener">Amazonで見る →</a></div></div>
     </div>
     <p class="form-note" style="margin-top:30px;text-align:center;color:var(--gray);font-size:.84rem">※ 「サトリ」はAmazon Kindleで直接購入できます。その他はAmazon検索リンクです。正式URLが分かり次第、直接リンクに差し替えます。</p>
   </div>
@@ -85,14 +100,64 @@
 
 <!-- 社長の眼力シリーズ（致知連載） -->
 <section>
-  <div class=”wrap center”>
-    <span class=”sec-label”>致知連載シリーズ</span>
-    <h2 class=”sec-title reveal”>月刊『致知』連載<br><span class=”hl”>「社長の眼力」全6巻</span></h2>
-    <div class=”reveal” style=”max-width:760px;margin:36px auto 0;background:#fffdf5;border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:28px 32px;text-align:left”>
-      <p style=”margin:0 0 10px;font-size:.95rem;line-height:1.9;color:var(--ink)”>人間学誌『月刊致知』（致知出版社）に、矢部廣重が数年にわたり連載。「眼力には五眼がある——肉眼・慧眼・法眼・天眼・仏眼」。経営者が磨くべき”6つの眼”を実話形式で説いた代表シリーズです。</p>
-      <p style=”margin:0;font-size:.88rem;color:var(--gray)”>先見眼・慧眼・戦略眼・本物眼・洞察眼・眼力　全6巻</p>
-    </div>
+  <div class="wrap center">
+    <span class="sec-label">月刊『致知』連載</span>
+    <h2 class="sec-title reveal">社長の眼力シリーズ<br><span class="hl">全6巻</span></h2>
+    <p class="sec-lead reveal">人間学誌『月刊致知』（致知出版社）に、矢部廣重が連載した代表シリーズ。経営者が磨くべき「6つの眼」を実話形式で説く。</p>
 
+    <div class="genriki-grid reveal">
+      <div class="genriki-card">
+        <object class="genriki-cover" data="assets/genriki/社長の先見眼表紙.pdf" type="application/pdf"><div style="height:200px;display:grid;place-items:center;background:#f0f4ff;font-size:.85rem;color:#666">社長の先見眼</div></object>
+        <div class="genriki-body">
+          <div class="gt">社長の先見眼</div>
+          <div class="gd">時代の潮目を読み、一歩先を見る眼を磨く。変化の激しい市場で「次の一手」を外さない経営者の視点を実話で解説。</div>
+          <a href="assets/genriki/社長の先見眼本文.pdf" target="_blank" rel="noopener">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+      <div class="genriki-card">
+        <object class="genriki-cover" data="assets/genriki/社長の慧眼表紙.pdf" type="application/pdf"><div style="height:200px;display:grid;place-items:center;background:#f0f4ff;font-size:.85rem;color:#666">社長の慧眼</div></object>
+        <div class="genriki-body">
+          <div class="gt">社長の慧眼</div>
+          <div class="gd">物事の本質を見抜く眼。本物と偽物、人材の本質、商品の真価を即座に見極める経営判断力を養う。</div>
+          <a href="assets/genriki/社長の慧眼本文.pdf" target="_blank" rel="noopener">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+      <div class="genriki-card">
+        <object class="genriki-cover" data="assets/genriki/社長の戦略眼表紙.pdf" type="application/pdf"><div style="height:200px;display:grid;place-items:center;background:#f0f4ff;font-size:.85rem;color:#666">社長の戦略眼</div></object>
+        <div class="genriki-body">
+          <div class="gt">社長の戦略眼</div>
+          <div class="gd">戦わずして勝つ眼。競合と正面衝突せず、自社の強みを最大化する戦略の設計思想を経営実話で語る。</div>
+          <a href="assets/genriki/社長の戦略眼本文.pdf" target="_blank" rel="noopener">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+      <div class="genriki-card">
+        <object class="genriki-cover" data="assets/genriki/社長の本物眼表紙.pdf" type="application/pdf"><div style="height:200px;display:grid;place-items:center;background:#f0f4ff;font-size:.85rem;color:#666">社長の本物眼</div></object>
+        <div class="genriki-body">
+          <div class="gt">社長の本物眼</div>
+          <div class="gd">本物を見極める眼。顧客・人材・商品において「本物かどうか」を感じ取る感性と経営者の胆力を説く。</div>
+          <a href="assets/genriki/社長の本物眼本文.pdf" target="_blank" rel="noopener">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+      <div class="genriki-card">
+        <object class="genriki-cover" data="assets/genriki/社長の洞察眼表紙.pdf" type="application/pdf"><div style="height:200px;display:grid;place-items:center;background:#f0f4ff;font-size:.85rem;color:#666">社長の洞察眼</div></object>
+        <div class="genriki-body">
+          <div class="gt">社長の洞察眼</div>
+          <div class="gd">人の心の奥を読む眼。お客様・社員・取引先の本音を察知し、感動と信頼を生む経営の洞察力を養う。</div>
+          <a href="assets/genriki/社長の洞察眼本文.pdf" target="_blank" rel="noopener">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+      <div class="genriki-card" style="background:linear-gradient(135deg,var(--blue-deep),var(--blue));color:#fff;border:none">
+        <div style="height:200px;display:grid;place-items:center;flex-direction:column;padding:20px">
+          <div style="font-family:'Montserrat';font-size:2.2rem;font-weight:900;color:rgba(255,255,255,.92)">眼力</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:8px;line-height:1.6">五眼を統合する<br>総集編</div>
+        </div>
+        <div class="genriki-body" style="background:transparent;color:#fff">
+          <div class="gt" style="color:#fff">社長の眼力（総集）</div>
+          <div class="gd" style="color:rgba(255,255,255,.8)">先見眼・慧眼・戦略眼・本物眼・洞察眼——5つの眼を統合した「眼力」の全体像を凝縮した総集編。</div>
+          <a href="assets/genriki/社長の眼力本文.pdf" target="_blank" rel="noopener" style="color:#ffe14d">本文サンプルを読む（PDF）→</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
