@@ -49,6 +49,11 @@
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.hero-photo{max-width:420px;margin:0 auto}.hero-photo>img{height:auto}.hero-ai-mini{right:12px;top:12px;width:112px}.hero-photo .photo-label{left:14px;bottom:14px;max-width:86%}}
 @media(max-width:760px){#freebie .reveal{grid-template-columns:1fr !important;padding:30px !important;text-align:center}}
+.qm-field{margin-bottom:16px;text-align:left}
+.qm-field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px}
+.qm-field .req{color:#d6243a;font-size:.74rem;margin-left:6px}
+.qm-field input,.qm-field select,.qm-field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;background:var(--sky2)}
+.qm-field input:focus,.qm-field select:focus,.qm-field textarea:focus{outline:none;border-color:var(--blue-bright);background:#fff;box-shadow:0 0 0 4px rgba(31,134,255,.12)}
 </style>
 </head>
 <body>
@@ -132,8 +137,8 @@
       <span style="background:linear-gradient(135deg,#e3c25a,#c9a227);color:#3a2e00;font-weight:900;padding:16px 22px;border-radius:16px;line-height:1.3">売上 倍増<small style="display:block;font-weight:600;font-size:.7rem">＝感動工房</small></span>
     </div>
 
-    <figure class="reveal" style="margin:44px auto 0;max-width:620px">
-      <img src="assets/photos/kando-real.jpg" alt="感動創造部の実例：手書きの感謝メッセージとお客様名入りのおもてなし" style="width:100%;height:auto;border-radius:18px;box-shadow:var(--shadow-strong);display:block">
+    <figure class="reveal" style="margin:44px auto 0;max-width:420px">
+      <img src="assets/photos/kando-real.jpg" alt="感動創造部の実例：手書きの感謝メッセージとお客様名入りのおもてなし" style="width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow-strong);display:block">
       <figcaption style="font-size:.82rem;color:var(--gray);margin-top:12px;text-align:center">▲ これが「感動創造部」。実際の店舗で、手書きの感謝メッセージとお客様名入りのおもてなしを。<br>この“人の心を動かす中身”を、AIで誰でも再現できる仕組みにします。</figcaption>
     </figure>
 
@@ -378,10 +383,48 @@
       <p>まずは無料の「AI×感動創造部 売上倍増の設計図」から。受け取って、自社の伸びしろを確かめてください。</p>
       <div class="cta-btns">
         <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener" class="btn btn-line">LINEで無料特典を受け取る</a>
-        <a href="mailto:yabemasaru23@gmail.com" class="btn btn-primary">メールで相談する →</a>
+        <a href="#contact-form" class="btn btn-primary">フォームで相談する →</a>
         <a href="index.html#freebie" class="btn btn-ghost">特典の中身を見る</a>
       </div>
-      <p style="margin-top:22px;font-size:.84rem;color:#cfe0f5">お電話・専用フォームは公開前に接続します。お急ぎの方はLINE・メールへ。</p>
+      <p style="margin-top:24px;font-size:.9rem;color:#fff;background:rgba(255,211,77,.16);border:1px solid rgba(255,211,77,.5);border-radius:12px;padding:14px 18px;max-width:620px;margin-left:auto;margin-right:auto">※ ご相談・コンサルティングは、<strong style="color:#ffe14d">過去に矢部廣重のセミナーを受講された方を優先</strong>してご案内しております。枠に限りがございます。何卒ご理解いただけますようお願い申し上げます。</p>
+    </div>
+
+    <!-- お問い合わせフォーム -->
+    <div id="contact-form" class="reveal" style="background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);max-width:720px;margin:34px auto 0;padding:36px 34px">
+      <h3 style="font-size:1.3rem;font-weight:900;text-align:center;margin-bottom:6px">お問い合わせフォーム</h3>
+      <p style="font-size:.9rem;color:var(--gray);text-align:center;margin-bottom:26px">1営業日以内にご返信します。お気軽にどうぞ。</p>
+      <form action="https://formsubmit.co/yabemasaru23@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="【QM公式サイト】お問い合わせ">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://qmw.co.jp/thanks.html">
+        <input type="text" name="_honey" style="display:none">
+        <div class="qm-field"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" required placeholder="山田 太郎"></div>
+        <div class="qm-field"><label>会社名</label><input type="text" name="会社名" placeholder="株式会社◯◯"></div>
+        <div class="qm-field"><label>電話番号</label><input type="tel" name="電話番号" placeholder="090-0000-0000"></div>
+        <div class="qm-field"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="メールアドレス" required placeholder="info@example.com"></div>
+        <div class="qm-field"><label>ご相談の種類<span class="req">必須</span></label>
+          <select name="ご相談の種類" required>
+            <option value="">選択してください</option>
+            <option>AI×感動工房について</option>
+            <option>感動創造部セミナー</option>
+            <option>タイムマネジメントセミナー</option>
+            <option>無料特典（売上倍増の設計図）希望</option>
+            <option>その他・イベント/舞台関係</option>
+          </select>
+        </div>
+        <div class="qm-field"><label>過去に矢部廣重のセミナーを受講されたことはありますか？</label>
+          <select name="セミナー受講歴">
+            <option value="">選択してください</option>
+            <option>受講したことがある</option>
+            <option>受講したことはない</option>
+            <option>わからない</option>
+          </select>
+        </div>
+        <div class="qm-field"><label>ご相談内容</label><textarea name="ご相談内容" rows="4" placeholder="現在の課題や、聞いてみたいことを自由にお書きください。"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:4px">この内容で送信する →</button>
+        <p style="font-size:.76rem;color:var(--gray);text-align:center;margin-top:14px">送信いただいた内容は <strong>yabemasaru23@gmail.com</strong> に届きます。</p>
+      </form>
     </div>
   </div>
 </section>
