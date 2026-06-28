@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喜びの帝王学 ～ビジネスに活きる悟りの道～｜株式会社クオリティマネジメント</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a2d5e;
+  --blue:#1a5bc4;
+  --gold:#b8960c;
+  --gold-light:#e8d068;
+  --cream:#fdfaf4;
+  --ink:#1a1a1a;
+  --gray:#666;
+  --border:#d4c8a0;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Noto Serif JP',serif;
+  background:#e8e0d0;
+  color:var(--ink);
+  line-height:1.9;
+}
+
+/* ===== 印刷ボタン（画面のみ表示） ===== */
+.print-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--navy);
+  padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.print-bar p{color:#fff;font-size:.82rem;margin:0}
+.print-bar .pname{color:var(--gold-light);font-weight:700}
+.btn-print{
+  background:var(--gold);color:#fff;border:none;
+  padding:8px 22px;border-radius:4px;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;font-size:.84rem;font-weight:700;
+  white-space:nowrap;
+}
+.btn-print:hover{background:#a07800}
+
+/* ===== 名前入力モーダル ===== */
+#nameModal{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.55);
+  align-items:center;justify-content:center;
+}
+#nameModal.show{display:flex}
+.modal-box{
+  background:#fff;padding:36px 32px;border-radius:8px;
+  max-width:400px;width:90%;text-align:center;
+  font-family:'Noto Sans JP',sans-serif;
+  box-shadow:0 8px 40px rgba(0,0,0,.3);
+}
+.modal-box h2{font-size:1.1rem;color:var(--navy);margin-bottom:8px}
+.modal-box p{font-size:.84rem;color:var(--gray);margin-bottom:20px}
+.modal-box input{
+  width:100%;padding:10px 14px;border:1.5px solid var(--border);
+  border-radius:4px;font-size:1rem;font-family:'Noto Sans JP',sans-serif;
+  margin-bottom:16px;
+}
+.modal-box input:focus{outline:none;border-color:var(--blue)}
+.modal-box button{
+  background:var(--blue);color:#fff;border:none;
+  padding:10px 32px;border-radius:4px;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.95rem;
+}
+
+/* ===== 本文レイアウト ===== */
+.document{
+  max-width:760px;margin:60px auto 40px;
+  background:var(--cream);
+  box-shadow:0 4px 30px rgba(0,0,0,.18);
+}
+
+/* ===== 表紙 ===== */
+.cover{
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--navy) 0%,#1a3a7a 60%,#0d2248 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:60px 40px;
+  text-align:center;
+  position:relative;
+  page-break-after:always;
+}
+.cover::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 30%,rgba(184,150,12,.12) 0%,transparent 70%);
+}
+.cover-ornament{
+  font-size:2.5rem;color:var(--gold-light);opacity:.6;
+  letter-spacing:.5em;margin-bottom:30px;
+  font-family:'Noto Serif JP',serif;
+}
+.cover-label{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.78rem;letter-spacing:.3em;
+  color:var(--gold-light);opacity:.8;
+  margin-bottom:20px;
+}
+.cover h1{
+  font-size:2.6rem;color:#fff;
+  letter-spacing:.08em;line-height:1.4;
+  margin-bottom:14px;
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+.cover h1 span{
+  display:block;font-size:1.3rem;
+  color:var(--gold-light);letter-spacing:.15em;
+  margin-top:8px;
+}
+.cover-sub{
+  font-size:.95rem;color:rgba(255,255,255,.7);
+  letter-spacing:.1em;margin-top:20px;line-height:2;
+}
+.cover-recipient{
+  margin-top:50px;padding:16px 40px;
+  border:1px solid rgba(184,150,12,.5);
+  display:inline-block;
+}
+.cover-recipient .label{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.72rem;letter-spacing:.3em;color:var(--gold-light);
+  opacity:.8;display:block;margin-bottom:6px;
+}
+.cover-recipient .name{
+  font-size:1.6rem;color:#fff;letter-spacing:.1em;
+}
+.cover-author{
+  position:absolute;bottom:40px;
+  font-size:.82rem;color:rgba(255,255,255,.55);
+  letter-spacing:.15em;
+}
+.cover-author span{color:rgba(255,255,255,.8)}
+.cover-mon{
+  font-size:.78rem;color:rgba(255,255,255,.45);
+  margin-top:6px;letter-spacing:.08em;
+}
+
+/* ===== まえがき ===== */
+.foreword{
+  padding:70px 60px 60px;
+  border-bottom:1px solid var(--border);
+  page-break-after:always;
+}
+.foreword-title{
+  font-size:.78rem;letter-spacing:.4em;
+  color:var(--gold);margin-bottom:24px;
+}
+.foreword h2{
+  font-size:1.4rem;color:var(--navy);margin-bottom:28px;
+  line-height:1.6;
+}
+.foreword p{
+  margin-bottom:18px;font-size:.96rem;line-height:2.1;
+}
+.foreword .recipient-inline{color:var(--blue);font-weight:700}
+.foreword-sig{
+  margin-top:40px;text-align:right;
+  font-size:.9rem;color:var(--gray);line-height:2;
+}
+
+/* ===== 章 ===== */
+.chapter{
+  padding:60px 60px 50px;
+  border-bottom:1px solid var(--border);
+  page-break-inside:avoid;
+}
+.chapter-num{
+  font-family:'Montserrat',sans-serif;
+  font-size:.72rem;letter-spacing:.4em;color:var(--gold);
+  margin-bottom:10px;
+}
+.chapter h2{
+  font-size:1.45rem;color:var(--navy);
+  margin-bottom:8px;line-height:1.5;
+}
+.chapter .chapter-lead{
+  font-size:.84rem;color:var(--gray);
+  margin-bottom:28px;border-left:3px solid var(--gold);
+  padding-left:12px;line-height:1.8;
+}
+.chapter p{
+  margin-bottom:16px;font-size:.94rem;line-height:2.1;
+  text-indent:1em;
+}
+.chapter p.no-indent{text-indent:0}
+.chapter h3{
+  font-size:1rem;color:var(--navy);
+  margin:28px 0 12px;padding-left:10px;
+  border-left:3px solid var(--blue);
+}
+.list-item{
+  margin:6px 0 6px 1em;font-size:.92rem;line-height:1.9;
+}
+.list-item::before{content:'・';}
+.pullquote{
+  margin:30px 0;padding:20px 28px;
+  background:linear-gradient(135deg,#f0ecd8,#fdfaf4);
+  border-left:4px solid var(--gold);
+  font-size:1.02rem;line-height:2;
+  color:var(--navy);font-style:normal;
+}
+.pullquote strong{color:var(--gold);font-weight:700}
+
+/* ===== 悟りセクション ===== */
+.satori-section{
+  padding:60px 60px 50px;
+  background:linear-gradient(180deg,#f0ecd8 0%,var(--cream) 100%);
+  border-bottom:1px solid var(--border);
+  page-break-inside:avoid;
+}
+.satori-section .sec-tag{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.7rem;letter-spacing:.5em;
+  color:var(--navy);opacity:.6;
+  margin-bottom:12px;display:block;
+}
+.satori-section h2{
+  font-size:1.45rem;color:var(--navy);
+  margin-bottom:24px;line-height:1.5;
+}
+.satori-box{
+  background:var(--navy);color:#fff;
+  padding:28px 32px;margin:28px 0;
+  border-radius:2px;
+}
+.satori-box p{
+  font-size:.9rem;line-height:2.1;margin-bottom:10px;
+}
+.satori-box p:last-child{margin:0}
+.satori-4{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border);margin:28px 0;
+  border:1px solid var(--border);
+}
+.satori-4-item{
+  background:var(--cream);
+  padding:16px 18px;
+}
+.satori-4-item .num{
+  font-family:'Montserrat',sans-serif;
+  font-size:.65rem;letter-spacing:.2em;color:var(--gold);
+  display:block;margin-bottom:4px;
+}
+.satori-4-item p{font-size:.88rem;line-height:1.9;margin:0}
+
+/* ===== あとがき ===== */
+.afterword{
+  padding:60px 60px 70px;
+  page-break-inside:avoid;
+}
+.afterword h2{
+  font-size:1.2rem;color:var(--navy);margin-bottom:24px;
+}
+.afterword p{
+  margin-bottom:16px;font-size:.94rem;line-height:2.1;
+}
+.afterword .recipient-inline{color:var(--blue);font-weight:700}
+.afterword-sig{
+  margin-top:40px;text-align:right;
+  font-size:.9rem;color:var(--gray);line-height:2.2;
+}
+.afterword-sig .sig-name{font-size:1.05rem;color:var(--navy);font-weight:700}
+.afterword .cta-box{
+  margin-top:50px;padding:28px 32px;
+  background:var(--navy);color:#fff;text-align:center;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.afterword .cta-box h3{font-size:1rem;margin-bottom:10px;letter-spacing:.05em}
+.afterword .cta-box p{font-size:.84rem;line-height:1.8;margin-bottom:16px;color:rgba(255,255,255,.8);text-indent:0}
+.afterword .cta-box a{
+  display:inline-block;padding:10px 28px;
+  background:var(--gold);color:#fff;
+  font-weight:700;font-size:.9rem;
+  text-decoration:none;letter-spacing:.05em;
+}
+.divider{
+  text-align:center;color:var(--gold);opacity:.5;
+  font-size:1.2rem;letter-spacing:.5em;
+  margin:30px 0;
+}
+
+/* ===== 印刷スタイル ===== */
+@media print{
+  body{background:#fff}
+  .print-bar,.btn-print,#nameModal{display:none!important}
+  .document{max-width:none;margin:0;box-shadow:none}
+  .cover{min-height:100vh;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .satori-section,.satori-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .chapter,.satori-section,.afterword,.foreword{page-break-inside:avoid}
+  @page{margin:0}
+}
+
+@media(max-width:600px){
+  .cover h1{font-size:1.8rem}
+  .chapter,.foreword,.afterword,.satori-section{padding:40px 24px}
+  .satori-4{grid-template-columns:1fr}
+  .print-bar{flex-wrap:wrap;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- 印刷バー -->
+<div class="print-bar" id="printBar">
+  <p>無料プレゼント：<span class="pname" id="barName">お名前</span>様専用テキスト</p>
+  <button class="btn-print" onclick="window.print()">📄 PDFとして保存する</button>
+</div>
+
+<!-- 名前入力モーダル -->
+<div id="nameModal">
+  <div class="modal-box">
+    <h2>お名前を入力してください</h2>
+    <p>あなたのお名前を入れると、<br>パーソナライズされたテキストが完成します。</p>
+    <input type="text" id="nameInput" placeholder="例：田中 太郎" maxlength="20">
+    <br>
+    <button onclick="setName()">テキストを生成する →</button>
+  </div>
+</div>
+
+<!-- ドキュメント本体 -->
+<div class="document">
+
+  <!-- 表紙 -->
+  <div class="cover">
+    <div style="position:relative;z-index:1;width:100%">
+      <div class="cover-ornament">――  ――</div>
+      <div class="cover-label">月刊『致知』連載テキスト 特別版</div>
+      <h1>喜びの帝王学
+        <span>～ビジネスに活きる悟りの道～</span>
+      </h1>
+      <p class="cover-sub">
+        誰もが求めながら、なかなか手にできない<br>
+        「本物の充実」とは何か。<br>
+        帝王学と悟りの智慧が、あなたの人生を変える。
+      </p>
+      <div class="cover-recipient">
+        <span class="label">TO</span>
+        <span class="name recipient-name">お名前</span><span class="name"> 様へ</span>
+      </div>
+    </div>
+    <div class="cover-author">
+      著：<span>矢部 廣重</span>（株式会社クオリティマネジメント 創業者）<br>
+      <span class="cover-mon">月刊『致知』「喜びの帝王学」連載 ／ 悟りのビジネス応用版</span>
+    </div>
+  </div>
+
+  <!-- まえがき -->
+  <div class="foreword">
+    <div class="foreword-title">FOREWORD ／ まえがき</div>
+    <h2><span class="recipient-name">お名前</span>様へ</h2>
+    <p>このテキストをお手元にお届けできることを、心から喜んでおります。</p>
+    <p>月刊『致知』に連載した「喜びの帝王学」は、三百名の企業幹部の方々へのアンケート調査から始まりました。「帝王学とは何か」を問うたとき、実に様々な回答が返ってきました。しかしその多くが共通して求めていたのは、ただひとつのことでした。</p>
+    <p>――「自分を磨き、本当の充実した人生を生きたい」</p>
+    <p>帝王学は難しい学問ではありません。古典の文字を暗記することでも、偉人の生涯を学ぶことでもありません。帝王学の本質は「自分学」にあります。自分とは何か。どう生きるべきか。その問いに真剣に向き合い続けることが、帝王学の修行です。</p>
+    <p>本テキストでは、連載の核心と、私がビジネスの世界で体得した「悟り」の智慧を加えてまとめました。<span class="recipient-name">お名前</span>様の今後の仕事と人生に、少しでもお役に立てれば幸いです。</p>
+    <div class="foreword-sig">
+      株式会社クオリティマネジメント 創業者<br>
+      <strong>矢部 廣重</strong>
+    </div>
+  </div>
+
+  <!-- 第一章 -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 01</div>
+    <h2>帝王学とは何か</h2>
+    <p class="chapter-lead">「帝王学」という言葉を聞いて、あなたはどんな学問を思い浮かべますか。三百名の企業幹部へのアンケートが示した、意外な真実とは。</p>
+
+    <p>当連載を始めるにあたり、三百名の企業幹部の方々を対象に、帝王学についてのアンケート調査を実施しました。</p>
+    <p>「帝王学を知っていますか？」という問いに対して、「知っている」と答えたのはわずか五パーセント。「部分的に知っている」「よく分からない」を合わせると、九十五パーセントが確信を持って答えられませんでした。</p>
+    <p>帝王学とは何か、という問いには「経営トップの学問」「自分の魅力を高める学問」「古典の学問」「名君といわれた人の研究」など、実に様々な回答がありました。</p>
+    <p>帝王学に期待することについて尋ねると、興味深い答えが集まりました。</p>
+
+    <h3>帝王学への期待</h3>
+    <div class="list-item">全体像が分かる</div>
+    <div class="list-item">取り組みの優先順位が分かる</div>
+    <div class="list-item">方法論が明確になっている</div>
+    <div class="list-item">誰にもできる</div>
+    <div class="list-item">成果が上がる、仕事に生かせる</div>
+    <div class="list-item">自分が磨かれ、魅力的になる</div>
+
+    <p>理解はできないけれども期待感はかなり大きい。帝王学を極めるための方法論が明確になり、かつ着実に成果が上がることを多くの人が望んでいることが分かります。</p>
+
+    <div class="pullquote">
+      帝王学の眼目を絞り込んでいくと、それは人間をどう見るかという人間観にあり、結局「<strong>自分学</strong>」に帰結します。<br>
+      自分をとことん見つめ、自分の個性を開花させるために学ぶのです。その結果として、他人が見え、人間関係が見え、人生が見えてくるのです。
+    </div>
+  </div>
+
+  <!-- 第二章 -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 02</div>
+    <h2>人生の目標を明確にする</h2>
+    <p class="chapter-lead">四十五歳の部長・Ａさんの五年間の実践記から学ぶ、帝王学修行の要諦。「最高の人生を生き抜く」という一つの言葉が、すべてを変えた。</p>
+
+    <p>帝王学の勉強を始めた当初、Ａさん（四十五歳・部長）は多くの本を読み、坐禅会にも参加していました。しかしいずれも中途半端で、自分が成長したという実感が持てずにいました。</p>
+    <p>原点に戻り、問題点を整理した結果、最大の問題は「人生の目標」が明確になっていないことだと気づきました。一か月呻吟し、これからの人生目標を明確にしました。</p>
+
+    <div class="pullquote">「最高の人生を生き抜く」</div>
+
+    <p>そして、この目標に含まれる二つのキーワードを自分流にさらに掘り下げました。</p>
+
+    <h3>「最高の人生」とは……</h3>
+    <div class="list-item">後悔しない人生</div>
+    <div class="list-item">全力を尽くす人生</div>
+    <div class="list-item">他人に喜ばれる人生</div>
+
+    <h3>「生き抜く」とは……</h3>
+    <div class="list-item">毎日を大切に生きる</div>
+    <div class="list-item">感動時間を多くする</div>
+    <div class="list-item">仕事が楽しくおもしろい</div>
+
+    <p>自分の人生は自分次第。生きがいは与えられるものではなく、自分が見つけるもの――。頭の中で漠然と考えていたことが、言葉にすることで明確になり、将来へ向けての視界が開けてきました。</p>
+    <p>人生の折り返し地点に立ったＡさんは、残りの人生を最高に生きることを決意しました。そのためには、これまでの経験則を生かし、自分の人生をしっかりと経営していく必要があります。「人生の名経営者にならなければ」と、四十五歳にして改めて人生のスタート地点に立った思いでした。</p>
+
+    <div class="pullquote">
+      帝王学の真髄は、知識の量を増やすことではなく、<strong>本物の変革を成し遂げること</strong>です。<br>
+      「学ぶとは変わること」――どれだけ変われたかが、修行の深さを計る唯一の尺度です。
+    </div>
+  </div>
+
+  <!-- 第三章 -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 03</div>
+    <h2>感動眼を磨く</h2>
+    <p class="chapter-lead">日常の中に喜びを見出す力、「感動眼」。この小さな習慣が、仕事と人生を根本から変えていく。</p>
+
+    <p>帝王学の修行を続けるうちに、Ａさんは日常生活の中で美点凝視の目を磨くための小さな習慣を「感動眼」と命名し、実践し始めました。</p>
+
+    <h3>感動眼の三つの目</h3>
+    <div class="list-item"><strong>感眼</strong>……通勤途上で喜びを見出す</div>
+    <div class="list-item"><strong>喜眼</strong>……職場で楽しさを見出す</div>
+    <div class="list-item"><strong>福眼</strong>……家庭で幸せを見出す</div>
+
+    <p>三眼を日々意識して働かせることで、習慣化していき、確かな手応えを感じていました。しかし、しばらく続けるうちに物足りなさを感じるようになります。</p>
+    <p>三大聖人の教えに立ち返り、物足りなさの原因を発見しました。「感動眼は『もらう世界』だった」のです。</p>
+
+    <div class="pullquote">
+      キリストは「愛」、釈尊は「慈悲」、孔子は「恕」を説いています。<br>
+      一言で表現すると、すべて「<strong>与えること</strong>」を示唆しています。
+    </div>
+
+    <p>早速「与える」ノートを作成し、自分が人に対して何かを与える度にそれを記録することにしました。同時に、この半年間にどれだけ与えたか、記憶を辿ると、驚くべきことに皆無に近かったのです。</p>
+    <p>幹部として偉そうに訓話をしているが、帝王学の学びも、知識のみで現実には役立っていない――そのことに愕然とした瞬間が、真の修行の始まりでした。</p>
+  </div>
+
+  <!-- 第四章 -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 04</div>
+    <h2>残りの人生を見抜く</h2>
+    <p class="chapter-lead">人生五計、そして「今度こそ生まれ変わる」決意。帝王学が教える、時間の本当の価値とは。</p>
+
+    <p>最高の人生を生きるために、帝王学の「人生五計」を研究しました。</p>
+
+    <h3>人生五計</h3>
+    <div class="list-item"><strong>生計</strong>……いかに生くべきか</div>
+    <div class="list-item"><strong>身計</strong>……いかに身を立てるべきか</div>
+    <div class="list-item"><strong>家計</strong>……いかに家庭を営むか</div>
+    <div class="list-item"><strong>老計</strong>……いかに老いるべきか</div>
+    <div class="list-item"><strong>死計</strong>……いかに死に備えるか</div>
+
+    <p>改めて人生を振り返ると、心中に去来するものがあります。</p>
+
+    <div class="satori-box" style="background:var(--navy)">
+      <p>あっという間に過ぎる時間の「はかなさ」</p>
+      <p>長いと思っていた人生の「短さ」</p>
+      <p>たった一回の人生の「貴重さ」</p>
+    </div>
+
+    <p>今度生まれ変わったら失敗しない人生を歩む、と誰もが言います。ならばいまから生まれ変わり、これまでとは異なる充実した人生に転換させよう。</p>
+    <p>帝王学の修行とは、知識を積み上げることではなく、今この瞬間に本物の自分へと変わることです。そのために必要なのは、大きな決断よりも、小さな習慣の積み重ねにほかなりません。</p>
+  </div>
+
+  <!-- 第五章 -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 05</div>
+    <h2>自分とは何か</h2>
+    <p class="chapter-lead">「自分のことは百パーセント分かっている」と思っていたＡさんが気づいた、驚くべき事実。自己認識の深化が、帝王学の核心にある。</p>
+
+    <p>あるラジオ番組で、「あなたは自分自身のことをどれだけ知っていますか？」という問いかけがありました。Ａさんは、自分のことは当然百パーセント分かっていると思っていました。ところが続いて発せられた質問に愕然とします。</p>
+
+    <div class="pullquote">
+      「あなたは自分の体の構造図を描けますか？」<br>
+      「骨はいくつありますか？」「筋肉は何種類ありますか？」<br>
+      「好きな自分と嫌いな自分、どっちが本当の自分？」
+    </div>
+
+    <p>自分のことにもかかわらず、何一つ答えられない実態に気づかされました。</p>
+    <p>生物が存在する星は太陽系では地球だけ。宇宙には太陽系と同じものが数億あるといわれているが、いまだに生物が存在する星は発見されていない。自分が存在していることは、奇跡中の大奇跡です。</p>
+    <p>また自分には両親があり、その両親にはさらに両親があり、何代、何十代もの縁を重ねて自分があります。幾多の戦乱を生き延びてきた祖先。一人でも欠けていたら自分はいま存在していません。</p>
+
+    <div class="pullquote">
+      自分が存在していることは、<strong>奇跡の中の奇跡</strong>であり、大強運の持ち主であることに気づかされた。<br>
+      この認識こそが、帝王学の出発点です。
+    </div>
+  </div>
+
+  <!-- 悟りセクション -->
+  <div class="satori-section">
+    <span class="sec-tag">SPECIAL BONUS ／ 特別収録</span>
+    <h2>ビジネスにおける「悟り」の世界</h2>
+
+    <p class="no-indent" style="font-size:.94rem;line-height:2.1;margin-bottom:24px">月刊致知の連載と並行して私が探求してきた「ビジネスにおける悟り」の世界を、特別にお届けします。<span class="recipient-name" style="color:var(--blue);font-weight:700">お名前</span>様のビジネスと人生に、新しい視座を与えてくれれば幸いです。</p>
+
+    <h3>「サトリ」とは何か</h3>
+
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:16px">「サトリ」という言葉は、なぜかくも不思議な響きがあるのでしょうか。僧侶が求めるサトリ、儒者が語るサトリ、武道家の修行のサトリ、芸術の世界でのサトリ。ビジネスの世界でのサトリとは一体何でしょうか。</p>
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:24px">ビジネスにおいては、大きな転機でサトリを得ることがあります――リストラ、倒産の境地、大切な人との別れ、病の告知。己の力ではどうすることもできないケースで目が覚める。世の中の仕組みの冷徹さ、自分の能力不足、人の命のはかなさなどが、二度とない人生を意識させてくれます。</p>
+
+    <div class="satori-4">
+      <div class="satori-4-item">
+        <span class="num">STEP 01</span>
+        <p>見えない世界の存在を<br><strong>自覚する</strong></p>
+      </div>
+      <div class="satori-4-item">
+        <span class="num">STEP 02</span>
+        <p>見える世界は１％以下に過ぎない<br><strong>意識する</strong></p>
+      </div>
+      <div class="satori-4-item">
+        <span class="num">STEP 03</span>
+        <p>99％の見えない領域に本体がある<br><strong>開眼する</strong></p>
+      </div>
+      <div class="satori-4-item">
+        <span class="num">STEP 04</span>
+        <p>無知に気づくのがサトリの第一歩<br><strong>慧眼する</strong></p>
+      </div>
+    </div>
+
+    <h3>「了」という字の深み</h3>
+
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:16px">「了」という字が「サトリ」と読まれることをご存知でしょうか。「了」には、決着をつける「終わる」と、はっきりと「分かる」という二つの意味があります。</p>
+
+    <div class="satori-box">
+      <p>人生の「転・結」を深慮すると——</p>
+      <p>五十代……人生で一番「光り輝く」ときである</p>
+      <p>六十代……人生で一番「大修行」のときである</p>
+      <p>七十代……人生で一番「爽やかな」ときである</p>
+      <p>八十代……人生で一番「重要な」ときである</p>
+    </div>
+
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:16px">人間とはいかなるものか。社会とはどうあるべきか。年々齢を重ねるごとにものを見る眼が養われていく。人生の終わりに近づくにつれて人間模様が見えてくる。人生の全体図が分かってくる。</p>
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:16px">了（さとる）時期がくると了（おわる）のです。だからこそ、今この瞬間に「了る（さとる）」ことが重要なのです。</p>
+
+    <h3>ビジネスにおける「絶対姿勢」</h3>
+
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em;margin-bottom:16px">ビジネスにおけるサトリを得るために、もっとも重要なのが「絶対姿勢」です。太陽は毎朝、条件も言い訳もなく昇ります。それは答えを他に求める姿勢ではなく、自らが答えを出すという絶対姿勢です。</p>
+
+    <div class="pullquote">
+      自己の姿勢に中心線が決まると、勢いが滲み出る。重厚さが漂う。<br>
+      サトリの道を切り拓く鍵は、この「<strong>絶対姿勢</strong>」にある。
+    </div>
+
+    <p style="font-size:.93rem;line-height:2.1;text-indent:1em">会社での一日は、自己研鑚の大道場です。どんな小さなテーマでも、絶対姿勢を持って臨めば一大修行が可能となります。利休を超える珈琲道を編み出すくらいの心意気で、あなたの仕事に向き合ってみてください。</p>
+  </div>
+
+  <!-- あとがき -->
+  <div class="afterword">
+    <h2>結びに</h2>
+    <p>帝王学とは、特別な人間だけが学ぶ難解な学問ではありません。すべての仕事人、すべての経営者、すべての人間が向き合うべき「自分学」です。</p>
+    <p>このテキストを手にしてくださった<span class="recipient-name">お名前</span>様が、日々の仕事と生活の中で、ほんの少しでも「感動眼」を意識し、「与えること」を実践し、「絶対姿勢」で仕事に向き合うことができれば、それが帝王学の修行の始まりです。</p>
+    <p>修行に終わりはありません。しかし、始めることに遅すぎることもありません。今日という日が、あなたの帝王学の元旦です。</p>
+
+    <div class="divider">――  ――</div>
+
+    <p>当社では、「喜びと感動を中心に置いた経営」の実践を、AI活用と組み合わせてご支援しています。このテキストで感じたことを、ぜひ実際の経営に活かしたい、という方はお気軽にご相談ください。</p>
+
+    <div class="afterword-sig">
+      株式会社クオリティマネジメント 創業者<br>
+      <span class="sig-name">矢部 廣重</span><br>
+      <span style="font-size:.8rem;color:var(--gray)">月刊『致知』「喜びの帝王学」連載 著者</span>
+    </div>
+
+    <div class="cta-box">
+      <h3>このテキストをきっかけに、もっと深く学びたい方へ</h3>
+      <p>感動創造部の考え方をAIと組み合わせ、売上倍増を実現する経営コンサルティングをご案内しています。まずはLINEでお気軽にご相談ください。</p>
+      <a href="https://line.me/R/ti/p/%40467esgfi" target="_blank" rel="noopener">LINEで無料相談する →</a>
+    </div>
+  </div>
+
+</div><!-- /document -->
+
+<script>
+// URL パラメータまたはモーダルから名前を取得
+function getNameFromUrl(){
+  const p = new URLSearchParams(window.location.search);
+  return p.get('name') || '';
+}
+
+function applyName(name){
+  if(!name) return;
+  const trimmed = name.replace(/様$/, '').trim();
+  document.querySelectorAll('.recipient-name').forEach(el => {
+    el.textContent = trimmed + '様';
+  });
+  document.getElementById('barName').textContent = trimmed;
+  document.title = '喜びの帝王学｜' + trimmed + '様へ';
+}
+
+function setName(){
+  const v = document.getElementById('nameInput').value.trim();
+  if(!v){ alert('お名前を入力してください'); return; }
+  const url = new URL(window.location.href);
+  url.searchParams.set('name', v);
+  window.history.replaceState({}, '', url.toString());
+  applyName(v);
+  document.getElementById('nameModal').classList.remove('show');
+}
+
+// 名前入力欄でEnterキー対応
+document.getElementById('nameInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') setName();
+});
+
+// 初期化
+window.addEventListener('DOMContentLoaded', function(){
+  const name = getNameFromUrl();
+  if(name){
+    applyName(name);
+  } else {
+    document.getElementById('nameModal').classList.add('show');
+  }
+});
+</script>
+
+</body>
+</html>
