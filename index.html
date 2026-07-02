@@ -458,12 +458,8 @@
     <div id="contact-form" class="reveal" style="background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);max-width:720px;margin:34px auto 0;padding:36px 34px">
       <h3 style="font-size:1.3rem;font-weight:900;text-align:center;margin-bottom:6px">お問い合わせフォーム</h3>
       <p style="font-size:.9rem;color:var(--gray);text-align:center;margin-bottom:26px">1営業日以内にご返信します。お気軽にどうぞ。</p>
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="9cf65371-77dc-4ae7-b179-1e3bbc2ef52e">
-        <input type="hidden" name="subject" value="【QMサイト】お問い合わせが届きました">
-        <input type="hidden" name="from_name" value="クオリティマネジメント お問い合わせフォーム">
-        <input type="hidden" name="redirect" value="https://qmw.co.jp/thanks.html">
-        <input type="checkbox" name="botcheck" style="display:none">
+      <form action="https://formspree.io/f/mojokzdb" method="POST">
+        <input type="hidden" name="_next" value="https://qmw.co.jp/thanks.html">
         <div class="qm-field"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" required placeholder="山田 太郎"></div>
         <div class="qm-field"><label>会社名</label><input type="text" name="会社名" placeholder="株式会社◯◯"></div>
         <div class="qm-field"><label>電話番号</label><input type="tel" name="電話番号" placeholder="090-0000-0000"></div>
