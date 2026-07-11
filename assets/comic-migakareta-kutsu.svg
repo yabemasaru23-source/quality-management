@@ -1,0 +1,87 @@
+<svg width="100%" viewBox="0 0 720 900" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>磨かれた革靴——四コマ漫画</title>
+<desc>半年契約が取れず悩む営業マンが、断られた帰り道に自分の磨かれた革靴に気づき、家族の支えに感謝する四コマ漫画</desc>
+<rect width="720" height="900" fill="#eef5ff"/>
+
+<!-- コマ1：半年契約ゼロで悩む -->
+<g>
+  <rect x="24" y="24" width="672" height="196" rx="18" fill="#ffffff" stroke="#c2d6ef" stroke-width="3"/>
+  <text x="48" y="56" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a6b80">① 半年、契約が一件も取れない</text>
+  <!-- 机 -->
+  <rect x="120" y="178" width="480" height="10" rx="4" fill="#c2d6ef"/>
+  <!-- 人物：うなだれる営業マン -->
+  <circle cx="260" cy="120" r="24" fill="#0a4ea3"/>
+  <path d="M236 130 Q260 152 284 130" fill="none" stroke="#062f63" stroke-width="4" stroke-linecap="round"/>
+  <rect x="230" y="140" width="60" height="60" rx="18" fill="#1f86ff"/>
+  <!-- 悩む吹き出し -->
+  <rect x="330" y="80" width="230" height="46" rx="14" fill="#ffffff" stroke="#5a6b80" stroke-width="2"/>
+  <path d="M330 116 l-20 10 l20 4 Z" fill="#ffffff" stroke="#5a6b80" stroke-width="2"/>
+  <text x="346" y="108" font-family="sans-serif" font-size="13" fill="#5a6b80">何が足りないんだろう…</text>
+  <!-- 書類の山 -->
+  <rect x="450" y="150" width="46" height="8" rx="3" fill="#d6243a" opacity=".7"/>
+  <rect x="450" y="162" width="46" height="8" rx="3" fill="#d6243a" opacity=".5"/>
+  <rect x="450" y="174" width="46" height="8" rx="3" fill="#d6243a" opacity=".3"/>
+  <text x="504" y="163" font-family="sans-serif" font-size="13" fill="#d6243a" font-weight="700">契約 0件</text>
+</g>
+
+<!-- コマ2：妻の一言 -->
+<g>
+  <rect x="24" y="244" width="672" height="196" rx="18" fill="#ffffff" stroke="#c2d6ef" stroke-width="3"/>
+  <text x="48" y="276" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a6b80">② 妻に相談すると――</text>
+  <!-- 夫 -->
+  <circle cx="230" cy="340" r="22" fill="#0a4ea3"/>
+  <rect x="202" y="358" width="56" height="56" rx="16" fill="#1f86ff"/>
+  <!-- 妻 -->
+  <circle cx="420" cy="340" r="22" fill="#c9a227"/>
+  <rect x="392" y="358" width="56" height="56" rx="16" fill="#ffd34d"/>
+  <path d="M400 322 Q420 314 440 322" fill="none" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
+  <!-- 吹き出し -->
+  <rect x="470" y="300" width="196" height="70" rx="16" fill="#fff8e1" stroke="#c9a227" stroke-width="2"/>
+  <path d="M470 340 l-22 10 l22 4 Z" fill="#fff8e1" stroke="#c9a227" stroke-width="2"/>
+  <text x="486" y="326" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">「足りないんじゃなくて</text>
+  <text x="486" y="346" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">多いんじゃないの？」</text>
+  <text x="486" y="362" font-family="sans-serif" font-size="11" fill="#8a7000">まず、与える気持ちが大事</text>
+</g>
+
+<!-- コマ3：断られて肩を落として歩く -->
+<g>
+  <rect x="24" y="464" width="672" height="196" rx="18" fill="#ffffff" stroke="#c2d6ef" stroke-width="3"/>
+  <text x="48" y="496" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a6b80">③ また断られ、肩を落として帰り道</text>
+  <!-- 道 -->
+  <line x1="60" y1="620" x2="660" y2="620" stroke="#c2d6ef" stroke-width="4" stroke-dasharray="10 8"/>
+  <!-- うなだれ歩く人物 -->
+  <circle cx="340" cy="560" r="22" fill="#0a4ea3"/>
+  <path d="M320 566 Q340 552 360 566" fill="none" stroke="#062f63" stroke-width="3" stroke-linecap="round"/>
+  <rect x="312" y="578" width="56" height="52" rx="16" fill="#1f86ff" transform="rotate(6 340 604)"/>
+  <!-- 足元・靴 -->
+  <ellipse cx="330" cy="628" rx="14" ry="7" fill="#062f63"/>
+  <ellipse cx="358" cy="632" rx="14" ry="7" fill="#062f63"/>
+  <!-- 雲マーク（気落ち） -->
+  <circle cx="440" cy="530" r="10" fill="#c2d6ef"/>
+  <circle cx="456" cy="524" r="14" fill="#c2d6ef"/>
+  <circle cx="474" cy="530" r="10" fill="#c2d6ef"/>
+</g>
+
+<!-- コマ4：靴に気づく -->
+<g>
+  <rect x="24" y="684" width="672" height="196" rx="18" fill="#fff8e1" stroke="#c9a227" stroke-width="3"/>
+  <text x="48" y="716" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a4500">④ ふと見た自分の靴が、いつも綺麗なことに気づく</text>
+  <!-- 気づき人物 -->
+  <circle cx="260" cy="770" r="22" fill="#0a4ea3"/>
+  <rect x="232" y="788" width="56" height="56" rx="16" fill="#1f86ff"/>
+  <!-- 光る靴 -->
+  <ellipse cx="245" cy="846" rx="16" ry="8" fill="#c9a227"/>
+  <ellipse cx="277" cy="846" rx="16" ry="8" fill="#c9a227"/>
+  <g stroke="#ffd34d" stroke-width="3" stroke-linecap="round">
+    <line x1="245" y1="820" x2="245" y2="808"/>
+    <line x1="260" y1="815" x2="264" y2="802"/>
+    <line x1="277" y1="820" x2="280" y2="808"/>
+  </g>
+  <!-- 気づきの吹き出し -->
+  <rect x="360" y="740" width="290" height="90" rx="16" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
+  <path d="M360 780 l-22 8 l22 6 Z" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
+  <text x="378" y="768" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">「そういえば俺の靴って</text>
+  <text x="378" y="788" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">毎日綺麗だよな…」</text>
+  <text x="378" y="808" font-family="sans-serif" font-size="11" fill="#8a7000">毎朝、妻と娘が磨いてくれていた</text>
+</g>
+</svg>
