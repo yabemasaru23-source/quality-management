@@ -65,23 +65,35 @@
 <!-- コマ4：靴に気づく -->
 <g>
   <rect x="24" y="684" width="672" height="196" rx="18" fill="#fff8e1" stroke="#c9a227" stroke-width="3"/>
-  <text x="48" y="716" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a4500">④ ふと見た自分の靴が、いつも綺麗なことに気づく</text>
-  <!-- 気づき人物 -->
-  <circle cx="260" cy="770" r="22" fill="#0a4ea3"/>
-  <rect x="232" y="788" width="56" height="56" rx="16" fill="#1f86ff"/>
-  <!-- 光る靴 -->
-  <ellipse cx="245" cy="846" rx="16" ry="8" fill="#c9a227"/>
-  <ellipse cx="277" cy="846" rx="16" ry="8" fill="#c9a227"/>
-  <g stroke="#ffd34d" stroke-width="3" stroke-linecap="round">
-    <line x1="245" y1="820" x2="245" y2="808"/>
-    <line x1="260" y1="815" x2="264" y2="802"/>
-    <line x1="277" y1="820" x2="280" y2="808"/>
+  <text x="48" y="716" font-family="sans-serif" font-size="15" font-weight="700" fill="#5a4500">④ 磨かれた靴——毎朝、妻と娘が磨いてくれていた</text>
+  <!-- 玄関マット -->
+  <rect x="120" y="836" width="220" height="14" rx="7" fill="#e8d9a8"/>
+  <!-- 妻：しゃがんで靴を磨く -->
+  <circle cx="180" cy="778" r="19" fill="#c9a227"/>
+  <path d="M164 764 Q180 754 196 764" fill="none" stroke="#a37f14" stroke-width="4" stroke-linecap="round"/>
+  <path d="M158 796 Q180 786 202 796 L206 836 L154 836 Z" fill="#ffd34d"/>
+  <!-- 妻の腕と布 -->
+  <line x1="200" y1="806" x2="236" y2="824" stroke="#c9a227" stroke-width="9" stroke-linecap="round"/>
+  <rect x="228" y="818" width="24" height="12" rx="5" fill="#ffffff" stroke="#c9a227" stroke-width="1.5"/>
+  <!-- 娘：小さめ、隣で片方を持つ -->
+  <circle cx="300" cy="792" r="15" fill="#e88aa0"/>
+  <path d="M288 782 Q300 774 312 782" fill="none" stroke="#c05a74" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M286 806 Q300 799 314 806 L317 836 L283 836 Z" fill="#f7b8c8"/>
+  <!-- 磨かれて光る靴（中央） -->
+  <g>
+    <path d="M236 830 q4 -18 22 -18 q14 0 22 10 q8 9 20 11 q10 2 10 8 l0 3 l-74 0 Z" fill="#062f63"/>
+    <path d="M288 826 q10 2 18 6 q-8 -8 -18 -10 Z" fill="#cfe0f5" opacity=".9"/>
+  </g>
+  <g fill="#ffd34d">
+    <path d="M262 792 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z"/>
+    <path d="M330 812 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z"/>
   </g>
   <!-- 気づきの吹き出し -->
-  <rect x="360" y="740" width="290" height="90" rx="16" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
-  <path d="M360 780 l-22 8 l22 6 Z" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
-  <text x="378" y="768" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">「そういえば俺の靴って</text>
-  <text x="378" y="788" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">毎日綺麗だよな…」</text>
-  <text x="378" y="808" font-family="sans-serif" font-size="11" fill="#8a7000">毎朝、妻と娘が磨いてくれていた</text>
+  <rect x="392" y="742" width="270" height="96" rx="16" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
+  <path d="M392 786 l-22 8 l22 6 Z" fill="#ffffff" stroke="#c9a227" stroke-width="2"/>
+  <text x="410" y="770" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">「そういえば俺の靴って</text>
+  <text x="410" y="790" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#5a4500">毎日綺麗だよな…」</text>
+  <text x="410" y="812" font-family="sans-serif" font-size="11" fill="#8a7000">目の前の「ありがとう」に</text>
+  <text x="410" y="828" font-family="sans-serif" font-size="11" fill="#8a7000">初めて気づいた</text>
 </g>
 </svg>
