@@ -218,6 +218,9 @@ header .nav{padding-left:10px}
 /* ===== お知らせ・ブログ ===== */
 .post-list{max-width:860px;margin:40px auto 0}
 .post{display:flex;gap:22px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:16px;transition:.2s}
+.post .p-ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;flex:0 0 52px}
+.post .p-thumb{width:96px;height:64px;border-radius:12px;object-fit:cover;flex:0 0 96px;box-shadow:var(--shadow)}
+@media(max-width:600px){.post .p-thumb{width:64px;height:52px;flex:0 0 64px}}
 .post:hover{transform:translateX(4px);border-color:var(--blue-bright)}
 .post .date{font-family:"Montserrat";font-weight:700;color:var(--gray);font-size:.82rem;flex:0 0 96px}
 .post .cat{display:inline-block;background:var(--sky);color:var(--blue);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:6px}

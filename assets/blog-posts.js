@@ -4,6 +4,7 @@ window.QM_POSTS = [
     category: "感動セールス",
     title: "磨かれた革靴——ある営業マンが半年ぶりの契約より先に見つけたもの",
     slug: "migakareta-kutsu",
+    thumb: "assets/thumb-migakareta-kutsu.svg",
     summary: "半年間、契約が一件も取れなかった営業マンが、肩を落として歩いていたときに気づいたこと。感動創造部の原点は、お客様よりも先に、まず自分の足元にあった——実際にあった話をご紹介します。",
     body: [
       "<img src=\"assets/thumb-migakareta-kutsu.svg\" alt=\"磨かれた革靴——感動エッセイ\" style=\"width:100%;display:block;margin:0 auto 8px;border-radius:16px;box-shadow:0 10px 30px rgba(6,47,99,.15)\">",
