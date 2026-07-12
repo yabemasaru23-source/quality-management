@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 240 160" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>経営コラム</title>
+<rect width="240" height="160" fill="#0a2a5e"/>
+<circle cx="220" cy="18" r="52" fill="#1f5cb0" opacity=".26"/>
+<circle cx="16" cy="148" r="44" fill="#1f5cb0" opacity=".2"/>
+<!-- 羅針盤 -->
+<g>
+  <circle cx="120" cy="80" r="46" fill="none" stroke="#dcebff" stroke-width="3"/>
+  <circle cx="120" cy="80" r="38" fill="none" stroke="#9fc0e8" stroke-width="1.5" opacity=".7"/>
+  <!-- 目盛り -->
+  <g stroke="#9fc0e8" stroke-width="2" stroke-linecap="round">
+    <line x1="120" y1="36" x2="120" y2="44"/>
+    <line x1="120" y1="116" x2="120" y2="124"/>
+    <line x1="76" y1="80" x2="84" y2="80"/>
+    <line x1="156" y1="80" x2="164" y2="80"/>
+  </g>
+  <!-- 針（金＝北） -->
+  <path d="M120 80 L134 52 L120 62 Z" fill="#ffe14d"/>
+  <path d="M120 80 L106 108 L120 98 Z" fill="#9fc0e8"/>
+  <circle cx="120" cy="80" r="5" fill="#dcebff"/>
+</g>
+<path d="M186 110 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" fill="#ffe14d" opacity=".85"/>
+<path d="M54 40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#ffe14d" opacity=".7"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg width="100%" viewBox="0 0 240 160" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>AI活用</title>
+<rect width="240" height="160" fill="#0a2a5e"/>
+<circle cx="18" cy="16" r="50" fill="#1f5cb0" opacity=".26"/>
+<circle cx="224" cy="146" r="46" fill="#1f5cb0" opacity=".2"/>
+<!-- ニューラルネットワーク -->
+<g stroke="#9fc0e8" stroke-width="2" opacity=".85">
+  <line x1="66" y1="50" x2="120" y2="80"/>
+  <line x1="66" y1="110" x2="120" y2="80"/>
+  <line x1="66" y1="50" x2="120" y2="46"/>
+  <line x1="66" y1="110" x2="120" y2="114"/>
+  <line x1="120" y1="46" x2="174" y2="80"/>
+  <line x1="120" y1="80" x2="174" y2="80"/>
+  <line x1="120" y1="114" x2="174" y2="80"/>
+</g>
+<g>
+  <circle cx="66" cy="50" r="10" fill="#dcebff"/>
+  <circle cx="66" cy="110" r="10" fill="#dcebff"/>
+  <circle cx="120" cy="46" r="9" fill="#9fc0e8"/>
+  <circle cx="120" cy="80" r="12" fill="#9fc0e8"/>
+  <circle cx="120" cy="114" r="9" fill="#9fc0e8"/>
+  <circle cx="174" cy="80" r="14" fill="#ffe14d"/>
+</g>
+<path d="M196 36 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" fill="#ffe14d" opacity=".85"/>
+<path d="M44 134 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#ffe14d" opacity=".7"/>
+</svg>

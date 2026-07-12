@@ -1,0 +1,20 @@
+<svg width="100%" viewBox="0 0 240 160" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>時間コラム</title>
+<rect width="240" height="160" fill="#0a2a5e"/>
+<circle cx="20" cy="14" r="48" fill="#1f5cb0" opacity=".26"/>
+<circle cx="225" cy="150" r="46" fill="#1f5cb0" opacity=".2"/>
+<!-- 砂時計 -->
+<g>
+  <rect x="88" y="28" width="64" height="8" rx="4" fill="#9fc0e8"/>
+  <rect x="88" y="124" width="64" height="8" rx="4" fill="#9fc0e8"/>
+  <path d="M96 36 L144 36 L124 76 L124 84 L144 124 L96 124 L116 84 L116 76 Z" fill="none" stroke="#dcebff" stroke-width="3" stroke-linejoin="round"/>
+  <!-- 上の砂 -->
+  <path d="M104 44 L136 44 L121 72 L119 72 Z" fill="#ffe14d"/>
+  <!-- 落ちる砂 -->
+  <line x1="120" y1="78" x2="120" y2="106" stroke="#ffe14d" stroke-width="2.5" stroke-dasharray="3 4" stroke-linecap="round"/>
+  <!-- 下の砂 -->
+  <path d="M104 118 Q120 104 136 118 L136 120 L104 120 Z" fill="#ffe14d"/>
+</g>
+<path d="M178 52 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" fill="#ffe14d" opacity=".9"/>
+<path d="M62 100 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#ffe14d" opacity=".7"/>
+</svg>

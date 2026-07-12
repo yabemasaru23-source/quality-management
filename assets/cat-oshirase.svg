@@ -1,0 +1,17 @@
+<svg width="100%" viewBox="0 0 240 160" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>お知らせ</title>
+<rect width="240" height="160" fill="#0a2a5e"/>
+<circle cx="215" cy="12" r="55" fill="#1f5cb0" opacity=".28"/>
+<circle cx="18" cy="150" r="42" fill="#1f5cb0" opacity=".2"/>
+<!-- 紙飛行機 -->
+<g>
+  <path d="M52 96 L172 52 L124 118 L106 100 Z" fill="#dcebff"/>
+  <path d="M52 96 L106 100 L124 118 L112 94 Z" fill="#9fc0e8"/>
+  <path d="M106 100 L172 52 L112 94 Z" fill="#ffffff"/>
+  <!-- 軌跡 -->
+  <path d="M30 118 Q46 112 58 104" fill="none" stroke="#9fc0e8" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <path d="M22 100 Q36 98 46 94" fill="none" stroke="#9fc0e8" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" opacity=".6"/>
+</g>
+<path d="M186 40 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#ffe14d"/>
+<path d="M196 96 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#ffe14d" opacity=".8"/>
+</svg>

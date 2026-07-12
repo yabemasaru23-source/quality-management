@@ -9,20 +9,17 @@
   const params = new URLSearchParams(location.search);
   const slug = params.get("post");
 
-  const CAT_ICON = {
-    "お知らせ":       { emoji: "📢", bg: "#e8f1ff", ring: "#1f86ff" },
-    "時間コラム":     { emoji: "⏰", bg: "#fff4e0", ring: "#e8a020" },
-    "経営コラム":     { emoji: "🧭", bg: "#e9f8ef", ring: "#1ea862" },
-    "AI活用":         { emoji: "🤖", bg: "#f0eaff", ring: "#7a5cd6" },
-    "感動セールス":   { emoji: "❤️‍🔥", bg: "#ffecef", ring: "#e0506a" }
+  const CAT_THUMB = {
+    "お知らせ":     "assets/cat-oshirase.svg",
+    "時間コラム":   "assets/cat-jikan.svg",
+    "経営コラム":   "assets/cat-keiei.svg",
+    "AI活用":       "assets/cat-ai.svg",
+    "感動セールス": "assets/cat-kando.svg"
   };
 
   function postVisual(p){
-    if(p.thumb){
-      return `<img class="p-thumb" src="${p.thumb}" alt="" loading="lazy">`;
-    }
-    const ic = CAT_ICON[p.category] || { emoji: "✍️", bg: "#eef5ff", ring: "#1f86ff" };
-    return `<div class="p-ico" style="background:${ic.bg};box-shadow:inset 0 0 0 1.5px ${ic.ring}33">${ic.emoji}</div>`;
+    const src = p.thumb || CAT_THUMB[p.category] || "assets/cat-keiei.svg";
+    return `<img class="p-thumb" src="${src}" alt="" loading="lazy">`;
   }
 
   function renderList(category){

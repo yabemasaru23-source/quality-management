@@ -1,0 +1,27 @@
+<svg width="100%" viewBox="0 0 240 160" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>感動セールス</title>
+<rect width="240" height="160" fill="#0a2a5e"/>
+<circle cx="222" cy="14" r="52" fill="#1f5cb0" opacity=".26"/>
+<circle cx="16" cy="150" r="44" fill="#1f5cb0" opacity=".2"/>
+<!-- 手書きの手紙と金の光 -->
+<g>
+  <!-- 便箋 -->
+  <rect x="72" y="52" width="96" height="66" rx="8" fill="#dcebff" transform="rotate(-4 120 85)"/>
+  <g stroke="#7ea0cc" stroke-width="2.5" stroke-linecap="round" transform="rotate(-4 120 85)">
+    <line x1="86" y1="72" x2="152" y2="72"/>
+    <line x1="86" y1="86" x2="152" y2="86"/>
+    <line x1="86" y1="100" x2="126" y2="100"/>
+  </g>
+  <!-- 万年筆 -->
+  <g transform="rotate(34 168 96)">
+    <rect x="160" y="66" width="9" height="52" rx="4" fill="#123a75" stroke="#3a6cb0" stroke-width="1.5"/>
+    <path d="M164.5 118 l-5 12 5 6 5 -6 Z" fill="#ffe14d"/>
+  </g>
+  <!-- 立ちのぼる光 -->
+  <path d="M96 44 q4 -10 0 -18" fill="none" stroke="#ffe14d" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
+  <path d="M116 40 q5 -12 0 -22" fill="none" stroke="#ffe14d" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+  <path d="M136 44 q4 -10 0 -18" fill="none" stroke="#ffe14d" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
+</g>
+<path d="M192 118 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" fill="#ffe14d" opacity=".9"/>
+<path d="M52 36 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#ffe14d" opacity=".7"/>
+</svg>
