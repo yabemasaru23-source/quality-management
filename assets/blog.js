@@ -33,6 +33,19 @@
     `).join("");
   }
 
+  const LINE_URL = "https://line.me/R/ti/p/%40171hzbls";
+
+  function feedbackCta(post){
+    const slug = String(post.slug || "").replace(/"/g, "");
+    return `
+      <div class="blog-feedback">
+        <p class="bf-lead">この記事は、お役に立ちましたか。</p>
+        <p class="bf-sub">ひと言の感想が、次の記事の力になります。「記事のタイトル＋ひと言」でお気軽にお送りください。</p>
+        <a href="${LINE_URL}" target="_blank" rel="noopener" class="btn btn-line"
+           onclick="if(window.gtag)gtag('event','blog_feedback_click',{post_slug:'${slug}'});">LINEで感想をひと言 →</a>
+      </div>`;
+  }
+
   function renderArticle(post){
     if(!article || !post) return;
     article.hidden = false;
@@ -40,7 +53,8 @@
     title.textContent = post.title;
     meta.textContent = `${post.date} / ${post.category}`;
     body.innerHTML = post.body.map(t => `<p>${t}</p>`).join("");
-    source.innerHTML = post.sourceUrl ? `<a href="${post.sourceUrl}" target="_blank" rel="noopener">${post.sourceLabel || "元投稿を見る"} →</a>` : "";
+    const srcHtml = post.sourceUrl ? `<a href="${post.sourceUrl}" target="_blank" rel="noopener">${post.sourceLabel || "元投稿を見る"} →</a>` : "";
+    source.innerHTML = srcHtml + feedbackCta(post);
   }
 
   document.querySelectorAll("[data-cat]").forEach(btn => {

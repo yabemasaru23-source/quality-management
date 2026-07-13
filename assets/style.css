@@ -348,3 +348,27 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 
 /* --- ② hero SVGイラストミニカードを非表示 --- */
 .hero-ai-mini{display:none}
+
+/* --- ブログ記事末尾：感想LINE導線 --- */
+.blog-feedback{
+  margin-top:30px;
+  padding:28px 26px;
+  background:linear-gradient(180deg,#f2f8ff,#eaf3ff);
+  border:1px solid #d4e6fb;
+  border-radius:18px;
+  text-align:center;
+}
+.blog-feedback .bf-lead{
+  font-size:1.12rem;
+  font-weight:900;
+  color:var(--blue,#0a4ea3);
+  margin:0 0 8px;
+}
+.blog-feedback .bf-sub{
+  font-size:.9rem;
+  line-height:1.8;
+  color:#5a6675;
+  margin:0 auto 18px;
+  max-width:520px;
+}
+.blog-feedback .btn-line{display:inline-block}
