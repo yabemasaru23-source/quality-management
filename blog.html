@@ -54,13 +54,14 @@
         <div class="breadcrumb"><a href="index.html">ホーム</a> ／ お知らせ・コンテンツ</div>
         <h1>生きているサイト<span class="marker">毎日が更新</span></h1>
         <p>セミナー情報、AI活用のヒント、感動セールスの気づき、現場の学び。ここは更新され続ける場所です。</p>
+        <div id="lastUpdateLine" style="margin-top:14px;font-size:.85rem;color:var(--gray)"></div>
       </div>
       <div class="page-hero-deco">
-        <div class="deco-box">
-          <div class="d-ico">✍</div>
-          <div class="d-big">毎日</div>
-          <div class="d-label">現場から<br>発信中</div>
-        </div>
+        <a id="latestDeco" class="deco-box" href="#" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+          <div class="d-ico">🆕</div>
+          <div class="d-big" id="decoDate" style="font-size:1.1rem">最新更新日</div>
+          <div class="d-label" id="decoTitle">読み込み中…</div>
+        </a>
       </div>
     </div>
   </div>

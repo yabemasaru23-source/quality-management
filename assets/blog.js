@@ -68,4 +68,18 @@
   const current = slug ? posts.find(p => p.slug === slug) : null;
   if(current) renderArticle(current);
   renderList("すべて");
+
+  const latest = posts[0];
+  if(latest){
+    const lastUpdateLine = document.getElementById("lastUpdateLine");
+    if(lastUpdateLine){
+      lastUpdateLine.innerHTML = `<strong style="color:var(--blue)">最終更新：${latest.date}</strong>　「${latest.title}」を追加しました`;
+    }
+    const decoDate = document.getElementById("decoDate");
+    const decoTitle = document.getElementById("decoTitle");
+    const latestDeco = document.getElementById("latestDeco");
+    if(decoDate) decoDate.textContent = latest.date;
+    if(decoTitle) decoTitle.textContent = latest.title.length > 26 ? latest.title.slice(0, 26) + "…" : latest.title;
+    if(latestDeco) latestDeco.href = "blog.html?post=" + encodeURIComponent(latest.slug);
+  }
 })();
