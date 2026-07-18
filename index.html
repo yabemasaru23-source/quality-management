@@ -150,6 +150,18 @@
   </div>
 </section>
 
+<!-- 最新記事バナー（自動更新） -->
+<section style="padding:16px 0 0">
+  <div class="wrap">
+    <a id="latestPostBanner" href="blog.html" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px 20px;box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:.2s">
+      <span style="background:#ffe14d;color:#4a3800;font-weight:900;font-size:.72rem;letter-spacing:.06em;border-radius:7px;padding:5px 10px;white-space:nowrap">NEW</span>
+      <span id="latestPostCat" style="color:var(--blue);font-weight:700;font-size:.78rem;white-space:nowrap">お知らせ</span>
+      <span id="latestPostTitle" style="font-weight:800;font-size:.95rem;flex:1;min-width:200px">最新記事を読み込み中…</span>
+      <span style="color:var(--blue);font-weight:700;font-size:.85rem;white-space:nowrap">読む →</span>
+    </a>
+  </div>
+</section>
+
 <!-- 実績数字バー -->
 <div class="stat-bar">
   <div class="wrap">
@@ -453,11 +465,7 @@
     <span class="sec-label">News & Blog</span>
     <h2 class="sec-title reveal">クオリティマネジメント社の<span class="hl">最新情報・コラム</span></h2>
     <p class="sec-lead reveal">セミナー情報・AI活用のヒント・現場の気づきを発信しています。</p>
-    <div class="post-list" style="text-align:left">
-      <a class="post reveal"><div class="date">2026.06.21</div><div><span class="cat">お知らせ</span><h3>総合サイトを公開しました。AI営業DXの無料相談を受付中です。</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.20</div><div><span class="cat">AI活用</span><h3>中小企業がまず消すべき「3つのムダ業務」とは？</h3></div></a>
-      <a class="post reveal"><div class="date">2026.06.18</div><div><span class="cat">セミナー</span><h3>タイムマネジメントセミナー、次回開催のご案内。</h3></div></a>
-    </div>
+    <div class="post-list" style="text-align:left" id="topPostList"></div>
     <div class="center" style="margin-top:28px"><a href="blog.html" class="btn btn-ghost">お知らせ一覧へ →</a></div>
   </div>
 </section>
@@ -543,6 +551,31 @@
 
 <a href="https://line.me/R/ti/p/%40171hzbls" target="_blank" rel="noopener" class="float-line">💬 LINEで相談</a>
 
+<script src="assets/blog-posts.js"></script>
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var posts = window.QM_POSTS || [];
+  if(!posts.length) return;
+  var latest = posts[0];
+
+  var banner = document.getElementById("latestPostBanner");
+  if(banner){
+    banner.href = "blog.html?post=" + encodeURIComponent(latest.slug);
+    document.getElementById("latestPostCat").textContent = latest.category;
+    document.getElementById("latestPostTitle").textContent = latest.title;
+  }
+
+  var list = document.getElementById("topPostList");
+  if(list){
+    list.innerHTML = posts.slice(0, 3).map(function(p){
+      return '<a class="post reveal on" href="blog.html?post=' + encodeURIComponent(p.slug) + '">' +
+        '<div class="date">' + p.date + '</div>' +
+        '<div><span class="cat">' + p.category + '</span><h3>' + p.title + '</h3><p>' + p.summary + '</p></div>' +
+        '</a>';
+    }).join("");
+  }
+})();
+</script>
 </body>
 </html>
