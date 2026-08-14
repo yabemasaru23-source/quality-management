@@ -55,6 +55,18 @@
     body.innerHTML = post.body.map(t => `<p>${t}</p>`).join("");
     const srcHtml = post.sourceUrl ? `<a href="${post.sourceUrl}" target="_blank" rel="noopener">${post.sourceLabel || "元投稿を見る"} →</a>` : "";
     source.innerHTML = srcHtml + feedbackCta(post);
+
+    const fullTitle = post.title + "｜" + post.category + "｜株式会社クオリティマネジメント";
+    document.title = fullTitle;
+    const descTag = document.querySelector('meta[name="description"]');
+    if(descTag) descTag.setAttribute("content", post.summary || post.title);
+    if(window.gtag){
+      gtag("event", "page_view", {
+        page_title: fullTitle,
+        page_location: location.href,
+        page_path: location.pathname + location.search
+      });
+    }
   }
 
   document.querySelectorAll("[data-cat]").forEach(btn => {
@@ -66,7 +78,15 @@
   });
 
   const current = slug ? posts.find(p => p.slug === slug) : null;
-  if(current) renderArticle(current);
+  if(current){
+    renderArticle(current);
+  } else if(window.gtag){
+    gtag("event", "page_view", {
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname + location.search
+    });
+  }
   renderList("すべて");
 
   const latest = posts[0];
