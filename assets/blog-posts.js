@@ -1,6 +1,6 @@
 window.QM_POSTS = [
   {
-    date: "2026.08.22",
+    date: "2026.08.23",
     category: "経営コラム",
     title: "技術より先に立つのは前日の睡眠——スタントマンが知っている コンディションは根性ではなく設計だという事実",
     slug: "zenjitsu-no-suimin",
