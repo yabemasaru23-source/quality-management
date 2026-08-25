@@ -372,3 +372,144 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
   max-width:520px;
 }
 .blog-feedback .btn-line{display:inline-block}
+
+/* ============================================================
+   ブログ記事 読ませるための組版（2026.08 追加）
+   目的：無機質なテキストの塊をやめ、視線に緩急をつける
+============================================================ */
+
+/* --- 読了プログレスバー --- */
+.read-bar{position:fixed;top:0;left:0;height:4px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--blue-bright),var(--gold));transition:width .1s linear}
+
+/* --- 記事ヘッダー --- */
+.article-card{padding:0;overflow:hidden}
+.art-hero{padding:38px 42px 30px;background:linear-gradient(160deg,#f6faff,#eaf3ff);
+  border-bottom:1px solid var(--line);position:relative}
+.art-hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,var(--blue-bright),var(--gold),transparent)}
+.art-tags{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.art-cat{background:var(--blue);color:#fff;font-size:.72rem;font-weight:900;
+  padding:5px 14px;border-radius:20px;letter-spacing:.04em}
+.art-date{font-family:"Montserrat",sans-serif;font-weight:800;color:var(--blue-bright);
+  font-size:.9rem;letter-spacing:.06em}
+.art-read{font-size:.78rem;color:var(--gray);background:#fff;border:1px solid var(--line);
+  border-radius:20px;padding:4px 12px;font-weight:700}
+.art-new{background:#ffe14d;color:#4a3800;font-size:.7rem;font-weight:900;
+  padding:4px 11px;border-radius:20px;letter-spacing:.06em}
+.article-card h2{font-size:clamp(1.55rem,3.6vw,2.2rem);line-height:1.5;margin-bottom:0}
+.art-lead{margin-top:20px;padding:18px 22px;background:#fff;border-radius:14px;
+  border-left:5px solid var(--gold);font-size:.95rem;line-height:1.95;color:#41506a;
+  box-shadow:0 6px 22px rgba(10,78,163,.07)}
+
+/* --- 本文の器 --- */
+.article-body{padding:38px 42px 10px;max-width:760px;margin:0 auto}
+.article-body p{color:#2f3d54;font-size:1.02rem;line-height:2.05;margin-bottom:26px}
+.article-body > p:first-of-type::first-letter{
+  float:left;font-size:3.4rem;line-height:.95;font-weight:900;color:var(--blue);
+  margin:6px 10px 0 0;font-family:"Noto Sans JP",sans-serif}
+.article-source{padding:0 42px 38px;max-width:760px;margin:0 auto}
+@media(max-width:640px){
+  .art-hero{padding:26px 20px 22px}
+  .article-body{padding:26px 20px 6px}
+  .article-source{padding:0 20px 26px}
+  .article-body p{font-size:.98rem;line-height:1.98;margin-bottom:22px}
+}
+
+/* --- 記事内 見出し --- */
+.al-h{font-size:1.22rem;font-weight:900;color:var(--ink);line-height:1.6;
+  margin:44px 0 20px;padding-left:16px;border-left:6px solid var(--blue);position:relative}
+.al-h small{display:block;font-family:"Montserrat",sans-serif;font-size:.7rem;
+  color:var(--blue-bright);letter-spacing:.12em;font-weight:800;margin-bottom:5px}
+
+/* --- プルクオート（強い一言を大きく見せる） --- */
+.al-quote{margin:36px 0;padding:30px 28px 28px;border-radius:20px;position:relative;
+  background:linear-gradient(155deg,var(--blue-deep),#0a3f80);color:#fff;
+  box-shadow:var(--shadow-strong)}
+.al-quote::before{content:"\201C";position:absolute;top:2px;left:18px;font-size:4.4rem;
+  font-family:Georgia,serif;color:rgba(255,255,255,.22);line-height:1}
+.al-quote p{position:relative;font-size:1.22rem;font-weight:800;line-height:1.85;
+  color:#fff;margin:0 0 10px}
+.al-quote cite{display:block;font-style:normal;font-size:.82rem;color:#a8ccf5;font-weight:700}
+@media(max-width:640px){.al-quote p{font-size:1.06rem}}
+
+/* --- 証言ボックス（言われた言葉） --- */
+.al-voice{margin:30px 0;display:flex;gap:14px;align-items:flex-start;
+  background:#fffdf2;border:1.5px solid #f0e2a8;border-radius:18px;padding:22px 24px}
+.al-voice .vi{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:var(--gold);color:#fff;font-size:1.2rem;font-weight:900}
+.al-voice .vt{font-size:1.02rem;font-weight:800;color:#5c4a12;line-height:1.8;margin:0 0 4px}
+.al-voice .vs{font-size:.8rem;color:#8a7a45;margin:0}
+
+/* --- 数字ハイライト --- */
+.al-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0}
+.al-num{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:22px 18px;
+  text-align:center;box-shadow:var(--shadow);transition:.2s}
+.al-num:hover{transform:translateY(-3px);border-color:var(--blue-bright)}
+.al-num b{display:block;font-family:"Montserrat",sans-serif;font-size:2.2rem;font-weight:800;
+  color:var(--blue);line-height:1.1;margin-bottom:6px}
+.al-num b .u{font-size:1rem;margin-left:2px}
+.al-num span{display:block;font-size:.8rem;color:var(--gray);font-weight:700;line-height:1.6}
+
+/* --- 年表・タイムライン --- */
+.al-time{margin:34px 0;position:relative;padding-left:30px}
+.al-time::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;
+  background:linear-gradient(180deg,var(--blue-bright),var(--gold));border-radius:3px}
+.al-time .ti{position:relative;margin-bottom:20px;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:16px 20px;box-shadow:var(--shadow)}
+.al-time .ti::before{content:"";position:absolute;left:-27px;top:22px;width:13px;height:13px;
+  border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue-bright)}
+.al-time .ti.hot::before{background:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.al-time .ty{font-family:"Montserrat",sans-serif;font-weight:800;color:var(--blue-bright);
+  font-size:.88rem;letter-spacing:.05em;margin-bottom:3px}
+.al-time .tx{font-size:.93rem;line-height:1.75;color:#2f3d54}
+.al-time .tgap{margin:-6px 0 20px -2px;font-family:"Montserrat",sans-serif;font-weight:800;
+  color:var(--gold);font-size:.82rem;letter-spacing:.08em}
+
+/* --- ポイントボックス（3色） --- */
+.al-points{display:grid;gap:12px;margin:32px 0}
+.al-pt{border-radius:16px;padding:18px 22px;border-left:5px solid;line-height:1.85;font-size:.94rem}
+.al-pt b{display:block;font-size:1rem;margin-bottom:5px}
+.al-pt.b{background:#eef5ff;border-color:var(--blue);color:#2c4260}
+.al-pt.b b{color:var(--blue)}
+.al-pt.g{background:#fff8e1;border-color:var(--gold);color:#5f5220}
+.al-pt.g b{color:#a8861a}
+.al-pt.r{background:#fdecee;border-color:#d6243a;color:#63323a}
+.al-pt.r b{color:#d6243a}
+
+/* --- Before / After --- */
+.al-ba{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:32px 0}
+.al-ba .bx{border-radius:16px;padding:20px 20px;font-size:.92rem;line-height:1.8}
+.al-ba .bx.before{background:#f4f5f7;color:#5a6675}
+.al-ba .bx.after{background:#e9f7ef;color:#28553f}
+.al-ba .bx h5{font-family:"Montserrat",sans-serif;font-size:.76rem;letter-spacing:.1em;
+  font-weight:800;margin-bottom:9px}
+.al-ba .bx.before h5{color:#8a95a4}
+.al-ba .bx.after h5{color:#0a8a4e}
+.al-ba .ar{display:grid;place-items:center;color:var(--gold);font-size:1.5rem;font-weight:900}
+@media(max-width:600px){
+  .al-ba{grid-template-columns:1fr}
+  .al-ba .ar{transform:rotate(90deg);padding:2px 0}
+}
+
+/* --- 締めの一行 --- */
+.al-end{margin:40px 0 6px;padding:26px 24px;border-radius:18px;text-align:center;
+  background:linear-gradient(160deg,#fffdf4,#fff6dd);border:1.5px solid #f0e2a8}
+.al-end p{font-size:1.06rem;font-weight:800;color:#5c4a12;line-height:1.9;margin:0}
+
+/* --- 前後の記事ナビ --- */
+.post-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.post-nav a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;
+  box-shadow:var(--shadow);transition:.2s;display:block}
+.post-nav a:hover{transform:translateY(-3px);border-color:var(--blue-bright)}
+.post-nav .lb{font-family:"Montserrat",sans-serif;font-size:.72rem;font-weight:800;
+  color:var(--blue-bright);letter-spacing:.08em;margin-bottom:7px}
+.post-nav .tt{font-size:.88rem;font-weight:700;line-height:1.65;color:var(--ink)}
+.post-nav .nx{text-align:right}
+@media(max-width:600px){.post-nav{grid-template-columns:1fr}.post-nav .nx{text-align:left}}
+
+/* --- 一覧の NEW バッジ --- */
+.post{position:relative}
+.post .newflag{position:absolute;top:-8px;left:-6px;background:#ff4d4d;color:#fff;
+  font-size:.62rem;font-weight:900;padding:3px 9px;border-radius:20px;letter-spacing:.06em;
+  box-shadow:0 4px 12px rgba(255,77,77,.4)}

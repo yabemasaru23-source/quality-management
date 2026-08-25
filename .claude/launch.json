@@ -4,8 +4,8 @@
     {
       "name": "qm-site",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3333", "."],
-      "port": 3333
+      "runtimeArgs": ["-y", "http-server", "-p", "4321", "-c-1"],
+      "port": 4321
     }
   ]
 }
