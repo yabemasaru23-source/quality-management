@@ -36,13 +36,13 @@
 }
 </script>
 
-<!-- Google Analytics 4 — 公開前に G-XXXXXXXXXX を実IDへ差し替える -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics 4 — QM本体と同一プロパティで計測 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LE3FV124PM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-LE3FV124PM');
 </script>
 <!-- ▲▲▲ PROTECTED HEAD BLOCK END ▲▲▲ -->
 
@@ -205,6 +205,7 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 .print-btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #7a5210,0 4px 6px rgba(0,0,0,.2)!important}
 .print-btn:active{transform:translateY(5px);box-shadow:inset 0 2px 5px rgba(0,0,0,.3)!important}
 @media print{
+  @page{size:A4;margin:14mm 10mm}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   header,.form,#hist-wrap,.tab-nav,.print-btn,footer,.btn-save,.aisho-types,.aisho-fgrid,.aisho-label,#aisho-go{display:none!important}
   .wrap{max-width:100%;padding:0 12mm;box-shadow:none!important;background:#fff!important}
@@ -231,6 +232,25 @@ svg.cycle{width:100%;height:auto;overflow:visible}
   .cycle{max-width:220px}
   h2.who{font-size:14pt}
   p.who-sub{font-size:9pt}
+  /* --- 追加タブ（禅・営業・感動・総合）の印刷最適化 --- */
+  .eig-cat-row,.eigcat,.qm-cta{display:none!important}
+  .eig-prod-hide{display:block!important}   /* 商材別クロージングを全件印刷 */
+  .eig-prod{page-break-inside:avoid;border:1pt solid #bbb!important;border-left:3pt solid #555!important;
+    background:#fafafa!important;margin-bottom:8pt!important}
+  .eig-prod-cat{color:#111!important}
+  /* 暗背景のヒーローを紙向けに反転 */
+  .zen-card,.eig-hero,.kando-hero,.mat-hero{background:#f4f4f4!important;color:#111!important;
+    border:1pt solid #999!important;box-shadow:none!important;page-break-inside:avoid;padding:14pt!important}
+  .zen-card-guide,.zen-card-yomi,.zen-card-no,.zen-card-essence,
+  .eig-hero-sub,.eig-hero-key,.eig-hero-cat,.kando-hero-sub,.mat-hero-txt{color:#333!important}
+  .eig-hero-cat{background:#ddd!important;color:#111!important}
+  .zen-card-symbol,.eig-hero-icon,.kando-hero-icon,.mat-hero-icon{font-size:20pt!important;margin-bottom:4pt!important}
+  .kando-honne,.zen-rel,.kando-tsubo,.eig-strength{page-break-inside:avoid;background:#fafafa!important}
+  .kando-scene,.zen-dom,.zen-adv-item,.aisho-adv-item{page-break-inside:avoid}
+  .mat-step{page-break-after:avoid}
+  .zen-lucky,.gokaku-grid{page-break-inside:avoid}
+  .gkm,.kando-scene-lbl,.zen-dom-lbl,.mat-step-num{-webkit-print-color-adjust:exact!important}
+  .zen-bar,.aisho-bar{border:1pt solid #999}
 }
 /* ---- タブ ---- */
 .tab-nav{display:flex;flex-direction:column;gap:16px;padding:0;background:none;margin-bottom:24px}
@@ -321,7 +341,8 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 .eig-cat-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .eigcat{grid-column:unset!important;margin:0!important;background:none!important;border:1px solid var(--ink-line)!important;color:var(--nibi)!important;font-family:var(--body)!important;font-size:.78rem!important;letter-spacing:.06em!important;text-indent:0!important;padding:8px 15px!important;font-weight:600!important;transition:all .15s!important;cursor:pointer;opacity:1!important}
 .eigcat.on,.eigcat:hover{background:var(--sui)!important;border-color:var(--sui)!important;color:#fff!important;opacity:1!important}
-.eig-prod{background:var(--ink-panel);border:1px solid var(--sui);border-left:4px solid var(--sui);border-radius:6px;padding:16px}
+.eig-prod{background:var(--ink-panel);border:1px solid var(--sui);border-left:4px solid var(--sui);border-radius:6px;padding:16px;margin-bottom:10px}
+.eig-prod-hide{display:none}
 .eig-prod-cat{font-size:.72rem;letter-spacing:.1em;color:var(--sui);font-weight:700;margin-bottom:8px}
 .eig-prod-text{font-size:.86rem;line-height:1.95}
 /* ---- 感動工房 ---- */
@@ -597,8 +618,10 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
       <p class="qm-cta-txt">この診断で分かるのは、あなたの持って生まれた設計図です。<br>
       それを「いつ・何に・どう使うか」まで一緒に描くのが、<br>
       感動革命！クオリティマネジメント社の個別コンサルティングです。</p>
-      <a class="qm-cta-btn" href="https://qmw.co.jp/" target="_blank" rel="noopener">詳 し い 鑑 定 ・ 相 談 は こ ち ら</a>
-      <a class="qm-cta-sub" href="https://line.me/R/ti/p/%40171hzbls" target="_blank" rel="noopener">LINEで気軽に相談する</a>
+      <a class="qm-cta-btn" href="https://qmw.co.jp/" target="_blank" rel="noopener"
+         onclick="if(window.gtag)gtag('event','cta_click',{cta:'qm_top'})">詳 し い 鑑 定 ・ 相 談 は こ ち ら</a>
+      <a class="qm-cta-sub" href="https://line.me/R/ti/p/%40171hzbls" target="_blank" rel="noopener"
+         onclick="if(window.gtag)gtag('event','cta_click',{cta:'line'})">LINEで気軽に相談する</a>
     </div>
   </div>
 </main>
@@ -2347,8 +2370,9 @@ function renderEigyo(){
     +'<div class="eig-cat-row">'
     +EIG_CATS.map(c=>'<button class="eigcat'+(c===_eigCat?" on":"")+'" onclick="setEigCat(\''+c+'\')">'+c+'</button>').join("")
     +'</div>'
-    +'<div class="eig-prod"><div class="eig-prod-cat">'+_eigCat+' × '+v.cat+'</div>'
-    +'<div class="eig-prod-text">'+(EIG_PRODUCT[_eigCat]&&EIG_PRODUCT[_eigCat][nk]||"")+'</div></div>'
+    +EIG_CATS.map(c=>'<div class="eig-prod'+(c===_eigCat?"":" eig-prod-hide")+'">'
+      +'<div class="eig-prod-cat">'+c+' × '+v.cat+'</div>'
+      +'<div class="eig-prod-text">'+(EIG_PRODUCT[c]&&EIG_PRODUCT[c][nk]||"")+'</div></div>').join("")
     +'</div>';
   h+='<p class="eig-note">※ この戦術は日干（'+nk+'）＝その方の本質に、身強／身弱と不足五行を掛け合わせて算出しています。あくまで傾向であり、目の前の相手の反応を最優先してください。</p>';
   el.innerHTML=h;
