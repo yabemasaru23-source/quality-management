@@ -230,6 +230,9 @@ svg.cycle{width:100%;height:auto;overflow:visible}
   .tab-panel{display:block!important}
   #tab-aisho{display:none!important}
   #result.has-aisho #tab-aisho{display:block!important}
+  #tab-seimei{display:none!important}
+  #result.has-seimei #tab-seimei{display:block!important}
+  .seimei-form{display:none!important}
   .tab-panel+.tab-panel{page-break-before:always;padding-top:18pt}
   .kant-block{page-break-inside:avoid}
   .daiun-row{overflow:visible!important;flex-wrap:wrap!important;gap:6px!important}
@@ -2101,6 +2104,7 @@ function drawSeimei(){
   if(r.kana.length)
     html+='<p class="seimei-unknown">※ ひらがな・カタカナ（'+r.kana.join('、')+'）は画数ゼロで計算しています</p>';
   $("seimei-result").innerHTML=html;
+  $("result").classList.add("has-seimei");
 }
 $("seimei-go").addEventListener("click",drawSeimei);
 
