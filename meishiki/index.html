@@ -201,6 +201,7 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 
 /* ---- 印刷・PDF ---- */
 .print-header{display:none}
+.print-cover,.print-report{display:none}
 .print-btn{grid-column:unset!important;margin:16px 0 10px!important;background:linear-gradient(180deg,#c98d28,#a87018)!important;border:1px solid #8a5c12!important;color:#fff!important;font-family:var(--body)!important;font-size:.88rem!important;letter-spacing:.18em!important;text-indent:0;padding:17px!important;font-weight:700!important;opacity:1!important;cursor:pointer;transition:transform .1s,box-shadow .1s;width:100%;border-radius:8px;box-shadow:0 5px 0 #7a5210,0 7px 10px rgba(0,0,0,.2);text-shadow:0 1px 2px rgba(0,0,0,.3)}
 .print-btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #7a5210,0 4px 6px rgba(0,0,0,.2)!important}
 .print-btn:active{transform:translateY(5px);box-shadow:inset 0 2px 5px rgba(0,0,0,.3)!important}
@@ -251,6 +252,27 @@ svg.cycle{width:100%;height:auto;overflow:visible}
   .zen-lucky,.gokaku-grid{page-break-inside:avoid}
   .gkm,.kando-scene-lbl,.zen-dom-lbl,.mat-step-num{-webkit-print-color-adjust:exact!important}
   .zen-bar,.aisho-bar{border:1pt solid #999}
+  /* --- 表紙 --- */
+  .print-cover{display:flex!important;height:250mm;page-break-after:always;
+    align-items:center;justify-content:center;text-align:center}
+  .pc-frame{border:3pt double #8a5c12;padding:60pt 40pt;width:100%;max-width:150mm}
+  .pc-lead{font-size:9pt;color:#555;letter-spacing:.3em;margin-bottom:14pt}
+  .pc-title{font-family:'Shippori Mincho B1','Zen Old Mincho',serif;font-size:30pt;font-weight:800;
+    letter-spacing:.25em;color:#111;margin-bottom:30pt}
+  .pc-name{font-family:'Shippori Mincho B1','Zen Old Mincho',serif;font-size:20pt;font-weight:700;
+    color:#111;border-bottom:1.5pt solid #8a5c12;display:inline-block;padding:0 16pt 6pt;margin-bottom:12pt}
+  .pc-sub{font-size:10pt;color:#444;line-height:2;margin-bottom:28pt}
+  .pc-date{font-size:9pt;color:#666;margin-bottom:34pt}
+  .pc-brand{font-size:9pt;color:#8a5c12;font-weight:600;line-height:1.9}
+  /* --- 巻末レポート --- */
+  .print-report{display:block!important;page-break-before:always}
+  .pr-title{font-family:'Shippori Mincho B1','Zen Old Mincho',serif;font-size:15pt;font-weight:800;
+    letter-spacing:.2em;color:#111;text-align:center;border-bottom:1.5pt solid #8a5c12;
+    padding-bottom:8pt;margin-bottom:16pt}
+  .pr-h{font-family:'Shippori Mincho B1','Zen Old Mincho',serif;font-size:11pt;font-weight:700;color:#8a5c12;
+    border-left:3pt solid #8a5c12;padding-left:8pt;margin:16pt 0 8pt;page-break-after:avoid}
+  .pr-p{font-size:9.5pt;line-height:2;color:#222;text-align:justify;margin-bottom:8pt;text-indent:1em}
+  .pr-sign{text-align:right;font-size:9pt;color:#8a5c12;font-weight:600;margin-top:18pt}
 }
 /* ---- タブ ---- */
 .tab-nav{display:flex;flex-direction:column;gap:16px;padding:0;background:none;margin-bottom:24px}
@@ -501,6 +523,16 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
 </section>
 
 <main id="result" aria-live="polite">
+  <div class="print-cover">
+    <div class="pc-frame">
+      <div class="pc-lead">四柱推命 ・ 算命学 ・ 陰陽五行</div>
+      <div class="pc-title">命式鑑定書</div>
+      <div class="pc-name" id="pc-name"></div>
+      <div class="pc-sub" id="pc-sub"></div>
+      <div class="pc-date" id="pc-date"></div>
+      <div class="pc-brand">感動革命！クオリティマネジメント社<br>完全コンプリート生命哲学 鑑定所</div>
+    </div>
+  </div>
   <h2 class="who" id="who"></h2>
   <p class="who-sub" id="whoSub"></p>
 
@@ -624,6 +656,8 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
          onclick="if(window.gtag)gtag('event','cta_click',{cta:'line'})">LINEで気軽に相談する</a>
     </div>
   </div>
+
+  <div class="print-report" id="print-report"></div>
 </main>
 
 <footer>
@@ -1641,6 +1675,7 @@ $("go").addEventListener("click",()=>{
   renderEigyo();
   renderKando();
   renderMatome();
+  renderReport();
   _rB=null;
   $("aisho-result").innerHTML="";
   $("result").classList.remove("has-aisho");
@@ -2547,6 +2582,105 @@ function renderMatome(){
   el.innerHTML=h;
 }
 renderMatome();
+
+/* ================= 巻末・総合鑑定書レポート ================= */
+const REPORT_NK={
+"甲":"天に向かってまっすぐ伸びる大樹です。曲がったことが嫌いで、一度決めたら簡単には折れない芯の強さを持っています。自然と人の先頭に立つことが多く、周囲からは「頼れる人」として見られてきたはずです。その一方で、プライドの高さゆえに弱音を吐けず、ひとりで抱え込んでしまう場面も少なくなかったのではないでしょうか。あなたの人生は「信頼を積み上げて大きく育つ」道筋にあります。焦って枝葉を広げるより、一本の幹をまっすぐ通すことで運が開けていきます。",
+"乙":"風にしなやかになびく草花です。強い風が吹いても、真っ向から戦わずに受け流し、折れずに立ち上がる粘り強さを持っています。人の気持ちを察する力に優れ、周囲との調和を大切にしながら、気がつけば大事な場所に根を張っている——そんな生き方をされてきたはずです。反面、頼まれると断れず、我慢を重ねて疲れてしまうことも多かったのではないでしょうか。あなたの人生は「人との縁に支えられて咲く」道筋です。良い人間関係こそが、あなたの最大の財産になります。",
+"丙":"あたり一面を明るく照らす太陽です。持ち前の明るさと情熱で、その場の空気を一瞬で変える力を持っています。人前に立つと自然と輝きが増し、あなたがいるだけで場が華やぐ——そう言われてきたのではないでしょうか。その一方で、気持ちの浮き沈みが激しく、熱しやすく冷めやすい面や、人の見えない地道な努力が続きにくい面もあったはずです。あなたの人生は「照らすことで人を集める」道筋です。誰かを明るくした分だけ、あなた自身の運も大きくなっていきます。",
+"丁":"闇を静かに照らす灯火です。派手さはなくとも、一度心に灯した想いを長く燃やし続ける、深く芯のある情熱の持ち主です。細やかな気配りと観察力に優れ、物事を表面ではなく本質で捉えようとしてきたはずです。その分、人知れず考え込み、繊細さゆえに傷つくことも多かったのではないでしょうか。あなたの人生は「一つのことを深く極めて光る」道筋です。広く浅くより、狭く深く。あなたの灯は、近くにいる人ほど温かく照らします。",
+"戊":"どっしりと動かない大きな山です。多少のことでは揺らがない安定感と、コツコツ積み上げる継続力を持ち、周囲から「あの人がいれば安心だ」という信頼を集めてきたはずです。その一方で、変化や新しいやり方には慎重になりすぎて、チャンスを見送ってしまったことも少なくないのではないでしょうか。あなたの人生は「積み上げた信頼が晩年に効いてくる」道筋です。派手な近道より、着実な一歩。山は一日でできないからこそ、誰にも崩せないのです。",
+"己":"作物を育てる豊かな田畑です。人を育て、支え、実らせることに天性の才があり、あなたの手がけたことは時間をかけて確実に実を結んでいきます。面倒見がよく、気がつけば損な役回りを引き受けてきたことも多かったはずです。その優しさは周囲がよく知っています。反面、自分のことを後回しにして疲れをため込みやすい傾向もあります。あなたの人生は「育てたものに支えられる」道筋です。あなたが蒔いた種は、忘れた頃に必ず戻ってきます。",
+"庚":"鍛え抜かれた鋼の剣です。決断が速く、白黒をはっきりつけ、一度決めたら迷わず行動する勝負強さを持っています。困難にぶつかるほど強くなる「叩かれて光る」タイプで、修羅場をくぐるたびに実力を増してきたはずです。その一方で、切れ味の鋭さが時に人を傷つけ、損をしたことも少なくないのではないでしょうか。あなたの人生は「挑戦と決断で切り拓く」道筋です。剣は使うほど研がれます。安全な鞘の中にいては、あなたの真価は発揮されません。",
+"辛":"丁寧に磨かれた宝石です。鋭い審美眼と繊細な感性を持ち、モノでもコトでも「本物」を見抜く力に優れています。細部までこだわり抜くその姿勢は、まわりから一目置かれてきたはずです。その一方で、理想が高いゆえに自分にも他人にも厳しくなり、小さな粗が気になって疲れてしまうことも多かったのではないでしょうか。あなたの人生は「磨かれて輝きを増す」道筋です。試練はあなたを傷つけるのではなく、研磨してより美しくするために訪れます。",
+"壬":"すべてを呑み込み悠々と流れる大海です。スケールの大きな発想と自由な行動力を持ち、型にはまらない生き方で周囲を驚かせてきたはずです。社交的で人脈も広く、どんな環境でも形を変えて適応できる柔軟さがあります。その一方で、自由を縛られると一気にやる気を失い、興味が移ろいやすい面もあったのではないでしょうか。あなたの人生は「流れながら世界を広げる」道筋です。一箇所に留まるより、動き続けることで運が巡ります。",
+"癸":"大地に静かに沁み込む雨露です。鋭い観察力と深い知性を持ち、目立たぬところから物事の本質を見抜いてきたはずです。派手に主張せずとも、あなたの一言が場の流れを変えたことは一度や二度ではないでしょう。その一方で、考えすぎて動けなくなったり、慎重さゆえに好機を逃したこともあったのではないでしょうか。あなたの人生は「静かに浸透して大きく潤す」道筋です。雨が大地を変えるように、あなたの知恵は時間をかけて確実に実を結びます。"
+};
+const TSUHEN_LIFE={
+"比肩":"自分の力で道を切り拓こうとする、独立独歩の色合いが強い時期",
+"劫財":"仲間や競争に揉まれながら、社会での立ち回りを磨いた時期",
+"食神":"のびのびと好きなことを楽しみ、才能の芽を育てた時期",
+"傷官":"感受性が鋭く研ぎ澄まされ、繊細な感性を磨いた時期",
+"偏財":"人との出会いと行動力で、世界をぐんぐん広げた時期",
+"正財":"堅実に積み上げ、信用という財産を育てた時期",
+"偏官":"試練や挑戦に揉まれ、度胸と行動力を鍛えられた時期",
+"正官":"責任や役割を担い、きちんと生きようと踏ん張った時期",
+"偏印":"独自の学びや発想を深め、人と違う視点を養った時期",
+"印綬":"学びと目上の支えに恵まれ、知恵を蓄えた時期"
+};
+function renderReport(){
+  const el=$("print-report");
+  if(!_rA){el.innerHTML="";return;}
+  const nm=_nameA==="あなた"?"":_nameA;
+  const nmS=nm?nm+"さん":"あなた";
+  const nk=_rA.nikkan,idx=KAN.indexOf(nk),v=EIG_VISUAL[nk];
+  const ownG=KAN_G[idx],pol=KAN_Y[idx]?"陰":"陽";
+  const c=_rA.count,GG=["木","火","土","金","水"];
+  const own=c[ownG]||0;
+  const sp=(c["木"]||0)+(c["火"]||0),re=(c["金"]||0)+(c["水"]||0);
+  const ryo=sp>re?"精神領域型":re>sp?"現実領域型":"バランス型";
+  let maxG=GG[0],maxV=-1,minG=GG[0],minV=99;
+  GG.forEach(g=>{const n=c[g]||0;if(n>maxV){maxV=n;maxG=g;}if(n<minV){minV=n;minG=g;}});
+  const now=new Date();
+  const tr=meishiki(now.getFullYear(),now.getMonth()+1,now.getDate(),"");
+  const yGanshi=tr.cols[0].ganshi,yKan=KAN[tr.yk],yTsu=tsuhen(nk,yKan);
+  const yInfo=TSU_DAY[yTsu]||{};
+  const yCol=_rA.cols.find(x=>x.name==="年柱"),mCol=_rA.cols.find(x=>x.name==="月柱");
+  const ei=ELEM_INFO[minG],lk=ELEM_LUCK[minG];
+  const strTxt=own>=3
+    ?"命式の中に自分と同じ五行が多い「身強（みきょう）」で、自分の軸で人生を切り拓いていく力に恵まれています。その分、我の強さが出すぎると孤立を招くため、「人の意見をひとつ聞いてから決める」を習慣にすると鬼に金棒です。"
+    :own<=1
+    ?"命式の中に自分と同じ五行が少ない「身弱（みじゃく）」で、周囲と調和しながら力を発揮するタイプです。ひとりで抱え込むより、人に頼り、支えてもらうほど運が回り出します。「助けを求めることは弱さではなく戦略」と心得てください。"
+    :"自我の強さは中庸で、場面に応じて押すことも引くこともできるバランスの持ち主です。だからこそ、「今日は攻める日か、守る日か」を朝に一度決めてから動くと、力が分散せずに成果につながります。";
+  const ryoTxt=ryo==="精神領域型"
+    ?"また、五行の配置は木・火（精神の気）に寄っており、アイデア・感性・人とのつながりの世界で最も力を発揮します。数字の管理や単純作業の場に長くいると本来の輝きが鈍るため、企画・創造・対人の役割に軸足を置くことが開運の近道です。"
+    :ryo==="現実領域型"
+    ?"また、五行の配置は金・水（現実の気）に寄っており、実務・数字・具体的な成果の世界で最も力を発揮します。夢を語るだけの場より、手を動かして形にする現場でこそ評価が高まります。「絵に描いた餅を、食べられる餅にする人」——それがあなたの本領です。"
+    :"また、五行の配置は精神の気（木・火）と現実の気（金・水）が釣り合っており、理想と実務の橋渡し役に適性があります。発想する人と実行する人の間に立って「翻訳」できる稀有な存在として重宝されるでしょう。";
+  let h='<div class="pr-title">総 合 鑑 定 書</div>';
+  h+='<div class="pr-h">一、この鑑定書の読み方</div>'
+    +'<p class="pr-p">本書は、'+nmS+'の生年月日から導いた命式（めいしき）をもとに、四柱推命・算命学・陰陽五行の三つの視点で人生の設計図を読み解いたものです。命式とは、生まれた瞬間の天の気を写し取った「その人だけの星の配置」であり、変えられない宿命ではなく、活かし方次第で輝きが変わる「持ち札」です。前半のページには命式表・五行のバランス・年ごとの運気を示しました。本書の最後にあたるこのレポートでは、それらを一つの物語としてまとめ、明日から何をすればよいかまで落とし込んでいます。</p>';
+  h+='<div class="pr-h">二、あなたという人 — 本質と性格</div>'
+    +'<p class="pr-p">'+nmS+'の日干（にっかん・その人の核となる星）は「'+nk+'（'+KAN_YOMI[nk]+'）」、'+pol+'の'+ownG+'（'+GG_YOMI[ownG]+'）。ひとことで言えば「'+v.cat+'」です。</p>'
+    +'<p class="pr-p">'+(REPORT_NK[nk]||"")+'</p>'
+    +'<p class="pr-p">'+strTxt+'</p>'
+    +'<p class="pr-p">'+ryoTxt+'</p>';
+  h+='<div class="pr-h">三、これまでの歩み</div>'
+    +'<p class="pr-p">命式の年柱は人生の前半（〜29歳頃）、月柱は中年期（30〜59歳頃）の気配を映します。'
+    +(yCol&&yCol.tsuhen?'あなたの若年期は「'+yCol.tsuhen+'」の気を帯び、'+(TSUHEN_LIFE[yCol.tsuhen]||"")+'だったと読み取れます。':'')
+    +(mCol&&mCol.tsuhen?'そして中年期は「'+mCol.tsuhen+'」の気を帯び、'+(TSUHEN_LIFE[mCol.tsuhen]||"")+'です。':'')
+    +'これまでに経験した苦労や回り道は、決して無駄ではなく、日干「'+nk+'」の性質を磨くための研磨剤でした。過去を悔いる必要はありません。すべては、これからの後半戦のための仕込みだったのです。</p>';
+  h+='<div class="pr-h">四、挑戦すべきこと — 才能の使い道</div>'
+    +'<p class="pr-p">五行のバランスを見ると、あなたに最も強く備わっているのは「'+maxG+'（'+GG_YOMI[maxG]+'）」の気、すなわち'+MAT_TALENT[maxG]+'です。これが生まれ持った武器であり、迷ったときは常に「'+maxG+'の力が活きる方」を選ぶのが正解です。</p>'
+    +'<p class="pr-p">一方、最も弱いのは「'+minG+'（'+GG_YOMI[minG]+'）」の気です。つまり'+MAT_ISSUE[minG]+'が、あなたの伸びしろであり人生の課題です。苦手を無理に克服する必要はありません。'+minG+'の強い人をそばに置く、仕組みで補う、意識してその要素を暮らしに取り入れる——この三つで十分に整います。才能で攻め、課題は仕組みで守る。これがあなたの戦い方です。</p>';
+  h+='<div class="pr-h">五、今年の運気と開運方法</div>'
+    +'<p class="pr-p">今年は'+yGanshi+'（'+KAN_YOMI[yKan]+SHI_YOMI[tr.cols[0].shi]+'）の年。あなたの日干から見ると「'+yTsu+'」の巡りで、テーマは'+(yInfo.th||"")+'です。'+(yInfo.do||"")+'</p>'
+    +'<p class="pr-p">開運の鍵は、足りない「'+minG+'」の気を日々の暮らしで補うことです。食では'+(lk?lk.food:"")+'を意識して摂り、行動では'+(lk?lk.action:"")+'を習慣にしてください。色は'+ei.color+'、方位は'+ei.dir+'が味方になります。小さなことに見えますが、五行の補いは「毎日続けること」で初めて気の流れを変えます。財布や持ち物の色を一つ替えるだけでも構いません。今日からできることを、一つだけ始めてください。</p>'
+    +'<p class="pr-p">また、朝の過ごし方が一日の運気を決めます。おすすめは「朝の三分間の型」です。起きたら窓を開けて外の気を入れ、白湯か水を一杯飲み、今日いちばん大事な予定を一つだけ声に出す——これだけです。運気とは特別な儀式ではなく、気の流れを整える小さな習慣の積み重ねです。逆に、朝一番にスマートフォンで悪い知らせを浴びることは、その日の気を最も濁らせます。夜は、寝る前に今日あった良かったことを一つ思い出してから眠ってください。五行がどうであれ、この習慣を持つ人の運気は必ず安定していきます。</p>';
+  h+='<div class="pr-h">六、人との縁 — 人間関係の流儀</div>'
+    +'<p class="pr-p">日干「'+nk+'」のあなたの心が最も動くのは、'+(KANDO[nk]?KANDO[nk].tsubo:"")+'そういう扱いを受けたとき、あなたは相手に深い信頼を寄せます。裏を返せば、あなた自身が人にそれを与えられたとき、最も強い縁が生まれるということです。</p>'
+    +'<p class="pr-p">'+(own>=3
+      ?"身強のあなたは、放っておくと「与える側」「引っ張る側」に回りがちです。それ自体は美点ですが、ときには弱みを見せて頼ることが、相手との距離を一気に縮めます。完璧な姿より、隙のある姿に人は集まるものです。"
+      :own<=1
+      ?"身弱のあなたは、良くも悪くも人の影響を受けやすい体質です。だからこそ「誰と一緒にいるか」が運命を分けます。会った後に元気になる人と時間を過ごし、会った後に疲れる人とは意識的に距離を取ってください。それだけで運気は目に見えて変わります。"
+      :"中庸のあなたは、相手や場面に合わせて自然に立ち回れる稀有なバランスの持ち主です。ただし器用さゆえに「誰にでもいい顔」となって疲れることも。本当に大切な人を三人挙げ、その人たちへの時間を最優先する——それが縁を深める最短の道です。")
+    +'</p>';
+  h+='<div class="pr-h">七、運気を下げないために</div>'
+    +'<p class="pr-p">どれほど運気が良くても、落とし穴を知らなければ足をすくわれます。第一に、あなたの天中殺（てんちゅうさつ）は「'+_rA.tcsYear+'」の年です。この時期は天の応援が弱まる「充電期間」であり、転職・独立・大きな契約・転居など、後戻りできない決断は避けるのが鉄則です。逆に、学び・準備・人間関係の手入れには最適の時間となります。</p>'
+    +'<p class="pr-p">第二に、強すぎる「'+maxG+'」の気が暴走すると、長所がそのまま短所に変わります。'+(MAT_GOGYO[maxG]?MAT_GOGYO[maxG].strong:"")+'</p>'
+    +'<p class="pr-p">そして何より、運気は「人」が運んできます。感謝を言葉にすること、約束を守ること、不機嫌を撒き散らさないこと——この当たり前の三つが、どんな開運法よりも確実にあなたの運を守ります。</p>';
+  h+='<div class="pr-h">八、結びに</div>'
+    +'<p class="pr-p">命式は設計図であって、人生そのものではありません。同じ星を持っていても、輝く人とくすぶる人がいます。その違いはただ一つ、「自分の性質を知り、それに合った戦い方を選んだかどうか」です。'+nmS+'は本書で、ご自身の武器と課題、攻める時期と守る時期を手に入れました。あとは、今日の一歩だけです。この鑑定書が、その背中をそっと押すものとなれば幸いです。</p>'
+    +'<div class="pr-sign">感動革命！クオリティマネジメント社<br>完全コンプリート生命哲学 鑑定所</div>';
+  el.innerHTML=h;
+  // 表紙
+  const now2=new Date();
+  $("pc-name").textContent=(nm||"　　　　")+" 様";
+  $("pc-sub").innerHTML=($("whoSub").textContent||"").split("・").slice(0,2).join("・")
+    +"<br>日干 "+nk+"（"+KAN_YOMI[nk]+"）— "+v.cat;
+  $("pc-date").textContent="発行日： "+now2.getFullYear()+"年"+(now2.getMonth()+1)+"月"+now2.getDate()+"日";
+}
+renderReport();
 
 $("save").addEventListener("click",histSave);
 histLoad();
