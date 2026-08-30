@@ -205,6 +205,20 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 .print-btn{grid-column:unset!important;margin:16px 0 10px!important;background:linear-gradient(180deg,#c98d28,#a87018)!important;border:1px solid #8a5c12!important;color:#fff!important;font-family:var(--body)!important;font-size:.88rem!important;letter-spacing:.18em!important;text-indent:0;padding:17px!important;font-weight:700!important;opacity:1!important;cursor:pointer;transition:transform .1s,box-shadow .1s;width:100%;border-radius:8px;box-shadow:0 5px 0 #7a5210,0 7px 10px rgba(0,0,0,.2);text-shadow:0 1px 2px rgba(0,0,0,.3)}
 .print-btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #7a5210,0 4px 6px rgba(0,0,0,.2)!important}
 .print-btn:active{transform:translateY(5px);box-shadow:inset 0 2px 5px rgba(0,0,0,.3)!important}
+/* ---- 共有ボタン ---- */
+.share-row{display:flex;gap:8px;margin:0 0 10px}
+.share-btn{flex:1!important;grid-column:unset!important;margin:0!important;display:flex;align-items:center;justify-content:center;gap:6px;
+  border:none!important;border-radius:8px!important;color:#fff!important;font-family:var(--body)!important;
+  font-size:.78rem!important;letter-spacing:.08em!important;text-indent:0!important;padding:12px 6px!important;font-weight:700!important;
+  opacity:1!important;cursor:pointer;text-decoration:none;transition:transform .1s,box-shadow .1s;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.share-line{background:#06C755!important;box-shadow:0 4px 0 #048a3c,0 6px 8px rgba(0,0,0,.15)}
+.share-mail{background:var(--sui)!important;box-shadow:0 4px 0 #1b3a72,0 6px 8px rgba(0,0,0,.15)}
+.share-copy{background:var(--nibi)!important;box-shadow:0 4px 0 #55493f,0 6px 8px rgba(0,0,0,.15)}
+.share-btn:hover{transform:translateY(2px)}
+.share-line:hover{box-shadow:0 2px 0 #048a3c,0 3px 5px rgba(0,0,0,.15)}
+.share-mail:hover{box-shadow:0 2px 0 #1b3a72,0 3px 5px rgba(0,0,0,.15)}
+.share-copy:hover{box-shadow:0 2px 0 #55493f,0 3px 5px rgba(0,0,0,.15)}
+@media print{.share-row{display:none!important}}
 @media print{
   @page{size:A4;margin:14mm 10mm}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
@@ -530,7 +544,7 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
       <div class="pc-name" id="pc-name"></div>
       <div class="pc-sub" id="pc-sub"></div>
       <div class="pc-date" id="pc-date"></div>
-      <div class="pc-brand">感動革命！クオリティマネジメント社<br>完全コンプリート生命哲学 鑑定所</div>
+      <div class="pc-brand">株式会社クオリティマネジメント<br>鑑定士　矢部 大<br>感動革命！完全コンプリート生命哲学 鑑定所</div>
     </div>
   </div>
   <h2 class="who" id="who"></h2>
@@ -539,7 +553,7 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
   <div class="print-header">
     <div class="print-hname" id="print-hname"></div>
     <div class="print-hsub" id="print-hsub"></div>
-    <div class="print-hbrand">感動革命！クオリティマネジメント社 — 完全コンプリート生命哲学 鑑定所</div>
+    <div class="print-hbrand">株式会社クオリティマネジメント　矢部 大 — 感動革命！完全コンプリート生命哲学 鑑定所</div>
   </div>
 
   <nav class="tab-nav">
@@ -560,6 +574,11 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
     </div>
   </nav>
   <button class="print-btn" id="print-btn">🖨　PDF・印刷</button>
+  <div class="share-row">
+    <button class="share-btn share-line" id="share-line">💬 LINEで共有</button>
+    <button class="share-btn share-mail" id="share-mail">✉️ メールで共有</button>
+    <button class="share-btn share-copy" id="share-copy">🔗 リンクをコピー</button>
+  </div>
 
   <div class="tab-panel on" id="tab-meishiki">
     <p class="sec-label">命 式</p>
@@ -1910,6 +1929,35 @@ function drawAisho(){
 // ---- 印刷・PDF ----
 $("print-btn").addEventListener("click",()=>window.print());
 
+// ---- 共有 ----
+const SHARE_URL="https://qmw.co.jp/meishiki/";
+function shareText(){
+  const nm=_nameA&&_nameA!=="あなた"?_nameA+"さんの":"";
+  const nk=_rA?_rA.nikkan:"";
+  const type=_rA&&EIG_VISUAL[nk]?"「"+EIG_VISUAL[nk].cat+"」タイプでした！":"";
+  return "命式鑑定をやってみました✨ "+nm+"結果は"+type+"\n生年月日を入れるだけで、性格・運勢・相性・今日の開運法まで無料で鑑定できます。\n";
+}
+$("share-line").addEventListener("click",()=>{
+  if(window.gtag)gtag("event","share",{method:"line"});
+  window.open("https://line.me/R/share?text="+encodeURIComponent(shareText()+SHARE_URL),"_blank");
+});
+$("share-mail").addEventListener("click",()=>{
+  if(window.gtag)gtag("event","share",{method:"mail"});
+  location.href="mailto:?subject="+encodeURIComponent("命式鑑定書のご紹介")
+    +"&body="+encodeURIComponent(shareText()+"\n▼無料鑑定はこちら\n"+SHARE_URL+"\n\n（保存したPDFを添付してお送りいただくこともできます）");
+});
+$("share-copy").addEventListener("click",()=>{
+  if(window.gtag)gtag("event","share",{method:"copy"});
+  const btn=$("share-copy");
+  const done=()=>{btn.textContent="✅ コピーしました";setTimeout(()=>{btn.textContent="🔗 リンクをコピー";},1800);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(SHARE_URL).then(done);
+  }else{
+    const ta=document.createElement("textarea");ta.value=SHARE_URL;document.body.appendChild(ta);
+    ta.select();document.execCommand("copy");ta.remove();done();
+  }
+});
+
 // ---- タブ切り替え ----
 function switchTab(id){
   document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("on"));
@@ -2671,7 +2719,7 @@ function renderReport(){
     +'<p class="pr-p">そして何より、運気は「人」が運んできます。感謝を言葉にすること、約束を守ること、不機嫌を撒き散らさないこと——この当たり前の三つが、どんな開運法よりも確実にあなたの運を守ります。</p>';
   h+='<div class="pr-h">八、結びに</div>'
     +'<p class="pr-p">命式は設計図であって、人生そのものではありません。同じ星を持っていても、輝く人とくすぶる人がいます。その違いはただ一つ、「自分の性質を知り、それに合った戦い方を選んだかどうか」です。'+nmS+'は本書で、ご自身の武器と課題、攻める時期と守る時期を手に入れました。あとは、今日の一歩だけです。この鑑定書が、その背中をそっと押すものとなれば幸いです。</p>'
-    +'<div class="pr-sign">感動革命！クオリティマネジメント社<br>完全コンプリート生命哲学 鑑定所</div>';
+    +'<div class="pr-sign">株式会社クオリティマネジメント　矢部 大<br>感動革命！完全コンプリート生命哲学 鑑定所</div>';
   el.innerHTML=h;
   // 表紙
   const now2=new Date();
