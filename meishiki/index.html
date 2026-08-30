@@ -1698,6 +1698,13 @@ $("go").addEventListener("click",()=>{
   renderKando();
   renderMatome();
   renderReport();
+  // お名前欄が「姓 名」形式なら姓名判断も自動実行（PDFに含める）
+  const nmParts=nm.split(/[\s　]+/).filter(Boolean);
+  if(nmParts.length>=2){
+    $("sei").value=nmParts[0];
+    $("mei").value=nmParts.slice(1).join("");
+    drawSeimei();
+  }
   _rB=null;
   $("aisho-result").innerHTML="";
   $("result").classList.remove("has-aisho");
