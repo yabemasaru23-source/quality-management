@@ -469,6 +469,15 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
 .seimei-total{background:var(--ink-panel);border:1px solid var(--ink-line);padding:14px;margin-top:12px;text-align:center}
 .seimei-total .gkm{font-size:.88rem;padding:3px 16px}
 .seimei-total-label{font-size:.7rem;color:var(--nibi);margin-top:4px}
+/* ---- よくある質問 ---- */
+.faq-wrap{max-width:820px;margin:0 auto;padding:36px 20px 10px}
+.faq-item{background:var(--ink-panel);border:1px solid var(--ink-line);border-radius:6px;margin-bottom:10px}
+.faq-item summary{cursor:pointer;padding:15px 18px;font-size:.88rem;font-weight:700;color:var(--gofun);list-style:none;position:relative;padding-right:40px}
+.faq-item summary::after{content:"＋";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--do);font-weight:700}
+.faq-item[open] summary::after{content:"−"}
+.faq-body{padding:0 18px 16px;font-size:.83rem;line-height:1.95;color:var(--gofun)}
+.faq-body p{margin-bottom:10px}
+@media print{.faq-wrap{display:none!important}}
 .kaisetsu{background:var(--ink-panel);border:1px solid var(--ink-line);border-left:4px solid var(--do);border-radius:4px;padding:16px 18px}
 .kaisetsu-t{font-size:.86rem;line-height:2.05;text-align:justify;color:var(--gofun)}
 .sub-un-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
@@ -700,6 +709,21 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
 
   <div class="print-report" id="print-report"></div>
 </main>
+
+<section class="faq-wrap">
+  <p class="sec-label">よ く あ る ご 質 問</p>
+  <details class="faq-item">
+    <summary>双子は同じ生年月日ですが、運勢も同じになるのですか？</summary>
+    <div class="faq-body">
+      <p>四柱推命の柱は「年・月・日・時」で決まるため、双子の場合、年柱・月柱・日柱は完全に同じです。時柱も2時間ごとの「刻」で決まるため、例えば15分差の双子なら約8分の1の確率で刻の境界をまたぐ場合を除き、命式は同一になります。</p>
+      <p>それでも現実の双子が違う人生を歩むのは、主に次の理由からです。</p>
+      <p>① <b>名前が違う</b> — 姓名判断は名前で決まるため、人格・地格などの画数と解説は二人で別になります。命式が「生まれ持った器」なら、名前は「育っていく運」。昔の名付け親が双子にあえて違う画数の名前を付けたのは、このためと言われます。</p>
+      <p>② <b>選択と環境が違う</b> — 命式は設計図であって人生そのものではありません。同じ手札でも、打ち方で勝負は変わります。</p>
+      <p>③ <b>算命学の陰陽分割説</b> — 双子は一つの命式の「陽の面」と「陰の面」を分け合って生きる、という伝統的な読み方もあります。</p>
+      <p>運気の波（良い年・注意の年・天中殺）はほぼ共有しつつ、現れ方が名前と選択で分かれていく——それが双子の鑑定の考え方です。</p>
+    </div>
+  </details>
+</section>
 
 <footer>
   節入りは太陽黄経（Meeus法）から算出しています。<br>
