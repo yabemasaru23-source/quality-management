@@ -1657,8 +1657,9 @@ function drawChart(r){
 }
 
 function drawTcs(r){
-  $("tcsDay").textContent=r.tcsDay+"天中殺";
-  $("tcsYear").textContent=r.tcsYear+"天中殺";
+  const tcsYomi=s=>[...s].map(ch=>SHI_YOMI[ch]||"").join("");
+  $("tcsDay").textContent=r.tcsDay+"（"+tcsYomi(r.tcsDay)+"）天中殺";
+  $("tcsYear").textContent=r.tcsYear+"（"+tcsYomi(r.tcsYear)+"）天中殺";
   const box=$("chusatsu"); const hits=[];
   if(r.seijitsu) hits.push(`<b>生日中殺</b>があります。日柱（自分自身・伴侶・家庭）が年柱の天中殺に入っています。自我や所有への執着が薄く、精神的な充足を求めやすい配置です。家庭や配偶者との縁は「悪い」のではなく、標準的な形に収まりにくいと読みます。`);
   if(r.seigetsu) hits.push(`<b>生月中殺</b>があります。月柱（仕事・社会性）が年柱の天中殺に入っています。既存の枠組みの中で評価されるより、自分で領域を切り拓くほうが力を発揮しやすい配置です。`);
