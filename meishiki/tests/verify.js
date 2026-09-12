@@ -76,6 +76,41 @@ const CASES = [
     args: [1990, 2, 5, ""],
     setsuYear: 1990,
     cols: [{ name: "年柱", ganshi: "庚午" }]
+  },
+  /* 大雪（黄経255度）の回帰テスト
+     setsuJD の探索開始が固定だった頃、大雪だけ前年の日付を拾い、
+     12/7〜12/31 生まれの月柱が「亥」のまま「子」にならなかった。 */
+  {
+    label: "大雪前 2000-12-06 → 立冬のまま・月柱 丁亥",
+    args: [2000, 12, 6, ""],
+    setsu: { name: "立冬", days: 30 },
+    cols: [{ name: "年柱", ganshi: "庚辰" },
+           { name: "月柱", ganshi: "丁亥" },
+           { name: "日柱", ganshi: "戊戌" }]
+  },
+  {
+    label: "大雪後 2000-12-22 → 大雪16日目・月柱 戊子",
+    args: [2000, 12, 22, ""],
+    setsu: { name: "大雪", days: 16 },
+    cols: [{ name: "年柱", ganshi: "庚辰" },
+           { name: "月柱", ganshi: "戊子" },
+           { name: "日柱", ganshi: "甲寅" }]
+  },
+  {
+    label: "大雪当日 2024-12-07 → 月柱 丙子",
+    args: [2024, 12, 7, ""],
+    setsu: { name: "大雪", days: 1 },
+    cols: [{ name: "年柱", ganshi: "甲辰" },
+           { name: "月柱", ganshi: "丙子" },
+           { name: "日柱", ganshi: "乙巳" }]
+  },
+  {
+    label: "年末 1975-12-31 → 大雪24日目・月支は子",
+    args: [1975, 12, 31, ""],
+    setsu: { name: "大雪", days: 24 },
+    cols: [{ name: "年柱", ganshi: "乙卯" },
+           { name: "月柱", ganshi: "戊子" },
+           { name: "日柱", ganshi: "辛亥" }]
   }
 ];
 

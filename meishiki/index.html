@@ -1222,7 +1222,9 @@ function solarLon(jd){
 }
 function setsuJD(year,lon){
   const f=jd=>{let d=solarLon(jd)-lon;while(d>180)d-=360;while(d<-180)d+=360;return d;};
-  let start=jdUT(year,1,1,0)-40;
+  // 目的の黄経に太陽が達するおおよその日から探索を始める（1/1の黄経は約280度）
+  // 固定で-40日から探すと、大雪(255度)だけ前年の値を拾ってしまうため
+  let start=jdUT(year,1,1,0)+((((lon-280)%360)+360)%360)*365.2422/360-8;
   for(let jd=start;jd<start+400;jd+=0.5){
     if(f(jd)<0&&f(jd+0.5)>=0&&Math.abs(f(jd+0.5)-f(jd))<10){start=jd;break;}
   }
