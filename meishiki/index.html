@@ -469,6 +469,15 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
 .seimei-total{background:var(--ink-panel);border:1px solid var(--ink-line);padding:14px;margin-top:12px;text-align:center}
 .seimei-total .gkm{font-size:.88rem;padding:3px 16px}
 .seimei-total-label{font-size:.7rem;color:var(--nibi);margin-top:4px}
+/* ---- 特殊星（神殺） ---- */
+.toku-item{background:var(--ink-panel);border:1px solid var(--ink-line);border-left:4px solid var(--do);border-radius:4px;padding:13px 16px;margin-bottom:9px;page-break-inside:avoid}
+.toku-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.toku-head b{font-family:var(--display);font-size:.95rem;letter-spacing:.06em}
+.toku-yomi{font-size:.7rem;color:var(--nibi)}
+.toku-at{font-size:.68rem;font-weight:700;color:var(--do);border:1px solid var(--do);border-radius:4px;padding:1px 8px}
+.toku-text{font-size:.82rem;line-height:1.9}
+.toku-none{background:var(--ink-panel);border:1px dashed var(--ink-line);border-radius:4px;padding:14px 16px;font-size:.82rem;line-height:1.9;color:var(--nibi)}
+.toku-note{font-size:.72rem;color:var(--nibi);margin-top:10px;line-height:1.8}
 /* ---- よくある質問 ---- */
 .faq-wrap{max-width:820px;margin:0 auto;padding:36px 20px 10px}
 .faq-item{background:var(--ink-panel);border:1px solid var(--ink-line);border-radius:6px;margin-bottom:10px}
@@ -623,6 +632,7 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--ink-line);fon
       <div class="tcs-card"><span class="k">年柱から</span><span class="v" id="tcsYear"></span></div>
     </div>
     <div id="chusatsu"></div>
+    <div id="tokushu"></div>
   </div>
 
   <div class="tab-panel" id="tab-gogyo">
@@ -1629,6 +1639,77 @@ function calcSeimei(sei,mei){
     scores,unknown,kana};
 }
 
+/* ---- 特殊星（神殺）の判定 ---- */
+const TOKU_TENITSU={甲:["丑","未"],戊:["丑","未"],庚:["丑","未"],乙:["子","申"],己:["子","申"],丙:["亥","酉"],丁:["亥","酉"],壬:["巳","卯"],癸:["巳","卯"],辛:["午","寅"]};
+const TOKU_TENTOKU={寅:"丁",卯:"申",辰:"壬",巳:"辛",午:"亥",未:"甲",申:"癸",酉:"寅",戌:"丙",亥:"乙",子:"巳",丑:"庚"};
+const TOKU_GETTOKU=[{shi:["寅","午","戌"],k:"丙"},{shi:["申","子","辰"],k:"壬"},{shi:["亥","卯","未"],k:"甲"},{shi:["巳","酉","丑"],k:"庚"}];
+const TOKU_BUNSHO={甲:"巳",乙:"午",丙:"申",丁:"酉",戊:"申",己:"酉",庚:"亥",辛:"子",壬:"寅",癸:"卯"};
+const TOKU_KINYO={甲:"辰",乙:"巳",丙:"未",丁:"申",戊:"未",己:"申",庚:"戌",辛:"亥",壬:"丑",癸:"寅"};
+const TOKU_ANROKU={甲:"亥",乙:"戌",丙:"申",丁:"未",戊:"申",己:"未",庚:"巳",辛:"辰",壬:"寅",癸:"丑"};
+const TOKU_SANGO=[{g:["申","子","辰"],uma:"寅",hana:"酉",kasa:"辰"},{g:["寅","午","戌"],uma:"申",hana:"卯",kasa:"戌"},{g:["巳","酉","丑"],uma:"亥",hana:"午",kasa:"丑"},{g:["亥","卯","未"],uma:"巳",hana:"子",kasa:"未"}];
+const TOKU_YOJIN={甲:"卯",丙:"午",戊:"午",庚:"酉",壬:"子"};
+const TOKU_KAIGO=["庚辰","庚戌","壬辰","戊戌"];
+const TOKU_TEXT={
+"天乙貴人":{y:"てんいつきじん",t:"命式中最強の吉星。土壇場で不思議と助けが入り、目上からの引き立てに恵まれます。ピンチのたびに誰かが現れる人です。"},
+"天徳貴人":{y:"てんとくきじん",t:"天の加護の星。災いが小さく済み、人柄の徳で守られます。良い行いが倍になって返る命式です。"},
+"月徳貴人":{y:"げっとくきじん",t:"月の加護の星。先祖や家系からの見えない守りがあり、大難が小難で済みます。"},
+"文昌貴人":{y:"もんしょうきじん",t:"学問・文筆の星。頭脳の冴えと表現力に恵まれ、学び・資格・執筆の分野で成果を出せます。"},
+"金輿禄":{y:"きんよろく",t:"良縁の星。結婚・パートナー運に恵まれ、配偶者や協力者を通じて運が開けていきます。"},
+"暗禄":{y:"あんろく",t:"隠れた助けの星。表に見えない貯えや人脈があり、困り切る前に必ず道が見つかる命式です。"},
+"駅馬":{y:"えきば",t:"移動の星。転居・出張・旅・海外と縁が深く、動くほど運が開けるタイプです。じっとしているより動いてください。"},
+"咸池（桃花）":{y:"かんち（とうか）",t:"人を惹きつける魅力の星。人気運と華に恵まれますが、恋愛の波乱にはご注意を。"},
+"華蓋":{y:"かがい",t:"芸術と精神性の星。独自の世界観・美的感覚を持ち、ひとりの時間を好む一面も。創作や研究で輝きます。"},
+"羊刃":{y:"ようじん",t:"強すぎる刃の星。勝負強さと行動力は抜群ですが諸刃の剣。怪我や衝突に注意し、力の使い所を選んでください。"},
+"魁罡":{y:"かいごう",t:"極端な強運の星。頭領の器とカリスマ性を持ちますが、中途半端を許さない激しさも。白黒はっきりした人生になります。"}
+};
+function calcTokushu(r){
+  const out=[];
+  const add=(name,at)=>{
+    const f=out.find(x=>x.n===name);
+    if(f){if(!f.at.includes(at))f.at.push(at);}
+    else out.push({n:name,y:TOKU_TEXT[name].y,t:TOKU_TEXT[name].t,at:[at]});
+  };
+  const nk=r.nikkan;
+  const cols=r.cols;
+  const monCol=cols.find(c=>c.name==="月柱");
+  const dayCol=cols.find(c=>c.name==="日柱");
+  const yearCol=cols.find(c=>c.name==="年柱");
+  // 日干×各柱の支
+  cols.forEach(c=>{
+    if((TOKU_TENITSU[nk]||[]).includes(c.shi)) add("天乙貴人",c.name);
+    if(TOKU_BUNSHO[nk]===c.shi) add("文昌貴人",c.name);
+    if(TOKU_KINYO[nk]===c.shi) add("金輿禄",c.name);
+    if(TOKU_ANROKU[nk]===c.shi) add("暗禄",c.name);
+    if(TOKU_YOJIN[nk]===c.shi) add("羊刃",c.name);
+  });
+  // 天徳貴人（月支→特定の干または支が命式中にある）
+  if(monCol){
+    const tgt=TOKU_TENTOKU[monCol.shi];
+    cols.forEach(c=>{
+      if(c.kan===tgt) add("天徳貴人",c.name+"（天干）");
+      if(c.shi===tgt) add("天徳貴人",c.name);
+    });
+    // 月徳貴人（月支の三合局→特定の天干）
+    const gd=TOKU_GETTOKU.find(g=>g.shi.includes(monCol.shi));
+    if(gd) cols.forEach(c=>{if(c.kan===gd.k) add("月徳貴人",c.name+"（天干）");});
+  }
+  // 駅馬・咸池・華蓋（年支基準／日支基準→他の柱の支）
+  [["年支",yearCol],["日支",dayCol]].forEach(([lbl,base])=>{
+    if(!base) return;
+    const sg=TOKU_SANGO.find(g=>g.g.includes(base.shi));
+    if(!sg) return;
+    cols.forEach(c=>{
+      if(c===base) return;
+      if(c.shi===sg.uma) add("駅馬",c.name+"・"+lbl+"基準");
+      if(c.shi===sg.hana) add("咸池（桃花）",c.name+"・"+lbl+"基準");
+      if(c.shi===sg.kasa) add("華蓋",c.name+"・"+lbl+"基準");
+    });
+  });
+  // 魁罡（日柱の干支そのもの）
+  if(dayCol&&TOKU_KAIGO.includes(dayCol.ganshi)) add("魁罡","日柱");
+  return out;
+}
+
 /* ================= 描画 ================= */
 const $=id=>document.getElementById(id);
 
@@ -1658,6 +1739,20 @@ function drawChart(r){
      `<td><span class="star">${c.unsei}</span><span class="energy">エネルギー ${c.energy}</span></td>`)}</tr>`;
 }
 
+function drawTokushu(r){
+  const list=calcTokushu(r);
+  let h='<p class="sec-label">特 殊 星（神 殺）</p>';
+  if(!list.length){
+    h+='<p class="toku-none">この命式に際立った特殊星はありません。特別な加護に頼らず、基本の星の実力で道を開く「地力型」の命式です。</p>';
+  }else{
+    h+=list.map(s=>'<div class="toku-item">'
+      +'<div class="toku-head"><b>'+s.n+'</b><span class="toku-yomi">'+s.y+'</span>'
+      +s.at.map(a=>'<span class="toku-at">'+a+'</span>').join("")+'</div>'
+      +'<p class="toku-text">'+s.t+'</p></div>').join("");
+    h+='<p class="toku-note">※ 特殊星（神殺）は、特定の干支の組み合わせだけに現れる補助星です。通変星・十二運星の読みに彩りを加える参考情報としてご覧ください。</p>';
+  }
+  $("tokushu").innerHTML=h;
+}
 function drawTcs(r){
   const tcsYomi=s=>[...s].map(ch=>SHI_YOMI[ch]||"").join("");
   $("tcsDay").textContent=r.tcsDay+"（"+tcsYomi(r.tcsDay)+"）天中殺";
@@ -2034,7 +2129,7 @@ $("go").addEventListener("click",()=>{
   const nm=[vSei,vMei].filter(Boolean).join(" ")||"あなた";
   $("who").textContent=`${nm} さんの命式`;
   $("whoSub").textContent=`${y}年${String(m).padStart(2,"0")}月${String(d).padStart(2,"0")}日 ・ ${$("sex").value} ・ ${r.setsu.name}（${r.setsu.dt.m}/${r.setsu.dt.d}）より ${r.setsu.days} 日目`;
-  drawChart(r); drawTcs(r); drawGogyo(r); drawKantei(r,$("sex").value,y);
+  drawChart(r); drawTcs(r); drawTokushu(r); drawGogyo(r); drawKantei(r,$("sex").value,y);
   $("result").classList.add("on");
   $("result").scrollIntoView({behavior:"smooth",block:"start"});
   if(window.gtag) gtag("event","meishiki_calculated");
