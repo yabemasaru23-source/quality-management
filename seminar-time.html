@@ -89,8 +89,8 @@
         <h1>時間は<span class="marker">第5の経営資産</span><br>使うだけの会社と輝かせる会社</h1>
         <p>人材・お金・モノ・情報……そして<strong>時間</strong>。社員300人の会社の時間資産は年間<strong>63万時間超</strong>。そのうち3分の1が、いま無駄に使われています。矢部大のタイムマネジメントセミナーで「時間創造部」を立ち上げ、眠っている時間を、売上と成長に変えます。</p>
         <div class="hero-btns">
-          <a href="#contact" class="btn btn-primary">セミナーに申し込む →</a>
-          <a href="#program" class="btn btn-ghost">内容を見る</a>
+          <a href="#jikyu" class="btn btn-primary">社長の1時間はいくらか調べる →</a>
+          <a href="#contact" class="btn btn-ghost">セミナーに申し込む</a>
         </div>
       </div>
       <div class="page-hero-deco">
@@ -122,6 +122,39 @@
     <div class="diff reveal" style="margin-top:44px">
       <div class="x">社員300人・年間<span class="o">63万3,600時間</span>の資産を<br>あなたは把握できていますか？</div>
       <p>300人×8時間×22日×12か月 ＝ <strong>633,600時間</strong>。そのうち約3分の1、<strong>20万時間超</strong>が会議・伝達の無駄・指示のやり直しに消えています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 社長の時間単価 -->
+<section class="bg-sky" id="jikyu">
+  <div class="wrap center">
+    <span class="sec-label">Your Number</span>
+    <h2 class="sec-title reveal">社長の1時間は、<span class="hl">いくらですか。</span></h2>
+    <p class="sec-lead reveal">答えられる社長は、ほとんどいらっしゃいません。<br>3つ入れるだけで出ます。送信も登録も不要です。この場で計算します。</p>
+
+    <div class="calc reveal">
+      <div class="calc-fields">
+        <div>
+          <label for="cNet">年商</label>
+          <input type="number" id="cNet" value="20000" min="0" step="1000" inputmode="numeric">
+          <div class="unit">万円（例：2億 → 20000）</div>
+        </div>
+        <div>
+          <label for="cHours">社長が働く時間</label>
+          <input type="number" id="cHours" value="60" min="1" max="120" step="1" inputmode="numeric">
+          <div class="unit">1週あたり（時間）</div>
+        </div>
+        <div>
+          <label for="cWaste">うち、自分でなくてもできる作業</label>
+          <input type="number" id="cWaste" value="15" min="0" max="120" step="1" inputmode="numeric">
+          <div class="unit">1週あたり（時間）</div>
+        </div>
+      </div>
+
+      <div class="calc-out" id="calcOut" role="status" aria-live="polite"></div>
+
+      <p style="font-size:.8rem;color:var(--gray);margin-top:16px;line-height:1.8">※ 年間48週（年末年始・夏季休暇を除いた実働）で計算しています。社長の1時間あたり売上は「年商÷社長の年間労働時間」です。社長一人で売上を立てているという意味ではなく、<strong>社長の時間が会社の売上とどれだけ結びついているか</strong>を可視化するための指標としてお使いください。</p>
     </div>
   </div>
 </section>
@@ -361,8 +394,32 @@
   </div>
 </section>
 
-<!-- 書籍紹介 -->
+<!-- 向かない会社（正直に書く） -->
 <section>
+  <div class="wrap center">
+    <span class="sec-label">Not For You</span>
+    <h2 class="sec-title reveal">この研修が、<span class="hl">効かない会社</span>もあります。</h2>
+    <p class="sec-lead reveal">時間は、やる気では増えません。構造が変わらない限り、研修を受けても翌週には元に戻ります。<br>先に正直にお伝えします。</p>
+
+    <div class="honest">
+      <div class="honest-item reveal">
+        <h4>1. 社長が「自分がやったほうが早い」を手放せない会社</h4>
+        <p>これは能力の問題ではなく、事実として多くの場合その通りです。社長がやれば早い。ですが、<strong>社長が巻き取った仕事は、永久に社長の仕事になります</strong>。最初の数か月は、人に渡したほうが遅くなります。その遅さを許容できない会社では、時間は一生増えません。</p>
+      </div>
+      <div class="honest-item reveal">
+        <h4>2. 残業を「減らす」ことだけが目的の会社</h4>
+        <p>時間を空けても、使い道が決まっていなければ別の作業が流れ込んできます。わたくしどもがお手伝いするのは時間を減らすことではなく、<strong>空いた時間を意思決定と営業に移すこと</strong>です。移す先が決まっていない場合、数字は何も変わりません。</p>
+      </div>
+      <div class="honest-item reveal">
+        <h4>3. 「決める人」が社内にいない会社</h4>
+        <p>やり直しや二度手間の正体は、能力不足ではなく<strong>決裁が止まっていること</strong>です。誰が決めるかが曖昧なまま手順だけ整えても、現場は待つ時間が増えるだけです。この場合は、研修より先に決裁ラインの整理をご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 書籍紹介 -->
+<section class="bg-sky">
   <div class="wrap center">
     <span class="sec-label">Book</span>
     <h2 class="sec-title reveal">セミナーの土台：<span class="hl">『スーパータイムマネジメント』</span></h2>
@@ -380,7 +437,7 @@
 </section>
 
 <!-- 成果 -->
-<section class="bg-sky">
+<section>
   <div class="wrap center">
     <div class="diff reveal">
       <div class="x"><span class="o">幹部の残業 50%削減</span>／<span class="o">意思決定の速度 3倍</span></div>
@@ -417,5 +474,60 @@
 </footer>
 <a href="https://line.me/R/ti/p/%40171hzbls" target="_blank" rel="noopener" class="float-line">💬 LINEで相談</a>
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var net = document.getElementById('cNet');
+  if(!net) return;
+  var hours = document.getElementById('cHours'),
+      waste = document.getElementById('cWaste'),
+      out   = document.getElementById('calcOut'),
+      WEEKS = 48,
+      OUTSOURCE = 2000; // その作業を任せた場合の時給の目安（円）
+
+  var yen = function(man){
+    if (man >= 10000) {
+      var oku = Math.floor(man / 10000), rest = Math.round(man % 10000);
+      return oku + '億' + (rest ? rest.toLocaleString() + '万円' : '円');
+    }
+    return Math.round(man).toLocaleString() + '万円';
+  };
+
+  function render(){
+    var n = Math.max(0, Number(net.value) || 0),
+        h = Math.max(1, Number(hours.value) || 1),
+        w = Math.min(Math.max(0, Number(waste.value) || 0), h);
+
+    var yearHours  = h * WEEKS,
+        rateMan    = n / yearHours,              // 1時間あたり売上（万円）
+        wasteHours = w * WEEKS,                  // 年間の「自分でなくてもできる」時間
+        wasteMan   = rateMan * wasteHours,       // その時間が占める売上換算（万円）
+        costMan    = wasteHours * OUTSOURCE / 10000, // 外注した場合の年間費用（万円）
+        days       = wasteHours / 8;
+
+    out.innerHTML =
+      '<div class="calc-row hero"><div class="cl">社長の1時間あたり売上</div>' +
+        '<div class="cv">' + Math.round(rateMan * 10000).toLocaleString() + ' 円</div></div>' +
+      '<div class="calc-row"><div class="cl">社長の年間労働時間</div>' +
+        '<div class="cv">' + yearHours.toLocaleString() + ' 時間</div></div>' +
+      '<div class="calc-row"><div class="cl">自分でなくてもできる作業に使っている時間（年間）</div>' +
+        '<div class="cv">' + Math.round(wasteHours).toLocaleString() + ' 時間</div></div>' +
+      '<div class="calc-row"><div class="cl">それを8時間換算にすると</div>' +
+        '<div class="cv">年 ' + Math.round(days).toLocaleString() + ' 日分</div></div>' +
+      '<div class="calc-row hero"><div class="cl">その時間が占めている売上</div>' +
+        '<div class="cv">' + yen(wasteMan) + '</div></div>' +
+      '<div class="calc-note">' +
+        (w === 0
+          ? 'もし「自分でなくてもできる作業」が本当にゼロなら、社長の時間はすでに最適化されています。次に削るのは、社長ではなく幹部の時間です。'
+          : 'この作業を時給' + OUTSOURCE.toLocaleString() + '円で任せた場合、年間の費用は<strong>' + yen(costMan) + '</strong>です。<br>' +
+            '一方、同じ時間に紐づいている売上は<strong>' + yen(wasteMan) + '</strong>。' +
+            '社長は、' + yen(costMan) + 'で手放せる作業を、時給' + Math.round(rateMan * 10000).toLocaleString() + '円の時間で引き受けていることになります。<br>' +
+            'この年' + Math.round(days).toLocaleString() + '日を意思決定と営業に戻したら何が起きるか——そこがセミナーの出発点です。') +
+      '</div>';
+  }
+
+  [net, hours, waste].forEach(function(el){ el.addEventListener('input', render); });
+  render();
+})();
+</script>
 </body>
 </html>

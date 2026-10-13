@@ -528,3 +528,72 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
 .post .newflag{position:absolute;top:-8px;left:-6px;background:#ff4d4d;color:#fff;
   font-size:.62rem;font-weight:900;padding:3px 9px;border-radius:20px;letter-spacing:.06em;
   box-shadow:0 4px 12px rgba(255,77,77,.4)}
+
+/* ===== 6連発・階段図 ===== */
+.stairs{display:grid;gap:14px;max-width:960px;margin:44px auto 0;text-align:left;counter-reset:st}
+.step{display:grid;grid-template-columns:72px 1fr;gap:20px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue-bright);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);position:relative}
+.step:nth-child(1){border-left-color:#8fc0ff}
+.step:nth-child(2){border-left-color:#5aa4ff}
+.step:nth-child(3){border-left-color:#1f86ff}
+.step:nth-child(4){border-left-color:#0a4ea3}
+.step:nth-child(5){border-left-color:#073b7d}
+.step:nth-child(6){border-left-color:var(--gold)}
+.step-no{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;color:var(--blue-bright);opacity:.34;align-self:start}
+.step:nth-child(6) .step-no{color:var(--gold);opacity:.6}
+.step h4{font-size:1.12rem;font-weight:900;margin-bottom:4px}
+.step h4 .psy{display:inline-block;background:var(--sky);color:var(--blue);font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:20px;margin-left:10px;vertical-align:middle;letter-spacing:.04em}
+.step .aim{color:var(--gray);font-size:.88rem;margin-bottom:12px}
+.step .do,.step .ng{font-size:.86rem;line-height:1.8;padding:10px 14px;border-radius:10px;margin-top:8px}
+.step .do{background:var(--sky2);border:1px solid var(--line)}
+.step .ng{background:#fff6f6;border:1px solid #f3d6d6;color:#8a3a3a}
+.step .do b,.step .ng b{display:block;font-size:.74rem;letter-spacing:.08em;margin-bottom:3px;opacity:.75}
+@media(max-width:700px){.step{grid-template-columns:1fr;gap:6px;padding:20px}.step-no{font-size:1.8rem}}
+
+/* ===== 自己診断 ===== */
+.quiz{max-width:800px;margin:44px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-strong);padding:32px 30px;text-align:left}
+.quiz h3{font-size:1.2rem;font-weight:900;margin-bottom:6px}
+.quiz .q-note{color:var(--gray);font-size:.86rem;margin-bottom:22px}
+.q-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.q-item:first-of-type{border-top:none}
+.q-item label{flex:1;font-size:.94rem;line-height:1.7;cursor:pointer}
+.q-item input{width:22px;height:22px;accent-color:var(--blue-bright);margin-top:3px;cursor:pointer;flex-shrink:0}
+.quiz-foot{margin-top:24px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.quiz-out{margin-top:22px;border-radius:16px;padding:24px 26px;display:none;line-height:1.9}
+.quiz-out.on{display:block}
+.quiz-out .qo-type{font-size:1.3rem;font-weight:900;margin-bottom:8px}
+.quiz-out .qo-score{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.8rem;letter-spacing:.1em;opacity:.8;margin-bottom:10px}
+.quiz-out.lv1{background:#fff4f4;border:1px solid #f0cfcf}
+.quiz-out.lv1 .qo-type{color:#b32d3c}
+.quiz-out.lv2{background:#fffaf0;border:1px solid #ecd9a6}
+.quiz-out.lv2 .qo-type{color:#8a6d12}
+.quiz-out.lv3{background:#f1f8f3;border:1px solid #c3e3cd}
+.quiz-out.lv3 .qo-type{color:#1b6b3a}
+.quiz-out p{font-size:.92rem;color:var(--ink)}
+.quiz-out .qo-rx{margin-top:14px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.14);font-size:.9rem}
+
+/* ===== 正直セクション（向かない会社） ===== */
+.honest{max-width:900px;margin:44px auto 0;text-align:left;display:grid;gap:16px}
+.honest-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);border-top:4px solid #d9534f}
+.honest-item h4{font-size:1.05rem;font-weight:900;margin-bottom:8px;color:#a33}
+.honest-item p{color:var(--gray);font-size:.9rem;line-height:1.85}
+
+/* ===== 計算機 ===== */
+.calc{max-width:860px;margin:44px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-strong);padding:32px 30px;text-align:left}
+.calc-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.calc-fields label{display:block;font-size:.84rem;font-weight:800;color:var(--blue);margin-bottom:6px}
+.calc-fields input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit}
+.calc-fields input:focus{outline:none;border-color:var(--blue-bright)}
+.calc-fields .unit{font-size:.78rem;color:var(--gray);margin-top:5px}
+.calc-out{margin-top:26px;background:var(--blue-deep);border-radius:18px;padding:28px 26px;color:#eaf2fd}
+.calc-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(255,255,255,.14)}
+.calc-row:first-child{border-top:none}
+.calc-row .cl{font-size:.9rem;color:#bcd3f0}
+.calc-row .cv{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.7rem;color:#fff;white-space:nowrap}
+.calc-row.hero .cv{color:#ffe14d;font-size:2.3rem}
+.calc-note{margin-top:18px;font-size:.84rem;color:#bcd3f0;line-height:1.85}
+@media(max-width:700px){.calc-fields{grid-template-columns:1fr}
+  .calc-out{padding:22px 18px}
+  .calc-row{grid-template-columns:1fr;gap:2px;padding:14px 0}
+  .calc-row .cl{font-size:.84rem}
+  .calc-row .cv{font-size:1.5rem;white-space:normal}
+  .calc-row.hero .cv{font-size:2rem}}
