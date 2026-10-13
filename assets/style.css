@@ -85,7 +85,14 @@ header .nav{padding-left:10px}
 .deco-box .d-ico{font-size:3.2rem;line-height:1;margin-bottom:10px}
 .deco-box .d-big{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;line-height:1.1;margin-bottom:6px}
 .deco-box .d-label{font-size:.78rem;font-weight:700;letter-spacing:.06em}
-@media(max-width:860px){.page-hero-grid{grid-template-columns:1fr}.page-hero-deco{display:none}}
+.hero-visual{position:relative;width:100%;max-width:340px;margin:0;border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(6,47,99,.26)}
+.hero-visual img{width:100%;height:290px;object-fit:cover;display:block}
+.hero-visual figcaption{position:absolute;left:0;right:0;bottom:0;padding:42px 20px 18px;background:linear-gradient(180deg,transparent,rgba(6,47,99,.92));color:#fff;text-align:left}
+.hero-visual .hv-big{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.45rem;line-height:1.15}
+.hero-visual .hv-label{font-size:.76rem;font-weight:700;letter-spacing:.06em;opacity:.88;margin-top:5px}
+@media(max-width:860px){.page-hero-grid{grid-template-columns:1fr}.page-hero-deco{display:none}
+  .page-hero-deco:has(.hero-visual){display:block;margin-top:28px}
+  .hero-visual{max-width:100%}.hero-visual img{height:210px}}
 /* カラーテーマ */
 .page-hero.theme-blue{background:radial-gradient(900px 400px at 80% -10%,rgba(31,134,255,.18),transparent 60%),linear-gradient(180deg,#f4f9ff,#e8f1fb)}
 .page-hero.theme-blue .page-hero-deco .deco-box{background:linear-gradient(160deg,#0a4ea3,#1f86ff);color:#fff}
