@@ -66,6 +66,7 @@
   --body:"Noto Sans JP",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%} /* iPhone の文字自動拡大を止める（印刷・PDFで文字がふくらんでずれるのを防ぐ） */
 body{
   background:var(--ink);
   color:var(--gofun);
@@ -290,6 +291,20 @@ svg.cycle{width:100%;height:auto;overflow:visible}
     border-left:3pt solid #8a5c12;padding-left:8pt;margin:16pt 0 8pt;page-break-after:avoid}
   .pr-p{font-size:9.5pt;line-height:2;color:#222;text-align:justify;margin-bottom:8pt;text-indent:1em}
   .pr-sign{text-align:right;font-size:9pt;color:#8a5c12;font-weight:600;margin-top:18pt}
+  /* --- スマホからのPDF対策：画面幅向けの切りかえを打ち消し、紙の大きさで組む --- */
+  html,body{width:auto!important;min-width:0!important}
+  .print-cover{height:auto!important;min-height:235mm}
+  .chart{font-size:9pt!important}
+  .chart th.rowlab{width:18%!important;font-size:8pt!important}
+  .ganshi{font-size:17pt!important}
+  .gogyo-wrap{grid-template-columns:1.1fr .9fr!important;gap:16pt!important}
+  .tcs{grid-template-columns:1fr 1fr!important}
+  .tcs-card{padding:10pt!important}
+  .tcs-card .v{font-size:13pt!important;letter-spacing:.04em!important;white-space:nowrap}
+  img,svg{max-width:100%!important}
+  /* 表・カードをページの境目で切らない */
+  .chart,.chart tr,.tcs,.tcs-card,.chusatsu,.gogyo-wrap,.daiun-item,.aisho-person,.toku-item{break-inside:avoid;page-break-inside:avoid}
+  .sec-label{break-after:avoid;page-break-after:avoid}
 }
 /* ---- タブ ---- */
 .tab-nav{display:flex;flex-direction:column;gap:16px;padding:0;background:none;margin-bottom:24px}

@@ -518,12 +518,14 @@
     <div id="contact-form" class="reveal" style="background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);max-width:720px;margin:34px auto 0;padding:36px 34px">
       <h3 style="font-size:1.3rem;font-weight:900;text-align:center;margin-bottom:6px">お問い合わせフォーム</h3>
       <p style="font-size:.9rem;color:var(--gray);text-align:center;margin-bottom:26px">1営業日以内にご返信します。お気軽にどうぞ。</p>
-      <form action="https://formspree.io/f/mojokzdb" method="POST">
+      <form id="qmContactForm" action="https://formspree.io/f/mojokzdb" method="POST">
         <input type="hidden" name="_next" value="https://qmw.co.jp/thanks.html">
+        <input type="hidden" name="_elapsed" id="qmElapsed" value="">
         <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         <div class="qm-field"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" required placeholder="山田 太郎"></div>
         <div class="qm-field"><label>会社名</label><input type="text" name="会社名" placeholder="株式会社◯◯"></div>
         <div class="qm-field"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" required placeholder="info@example.com"></div>
+        <div class="qm-field"><label>電話番号</label><input type="tel" name="電話番号" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel"></div>
         <div class="qm-field"><label>ご相談の種類<span class="req">必須</span></label>
           <select name="ご相談の種類" required>
             <option value="">選択してください</option>
@@ -577,6 +579,42 @@
 
 <script src="assets/blog-posts.js"></script>
 <script src="assets/site.js"></script>
+<script>
+/* お問い合わせフォーム送信
+   QM_FORM_ENDPOINT に GAS のウェブアプリURLを入れると、Formspree ではなく
+   GAS へ送信するようになります。空のままなら従来どおり Formspree へ送られます。 */
+(function(){
+  var QM_FORM_ENDPOINT = "";   // ← ここに https://script.google.com/macros/s/.../exec を貼る
+
+  var form = document.getElementById('qmContactForm');
+  if (!form) return;
+
+  // 滞在時間を記録（ボットは即座に送信するため、サーバー側で弾ける）
+  var opened = Date.now();
+  var elapsed = document.getElementById('qmElapsed');
+  form.addEventListener('submit', function(){ if (elapsed) elapsed.value = String(Date.now() - opened); }, true);
+
+  if (!QM_FORM_ENDPOINT) return;   // 未設定なら Formspree のまま
+
+  form.removeAttribute('action');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (!form.reportValidity()) return;
+
+    var btn = form.querySelector('button[type=submit]');
+    if (btn) { btn.disabled = true; btn.textContent = '送信しています…'; }
+
+    var data = new URLSearchParams(new FormData(form));
+    fetch(QM_FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: data, keepalive: true })
+      .catch(function(){})
+      .then(function(){ location.href = 'thanks.html'; });
+
+    // 通信が詰まっても必ず完了画面へ進める
+    setTimeout(function(){ location.href = 'thanks.html'; }, 2500);
+  });
+})();
+</script>
+
 <script>
 (function(){
   var posts = window.QM_POSTS || [];
