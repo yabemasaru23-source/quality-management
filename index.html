@@ -581,36 +581,48 @@
 <script src="assets/site.js"></script>
 <script>
 /* お問い合わせフォーム送信
-   QM_FORM_ENDPOINT に GAS のウェブアプリURLを入れると、Formspree ではなく
-   GAS へ送信するようになります。空のままなら従来どおり Formspree へ送られます。 */
+   QM_FORM_ENDPOINT に GAS のウェブアプリURLを入れると、送信先がそちらに切り替わります。
+   空のままでも Formspree へ送り、完了後は必ず自社の thanks.html に戻します。 */
 (function(){
   var QM_FORM_ENDPOINT = "";   // ← ここに https://script.google.com/macros/s/.../exec を貼る
+  var FORMSPREE = "https://formspree.io/f/mojokzdb";
 
   var form = document.getElementById('qmContactForm');
   if (!form) return;
 
-  // 滞在時間を記録（ボットは即座に送信するため、サーバー側で弾ける）
   var opened = Date.now();
   var elapsed = document.getElementById('qmElapsed');
-  form.addEventListener('submit', function(){ if (elapsed) elapsed.value = String(Date.now() - opened); }, true);
+  var done = false;
 
-  if (!QM_FORM_ENDPOINT) return;   // 未設定なら Formspree のまま
+  function goThanks(){ if (done) return; done = true; location.href = 'thanks.html'; }
 
-  form.removeAttribute('action');
+  form.setAttribute('action', FORMSPREE);   // JSが動かない環境でも送信だけは成立させる
+
   form.addEventListener('submit', function(ev){
+    if (!form.checkValidity()) return;      // 必須未入力はブラウザに任せる
     ev.preventDefault();
-    if (!form.reportValidity()) return;
+
+    if (elapsed) elapsed.value = String(Date.now() - opened);
 
     var btn = form.querySelector('button[type=submit]');
     if (btn) { btn.disabled = true; btn.textContent = '送信しています…'; }
 
-    var data = new URLSearchParams(new FormData(form));
-    fetch(QM_FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: data, keepalive: true })
-      .catch(function(){})
-      .then(function(){ location.href = 'thanks.html'; });
+    var body = new FormData(form);
 
-    // 通信が詰まっても必ず完了画面へ進める
-    setTimeout(function(){ location.href = 'thanks.html'; }, 2500);
+    if (QM_FORM_ENDPOINT) {
+      fetch(QM_FORM_ENDPOINT, {
+        method: 'POST', mode: 'no-cors', keepalive: true,
+        body: new URLSearchParams(body)
+      }).catch(function(){}).then(goThanks);
+    } else {
+      fetch(FORMSPREE, {
+        method: 'POST', keepalive: true,
+        headers: { 'Accept': 'application/json' },
+        body: body
+      }).catch(function(){}).then(goThanks);
+    }
+
+    setTimeout(goThanks, 2500);   // 通信が詰まっても完了画面へ進める
   });
 })();
 </script>
