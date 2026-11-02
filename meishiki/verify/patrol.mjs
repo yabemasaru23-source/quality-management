@@ -19,6 +19,7 @@ import { spawnSync, spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import os from 'node:os';
 import vm from 'node:vm';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -40,7 +41,7 @@ const warn = (title, detail = '') => report.push(`- ⚠️ ${title}${detail ? '�
 /* ---- 計算部を取り出して動かす ---- */
 const calcPart = html => {
   const s = html.indexOf('/* ================= 定数'), e = html.indexOf('/* ================= 描画');
-  return s < 0 || e < 0 ? null : html.slice(s, e);
+  return s < 0 || e < 0 ? null : html.slice(s, e).replace(/\r\n/g, '\n'); // 改行コード（CRLF/LF）のちがいは無視する
 };
 function engineFrom(html) {
   const code = calcPart(html);
@@ -56,6 +57,8 @@ const E = engineFrom(localHtml);
 
 /* ---- 1. 答え合わせ ---- */
 report.push('## 1. 計算の答え合わせ');
+const step = t => console.error(`[巡回] ${t}`);
+step('1. 計算の答え合わせ');
 for (const [label, args] of [['本体×独立エンジン（20,000件）', ['crosscheck.js', '20000']], ['検証ずみ鑑定書との回帰テスト', ['../tests/verify.js']]]) {
   const r = spawnSync(process.execPath, [path.join(here, args[0]), ...args.slice(1)], { encoding: 'utf8', timeout: 600000 });
   const tail = (r.stdout + r.stderr).trim().split('\n').slice(-3).join(' ／ ');
@@ -63,7 +66,7 @@ for (const [label, args] of [['本体×独立エンジン（20,000件）', ['cro
 }
 
 /* ---- 2. 同じ命式のくり返し ---- */
-report.push('', '## 2. 同じ命式がくり返し出ていないか（1900〜2100年・1日ずつ）');
+report.push('', '## 2. 同じ命式がくり返し出ていないか（1900〜2100年・1日ずつ）'); step('2. くり返しの点検');
 {
   const errs = { day: [], month: [], year: [], hour: [] };
   let prev = null, days = 0, monthChanges = 0, yearChanges = 0;
@@ -97,7 +100,7 @@ report.push('', '## 2. 同じ命式がくり返し出ていないか（1900〜21
 }
 
 /* ---- 3. 公開中のアプリ ---- */
-report.push('', '## 3. 公開中のアプリ（https://qmw.co.jp/meishiki/）');
+report.push('', '## 3. 公開中のアプリ（https://qmw.co.jp/meishiki/）'); step('3. 公開版');
 let liveHtml = null;
 try {
   const res = await fetch('https://qmw.co.jp/meishiki/', { headers: { 'cache-control': 'no-cache' } });
@@ -130,8 +133,8 @@ if (!quick) {
     const expect = people.map(([y, m, d, h]) => E.meishiki(y, m, d, h === null ? '' : String(h)).cols.map(c => c.ganshi).join(''));
     for (const [label, url] of [['手元のアプリ', pathToFileURL(path.join(root, 'index.html')).href], ['公開中のアプリ', liveHtml ? 'https://qmw.co.jp/meishiki/' : null]]) {
       if (!url) continue;
-      report.push('', `## 4. 画面：${label}（ちがう生年月日を続けて入れる）`);
-      const port = 9400 + Math.floor(Math.random() * 400), prof = path.join(outDir, 'chrome-prof-' + port);
+      report.push('', `## 4. 画面：${label}（ちがう生年月日を続けて入れる）`); step('4. 画面 ' + label);
+      const port = 9400 + Math.floor(Math.random() * 400), prof = path.join(os.tmpdir(), 'meishiki-patrol-' + port); // OneDrive の中に置くと同期とぶつかるので一時フォルダへ
       const ch = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, '--no-first-run', 'about:blank'], { stdio: 'ignore' });
       const sleep = ms => new Promise(r => setTimeout(r, ms));
       let ws, id = 0; const wait = {};
@@ -186,4 +189,5 @@ const file = path.join(outDir, `patrol-${today}.md`);
 writeFileSync(file, report.join('\n') + '\n');
 console.log(report.join('\n'));
 console.log('\n報告書:', file);
-process.exit(ng ? 1 : 0);
+process.exitCode = ng ? 1 : 0;
+setTimeout(() => process.exit(process.exitCode), 1000).unref();
