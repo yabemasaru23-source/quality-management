@@ -24,3 +24,16 @@ if (hdr) window.addEventListener('scroll', () => {
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
 });
+
+/* サービスのドロップダウン：いま見ているサービスに「表示中」を出す */
+(function(){
+  var svc = document.body.getAttribute('data-svc');
+  if (!svc) {
+    // トップページ内のアンカー（#ai / #works）にいるときも拾う
+    var h = location.hash.replace('#','');
+    if (h === 'ai' || h === 'works') svc = h;
+  }
+  if (!svc) return;
+  var a = document.querySelector('.drop a[data-svc="' + svc + '"]');
+  if (a) a.classList.add('current');
+})();

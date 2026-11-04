@@ -601,3 +601,53 @@ footer{background:var(--blue-deep);color:#aac4e6;padding:56px 0 28px}
   .calc-row .cl{font-size:.84rem}
   .calc-row .cv{font-size:1.5rem;white-space:normal}
   .calc-row.hero .cv{font-size:2rem}}
+
+/* ============================================================
+   サービス別テーマ（いまどのサービスを見ているかを色で示す）
+   body[data-svc] で accent 系の変数を差し替える
+============================================================ */
+:root{ --accent:#1f86ff; --accent-deep:#0a4ea3; --accent-soft:#eef5ff; }
+body[data-svc="ai"]    { --accent:#1f86ff; --accent-deep:#0a4ea3; --accent-soft:#eef5ff }
+body[data-svc="sales"] { --accent:#d6243a; --accent-deep:#8c1424; --accent-soft:#fdeef0 }
+body[data-svc="time"]  { --accent:#c9a227; --accent-deep:#7a5c0a; --accent-soft:#fff8e1 }
+body[data-svc="works"] { --accent:#0f8a7a; --accent-deep:#0a5c51; --accent-soft:#e8f6f4 }
+
+/* 現在地バー：ヘッダーの真下に固定し、スクロールしても消えない */
+.svc-bar{position:fixed;top:70px;left:0;width:100%;z-index:999;height:36px;
+  background:linear-gradient(90deg,var(--accent-deep),var(--accent));color:#fff;
+  display:flex;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.10)}
+.svc-bar .wrap{display:flex;align-items:center;gap:12px;width:100%}
+.svc-bar .tag{font-family:'Montserrat',sans-serif;font-size:.64rem;font-weight:900;
+  letter-spacing:.18em;background:rgba(255,255,255,.22);padding:3px 10px;border-radius:20px}
+.svc-bar .name{font-size:.86rem;font-weight:800;letter-spacing:.03em}
+.svc-bar .sub{font-size:.76rem;opacity:.85;margin-left:auto;white-space:nowrap}
+body[data-svc] .page-hero{padding-top:166px}
+@media(max-width:700px){
+  .svc-bar{height:32px}
+  .svc-bar .name{font-size:.78rem}
+  .svc-bar .sub{display:none}
+  body[data-svc] .page-hero{padding-top:150px}
+}
+
+/* アクセントを効かせる箇所 */
+body[data-svc] .sec-label{color:var(--accent)}
+body[data-svc] .page-hero{
+  background:radial-gradient(900px 400px at 80% -10%,var(--accent-soft),transparent 62%),
+             linear-gradient(180deg,#fbfdff,var(--accent-soft))}
+body[data-svc] .hero-visual{box-shadow:0 20px 60px color-mix(in srgb,var(--accent-deep) 34%,transparent)}
+body[data-svc] .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+  box-shadow:0 12px 30px color-mix(in srgb,var(--accent) 36%,transparent)}
+body[data-svc] .fitem,body[data-svc] .step{border-left-color:var(--accent)}
+body[data-svc] .quote{border-left-color:var(--accent)}
+body[data-svc] .card{border-top-color:var(--accent)}
+
+/* ドロップダウン：色で見分け、いま開いているサービスを明示 */
+.drop a{border-left:4px solid transparent;position:relative}
+.drop a[data-svc="ai"]{border-left-color:#1f86ff}
+.drop a[data-svc="sales"]{border-left-color:#d6243a}
+.drop a[data-svc="time"]{border-left-color:#c9a227}
+.drop a[data-svc="works"]{border-left-color:#0f8a7a}
+.drop a.current{background:var(--accent-soft)}
+.drop a.current::after{content:"表示中";position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  font-size:.64rem;font-weight:900;letter-spacing:.08em;color:#fff;background:var(--accent);
+  padding:3px 9px;border-radius:20px}
