@@ -434,6 +434,24 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 .daiun-gs{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:5px}
 .daiun-yr{font-size:.6rem;color:var(--nibi)}
 /* ---- 年運 ---- */
+.getsu-strip{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin:12px 0 10px}
+.getsu-cell{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;border:1px solid var(--ink-line);background:var(--ink-panel);border-radius:4px}
+.getsu-cell.is-cur{border-color:var(--do);box-shadow:0 0 0 1px var(--do)}
+.gc-m{font-size:.6rem;color:var(--nibi)}
+.gc-gs{font-family:var(--display);font-size:.62rem;writing-mode:vertical-rl;letter-spacing:.05em}
+.getsu-list{display:flex;flex-direction:column;gap:6px}
+.getsu-row{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:9px 12px;background:var(--ink);border:1px solid var(--ink-line)}
+.getsu-row-cur{border-color:var(--do);box-shadow:0 0 0 1px var(--do)}
+.getsu-row-past{opacity:.7}
+.getsu-lft{text-align:center}
+.getsu-mm{font-size:.82rem;font-weight:700}
+.getsu-gs{font-family:var(--display);font-size:1.05rem;font-weight:600;margin:2px 0}
+.getsu-from{font-size:.6rem;color:var(--nibi)}
+.getsu-meta{font-size:.7rem;color:var(--nibi);margin-bottom:3px}
+.getsu-txt{font-size:.81rem;line-height:1.8}
+.getsu-do{font-size:.76rem;margin-top:4px;color:var(--moku)}
+@media(max-width:640px){.getsu-strip{grid-template-columns:repeat(6,minmax(0,1fr))}.getsu-row{grid-template-columns:78px 1fr}}
+@media print{.getsu-strip{display:none}.getsu-row{page-break-inside:avoid;break-inside:avoid}}
 .nenun-strip{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));gap:3px;margin:14px 0 4px}
 .nenun-cell{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--gofun);padding:4px 0;border:1px solid var(--ink-line);background:var(--ink-panel);border-radius:4px}
 .nenun-cell.is-cur{border-color:var(--do);box-shadow:0 0 0 1px var(--do)}
@@ -2224,6 +2242,55 @@ function drawKantei(r,sex,birthYear){
     <p class="nenun-legend">※ 年運は「その年のテーマ」を知るための目安です。良い年・悪い年と決めつけず、テーマに合わせて動き方を選んでください。</p></div>`;
   setTimeout(()=>document.querySelectorAll(".nenun-cell").forEach(a=>a.addEventListener("click",()=>{const d=document.getElementById("nenun-"+a.dataset.yr);if(d)d.open=true;})),0);
 
+  // 14. 月運（今年の12か月）— 月の干支は節入りで切りかわる。月柱の計算は命式と同じ meishiki() を使う
+  const curMonth=new Date().getMonth()+1;
+  const months=[];
+  for(let m=1;m<=12;m++){
+    const mr=meishiki(curYear,m,20,"");            // その月の節入りのあと（20日）の月柱
+    const mc=mr.cols[1];
+    const ts=tsuhen(r.nikkan,mc.kan), us=unsei(r.nikkan,mc.shi);
+    let rel="";
+    if(RICHI_ROKUGOU[dayShiChar]===mc.shi) rel="六合";
+    else if(mc.shi!==dayShiChar&&SANGOU_GROUPS.some(g=>g.shi.includes(dayShiChar)&&g.shi.includes(mc.shi))) rel="三合";
+    else if(HANGOU.some(hg=>hg.pair.includes(dayShiChar)&&hg.pair.includes(mc.shi))) rel="半合";
+    else if(RICHI_CHUU[dayShiChar]===mc.shi) rel="冲";
+    months.push({m,gs:mc.ganshi,gk:mc.gk,shi:mc.shi,ts,us,en:ENERGY[us]||6,tcs:r.tcsDay.includes(mc.shi),rel,
+      setsu:mr.setsu.name,sm:mr.setsu.dt.m,sd:mr.setsu.dt.d});
+  }
+  const goodM=months.filter(x=>x.en>=9&&!x.tcs).map(x=>x.m+"月");
+  const tcsM=months.filter(x=>x.tcs).map(x=>x.m+"月");
+  h+=`<div class="kant-block">
+    <div class="kant-title">月運 — ${curYear}年の12か月</div>
+    <p class="kant-text">月の干支は、1日ではなく<b>節入り（毎月4〜8日ごろ）</b>で切りかわります。それぞれの月の「〇日から」は、その月の節入りの日です（その前の数日は前の月の流れ）。
+    ${goodM.length?`今年、勢いの強い月は <b>${goodM.join("・")}</b>。`:""}${tcsM.length?`天中殺の月（充電の月）は <b>${tcsM.join("・")}</b> です。`:""}</p>
+    <div class="getsu-strip" aria-label="12か月の運気の早見帯">
+      ${months.map(x=>`<div class="getsu-cell${x.m===curMonth?" is-cur":""}">
+        <span class="gc-m">${x.m}月</span>
+        <span class="nc-bar"><i style="height:${Math.round(x.en/12*100)}%;background:${COLOR[x.gk]}"></i></span>
+        <span class="gc-gs" style="color:${COLOR[x.gk]}">${x.gs}</span>
+        <span class="nc-tcs${x.tcs?"":" nc-none"}">${x.tcs?"殺":"　"}</span>
+      </div>`).join("")}
+    </div>
+    <div class="getsu-list">
+      ${months.map(x=>{
+        const wave=x.en>=9?"攻め":x.en>=5?"平常":"守り";
+        const relTxt=x.rel==="六合"?"人の縁・協力に恵まれやすい月。":x.rel==="三合"?"計画や仲間がまとまりやすい月。":x.rel==="半合"?"ゆるやかな追い風がある月。":x.rel==="冲"?"予定の変更など動きが出やすい月。余白を持って。":"";
+        return `<div class="getsu-row${x.m===curMonth?" getsu-row-cur":""}${x.m<curMonth?" getsu-row-past":""}">
+          <div class="getsu-lft">
+            <div class="getsu-mm">${x.m}月${x.m===curMonth?`<span class="nbadge nbadge-now">今月</span>`:""}</div>
+            <div class="getsu-gs" style="color:${COLOR[x.gk]}">${x.gs}</div>
+            <div class="getsu-from">${x.sm}/${x.sd}（${x.setsu}）から</div>
+          </div>
+          <div>
+            <div class="getsu-meta">${x.ts} ／ ${x.us}（${x.en}）・${wave}の月 ${x.tcs?`<span class="nbadge nbadge-tcs">天中殺</span>`:""}${x.rel?`<span class="nbadge nbadge-rel">${x.rel}</span>`:""}</div>
+            <div class="getsu-txt">${TSU_MONTH[x.ts]||""}${x.tcs?"天中殺の月なので、新しく大きく始めるより、整える・準備することに使うと流れに乗れます。":""}${relTxt}</div>
+            <div class="getsu-do">この月のひとこと行動：${(TSU_YEAR_DO[x.ts]||[""])[x.m%3]}</div>
+          </div>
+        </div>`;}).join("")}
+    </div>
+    <p class="nenun-legend">※ 月運は年運よりも短い「その月の空気」です。年運のテーマ（今年は「${(NENUN_TSUHEN[tsuhen(r.nikkan,KAN[(curYear-4+1000)%10])]||{}).theme||""}」）を土台に、月ごとの強弱を重ねて読んでください。</p>
+  </div>`;
+
   $("kantei").innerHTML=h;
 }
 
@@ -3344,6 +3411,19 @@ const TSU_YEAR_Q={
 };
 // 年運：天中殺（充電期間）の年の過ごし方
 const TCS_YEAR_TIPS="新しく大きく始めるより、整える・学ぶ・休む・人を助けることに向く2年です。始めたい計画があれば、この時期は準備と仕込みにあて、天中殺が明けてから本格的に動かすと実りやすくなります。こわがる必要はありません。季節でいえば「冬」です。";
+// 月運：その月の空気（通変星ごと）
+const TSU_MONTH={
+"比肩":"自分のペースで進めやすい月。人に合わせるより、自分で決めて動くと手ごたえがあります。",
+"劫財":"人との刺激が増える月。仲間と組むと力が出ますが、お金と約束ごとは丁寧に。",
+"食神":"心にゆとりが生まれやすい月。好きなこと・食・遊びを楽しむほど、よい流れが育ちます。",
+"傷官":"感性と発想が冴える月。表現や改善に向きますが、言葉は少しやわらかめに。",
+"偏財":"出会いと動きが増える月。誘いには顔を出し、広がったご縁を大切に。",
+"正財":"こつこつ整える月。家計・段取り・約束を見直すと、安心感が積み上がります。",
+"偏官":"挑戦と勢いの月。思い切った一歩に向きますが、休む日も先に決めておきましょう。",
+"正官":"きちんとした行動が評価される月。役割・手続き・ルールを丁寧にこなすと信頼が増えます。",
+"偏印":"ひらめきと学びの月。新しい知識や場所にふれると、次のヒントが見つかります。",
+"印綬":"受け取る・学ぶ月。人の話をよく聞き、教えを受けるほど力がたまります。"
+};
 
 function renderReport(){
   const el=$("print-report");
