@@ -434,6 +434,40 @@ svg.cycle{width:100%;height:auto;overflow:visible}
 .daiun-gs{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:5px}
 .daiun-yr{font-size:.6rem;color:var(--nibi)}
 /* ---- 年運 ---- */
+.nenun-strip{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));gap:3px;margin:14px 0 4px}
+.nenun-cell{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--gofun);padding:4px 0;border:1px solid var(--ink-line);background:var(--ink-panel);border-radius:4px}
+.nenun-cell.is-cur{border-color:var(--do);box-shadow:0 0 0 1px var(--do)}
+.nenun-cell.is-past{opacity:.65}
+.nc-yr{font-size:.58rem;color:var(--nibi)}
+.nc-bar{width:60%;height:34px;display:flex;align-items:flex-end;background:var(--ink-line);border-radius:2px;overflow:hidden}
+.nc-bar i{display:block;width:100%}
+.nc-gs{font-family:var(--display);font-size:.62rem;writing-mode:vertical-rl;letter-spacing:.05em}
+.nc-tcs{font-size:.56rem;color:#fff;background:var(--ka);border-radius:2px;padding:0 2px;line-height:1.4}
+.nc-tcs.nc-none{background:none}
+.nenun-legend{font-size:.68rem;color:var(--nibi);margin:4px 0 12px;line-height:1.7}
+.nenun-card{border:1px solid var(--ink-line);background:var(--ink);margin-bottom:6px}
+.nenun-card-cur{border-color:var(--do);box-shadow:0 0 0 1px var(--do)}
+.nenun-card-past{background:var(--ink-panel)}
+.nenun-card>summary{cursor:pointer;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;list-style:none}
+.nenun-card>summary::-webkit-details-marker{display:none}
+.nenun-card>summary::after{content:"＋";margin-left:auto;color:var(--nibi)}
+.nenun-card[open]>summary::after{content:"－"}
+.nk-yr{font-size:.9rem}
+.nk-gs{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.nk-meta{font-size:.7rem;color:var(--nibi)}
+.nk-theme{flex:0 0 100%;font-size:.76rem;font-weight:600;letter-spacing:.04em}
+.nenun-body{padding:0 14px 14px;border-top:1px dashed var(--ink-line)}
+.nenun-h{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--do);margin:12px 0 3px}
+.nenun-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.nenun-ul{margin:0;padding-left:1.2em;font-size:.81rem;line-height:1.85}
+.nenun-du{margin-top:8px;font-size:.76rem;color:var(--nibi)}
+.nenun-tcs{margin-top:10px;padding:10px 12px;border-left:3px solid var(--ka);background:#fbf1ef;font-size:.8rem;line-height:1.85}
+.nenun-glow{margin-top:6px;color:var(--moku)}
+.nenun-small{margin-top:6px;font-size:.74rem;color:var(--nibi)}
+.nenun-q{margin-top:10px;font-size:.78rem;padding:8px 10px;background:var(--ink-panel);border:1px dashed var(--ink-line)}
+.nbadge-rel{border-color:var(--moku);color:var(--moku)}
+@media(max-width:640px){.nenun-cols{grid-template-columns:1fr}.nenun-strip{grid-template-columns:repeat(8,minmax(0,1fr))}}
+@media print{.nenun-strip{display:none}.nenun-card{page-break-inside:avoid;break-inside:avoid}.nenun-card>summary::after{content:""}}
 .nenun-list{display:flex;flex-direction:column;gap:8px}
 .nenun-row{display:grid;grid-template-columns:82px 1fr;gap:10px;align-items:start;padding:10px 12px;background:var(--ink);border:1px solid var(--ink-line)}
 .nenun-row-cur{border-color:var(--do)}
@@ -2072,7 +2106,7 @@ function drawKantei(r,sex,birthYear){
   const nenKanYin=KAN_Y[(r.setsuYear-4+1000)%10];
   let jun=null;
   if(sex==="男性") jun=!nenKanYin;
-  else if(sex==="女性") jun=nenKanYin;
+  else if(sex==="女性") jun=!!nenKanYin;   // 0/1 のままだと「===true/false」の判定に入らず、女性の大運が順行・年齢なしになっていた（2026-11-22 修正）
   const monNo=r.cols[1].no;
   const duDays=jun===true?r.nextSetsuDays:(jun===false?r.setsu.days:null);
   const startAge=duDays!==null?Math.max(1,Math.round(duDays/3)):null;
@@ -2094,51 +2128,101 @@ function drawKantei(r,sex,birthYear){
         ${startAge!==null?`<b>${startAge}歳</b>から第一大運が始まります。`:""}
         10年ごとに運気の質・テーマが変化します。</p>`
       :`<p class="kant-text" style="color:var(--nibi)">性別を選択すると順行・逆行の方向と大運開始年齢が表示されます。</p>`}
-    <div class="daiun-row">
+    ${jun===null?"":`<div class="daiun-row">
       ${daiuns.map(d=>`<div class="daiun-item${d.isCurrent?" daiun-current":""}">
         <div class="daiun-age">${d.fromAge!==null?d.fromAge+"歳〜":"—"}</div>
         <div class="daiun-gs" style="color:${COLOR[d.gk]||""}">${d.gs}</div>
         <div class="daiun-yr">${d.fromYear!==null?d.fromYear+"〜":"—"}</div>
       </div>`).join("")}
-    </div>
+    </div>`}
   </div>`;
 
-  // 13. 年運（直近2年・今年・来年・再来年）
-  const showYears=[curYear-2,curYear-1,curYear,curYear+1,curYear+2];
+  // 13. 年運（過去5年・今年・今後10年）
+  const NEN_FROM=curYear-5, NEN_TO=curYear+10;
   const dayShiChar=r.cols.find(c=>c.name==="日柱").shi;
-  h+=`<div class="kant-block">
-    <div class="kant-title">年運 — 直近の流れと展望</div>
-    <div class="nenun-list">`;
-  for(const yr of showYears){
+  const GG5=["木","火","土","金","水"];
+  const lackEls=GG5.filter(g=>(r.count[g]||0)===0);
+  const minEl=GG5.reduce((a,g)=>(r.count[g]||0)<(r.count[a]||0)?g:a,"木");
+  const yearInfo=yr=>{
     const yk_y=(yr-4+1000)%10, ys_y=(yr-4+1200)%12;
-    const gs_y=KAN[yk_y]+SHI[ys_y];
-    const gk_y=KAN_G[yk_y];
-    const ts_y=tsuhen(r.nikkan,KAN[yk_y]);
-    const us_y=unsei(r.nikkan,SHI[ys_y]);
-    const inTcs=r.tcsDay.includes(SHI[ys_y]);
-    const nc=NENUN_TSUHEN[ts_y]||{theme:"",past:"",cur:"",fut:""};
-    const isPast=yr<curYear, isCur=yr===curYear;
-    const txt=isCur?nc.cur:isPast?nc.past:nc.fut;
-    const badgeTcs=inTcs?`<span class="nbadge nbadge-tcs">天中殺</span>`:"";
-    const badgeTime=isCur?`<span class="nbadge nbadge-now">今年</span>`:
-      isPast?`<span class="nbadge nbadge-past">${yr===curYear-1?"昨年":"一昨年"}</span>`:
-      `<span class="nbadge nbadge-fut">${yr===curYear+1?"来年":"再来年"}</span>`;
-    const uc=UNSEI_COMMENT[us_y]||{};
-    h+=`<div class="nenun-row${isCur?" nenun-row-cur":""}${isPast?" nenun-row-past":""}">
-      <div class="nenun-lft">
-        <div class="nenun-yn">${badgeTime}</div>
-        <div class="nenun-gs" style="color:${COLOR[gk_y]}">${gs_y}</div>
-        <div class="nenun-tsu">${ts_y} / ${us_y}</div>
-        ${badgeTcs}
+    const shi=SHI[ys_y];
+    const ts=tsuhen(r.nikkan,KAN[yk_y]), us=unsei(r.nikkan,shi);
+    let rel="";
+    if(RICHI_ROKUGOU[dayShiChar]===shi) rel="六合";
+    else if(shi!==dayShiChar&&SANGOU_GROUPS.some(g=>g.shi.includes(dayShiChar)&&g.shi.includes(shi))) rel="三合";
+    else if(HANGOU.some(hg=>hg.pair.includes(dayShiChar)&&hg.pair.includes(shi))) rel="半合";
+    else if(RICHI_CHUU[dayShiChar]===shi) rel="冲";
+    const du=daiuns.find(d=>d.fromYear!==null&&yr>=d.fromYear&&yr<=d.toYear)||null;
+    return {yr,gs:KAN[yk_y]+shi,gk:KAN_G[yk_y],sg:SHI_G[ys_y],shi,ts,us,en:ENERGY[us]||6,tcs:r.tcsDay.includes(shi),rel,du};
+  };
+  const years=[]; for(let y=NEN_FROM;y<=NEN_TO;y++) years.push(yearInfo(y));
+  const futTcs=years.filter(x=>x.yr>curYear&&x.tcs).map(x=>x.yr);
+  const bestYrs=years.filter(x=>x.yr>curYear&&x.en>=9&&!x.tcs).map(x=>x.yr).slice(0,4);
+  h+=`<div class="kant-block">
+    <div class="kant-title">年運 — 過去5年と今後10年の流れと展望</div>
+    <p class="kant-text">その年の干支を、あなたの日干「${r.nikkan}」から見た<b>通変星（その年のテーマ）</b>と<b>十二運星（その年の勢い）</b>で読みます。日柱の天中殺「${r.tcsDay}」の年は<b>充電期間</b>として読み、日支「${dayShiChar}」との縁（六合・三合・半合は追い風、冲は変化）も添えています。
+    ${bestYrs.length?`これからの10年で勢いが強いのは <b>${bestYrs.join("年・")}年</b>。`:""}${futTcs.length?`充電期間（天中殺）は <b>${futTcs.join("年・")}年</b> です。`:""}
+    年は1月で区切って並べていますが、干支の年は本来<b>立春（2月4日ごろ）</b>で切りかわります。</p>
+    <div class="nenun-strip" aria-label="16年の運気の早見帯">
+      ${years.map(x=>`<a class="nenun-cell${x.yr===curYear?" is-cur":""}${x.yr<curYear?" is-past":""}" href="#nenun-${x.yr}" data-yr="${x.yr}">
+        <span class="nc-yr">${String(x.yr).slice(2)}</span>
+        <span class="nc-bar"><i style="height:${Math.round(x.en/12*100)}%;background:${COLOR[x.gk]}"></i></span>
+        <span class="nc-gs" style="color:${COLOR[x.gk]}">${x.gs}</span>
+        <span class="nc-tcs${x.tcs?"":" nc-none"}">${x.tcs?"殺":"　"}</span>
+      </a>`).join("")}
+    </div>
+    <p class="nenun-legend">棒の高さ＝その年の十二運星のエネルギー（1〜12）。「殺」＝天中殺の年。年をタップすると、その年の説明が開きます。</p>
+    <div class="nenun-list">`;
+  for(const x of years){
+    const isPast=x.yr<curYear, isCur=x.yr===curYear;
+    const nc=NENUN_TSUHEN[x.ts]||{theme:"",past:"",cur:"",fut:""};
+    const flow=isCur?nc.cur:isPast?nc.past:nc.fut;
+    const age=x.yr-birthYear;
+    const ago=isCur?"今年":isPast?(curYear-x.yr)+"年前":(x.yr-curYear)+"年後";
+    const wave=x.en>=9?"攻めの年（強い追い風）":x.en>=5?"平常の年（落ち着いた流れ）":"守りの年（充電と仕込み）";
+    const relTxt=x.rel==="六合"?`年支「${x.shi}」があなたの日支「${dayShiChar}」と<b>六合</b>で結ばれる年。人の縁・協力・引き立てに恵まれやすく、紹介や共同の話は前向きに。`
+      :x.rel==="三合"?`年支「${x.shi}」があなたの日支「${dayShiChar}」と<b>三合</b>の縁。計画や仲間がまとまりやすく、チームで動くと形になります。`
+      :x.rel==="半合"?`年支「${x.shi}」があなたの日支「${dayShiChar}」と<b>半合</b>の縁。ゆるやかな追い風と協力者に恵まれます。`
+      :x.rel==="冲"?`年支「${x.shi}」があなたの日支「${dayShiChar}」と<b>冲</b>の関係。予定の変更・引っ越し・人の入れかわりなど「動き」が出やすい年。変化を前提に、余白のある計画を。`:"";
+    const duTxt=x.du?`この年は ${x.du.fromAge}歳からの大運「<span style="color:${COLOR[x.du.gk]}">${x.du.gs}</span>（${tsuhen(r.nikkan,x.du.gs[0])}）」の10年の中にあります。大運は10年の大きな天気、年運はその年の天気です。`:"";
+    const helps=[x.gk,x.sg].filter((g,i,a)=>a.indexOf(g)===i&&lackEls.includes(g));
+    const lk=ELEM_LUCK[minEl]||{food:"",action:""};
+    const act=(TSU_YEAR_ACT[x.ts]||"").replace(/今年/g,isCur?"今年":"この年");
+    const doList=(TSU_YEAR_DO[x.ts]||[]).map(t=>`<li>${t}</li>`).join("");
+    const uc=UNSEI_COMMENT[x.us]||{};
+    h+=`<details class="nenun-card${isCur?" nenun-card-cur":""}${isPast?" nenun-card-past":""}" id="nenun-${x.yr}"${isCur?" open":""}>
+      <summary>
+        <span class="nbadge${isCur?" nbadge-now":isPast?" nbadge-past":" nbadge-fut"}">${ago}</span>
+        <b class="nk-yr">${x.yr}年</b>
+        <span class="nk-gs" style="color:${COLOR[x.gk]}">${x.gs}</span>
+        <span class="nk-meta">${age>0?age+"歳になる年 ・ ":""}${x.ts} ／ ${x.us}（${x.en}）</span>
+        ${x.tcs?`<span class="nbadge nbadge-tcs">天中殺</span>`:""}${x.rel?`<span class="nbadge nbadge-rel">${x.rel}</span>`:""}
+        <span class="nk-theme">${nc.theme||""}</span>
+      </summary>
+      <div class="nenun-body">
+        <p class="nenun-h">${isPast?"ふり返り":"流れ"}</p>
+        <p class="nenun-txt">${flow}</p>
+        <p class="nenun-h">運気の波 — ${wave}</p>
+        <p class="nenun-txt">十二運星は「${x.us}」${uc.key?`（${uc.key}）`:""}。${UNSEI_YEAR[x.us]||""}</p>
+        ${relTxt?`<p class="nenun-txt" style="margin-top:6px">${relTxt}</p>`:""}
+        ${duTxt?`<p class="nenun-txt nenun-du">${duTxt}</p>`:""}
+        ${x.tcs?`<div class="nenun-tcs"><b>充電期間（天中殺）の年</b>　${TCS_YEAR_TIPS}</div>`:""}
+        <div class="nenun-cols">
+          <div><p class="nenun-h">${isPast?"この年に向いていたこと":"すること"}</p><ul class="nenun-ul">${doList}</ul></div>
+          <div><p class="nenun-h">開運のポイント</p>
+            <p class="nenun-txt">${act}</p>
+            ${helps.length?`<p class="nenun-txt nenun-glow">この年の巡り（${helps.join("・")}）は、あなたの命式に<b>ない五行</b>を運んでくれる、めぐり合わせのよい年です。</p>`:""}
+            <p class="nenun-txt nenun-small">いつでも効く開運（あなたの命式でいちばん少ない「${minEl}」を補う）：食は${lk.food}。行動は${lk.action}。</p></div>
+        </div>
+        <p class="nenun-h">気をつけたいこと</p>
+        <p class="nenun-txt">${TSU_YEAR_CARE[x.ts]||""}</p>
+        ${isPast?`<p class="nenun-q">ふり返りの問い：${TSU_YEAR_Q[x.ts]||""}</p>`:""}
       </div>
-      <div>
-        <div class="nenun-theme">${nc.theme||""}</div>
-        <div class="nenun-txt">${txt}</div>
-        ${uc.key?`<p style="font-size:.74rem;color:var(--nibi);margin-top:6px">十二運星: ${us_y}（${uc.key}）</p>`:""}
-      </div>
-    </div>`;
+    </details>`;
   }
-  h+=`</div></div>`;
+  h+=`</div>
+    <p class="nenun-legend">※ 年運は「その年のテーマ」を知るための目安です。良い年・悪い年と決めつけず、テーマに合わせて動き方を選んでください。</p></div>`;
+  setTimeout(()=>document.querySelectorAll(".nenun-cell").forEach(a=>a.addEventListener("click",()=>{const d=document.getElementById("nenun-"+a.dataset.yr);if(d)d.open=true;})),0);
 
   $("kantei").innerHTML=h;
 }
@@ -2397,6 +2481,9 @@ function drawAisho(){
 
 // ---- 印刷・PDF ----
 $("print-btn").addEventListener("click",()=>window.print());
+// 年運のカードは印刷のときだけ全部開き、終わったら元にもどす
+window.addEventListener("beforeprint",()=>document.querySelectorAll("details.nenun-card:not([open])").forEach(d=>{d.open=true;d.dataset.pr="1";}));
+window.addEventListener("afterprint",()=>document.querySelectorAll("details.nenun-card[data-pr]").forEach(d=>{d.open=false;delete d.dataset.pr;}));
 
 // ---- 共有 ----
 const SHARE_URL="https://qmw.co.jp/meishiki/";
@@ -3196,7 +3283,7 @@ const UNSEI_YEAR={
 "建禄":"実力が素直に成果へつながる、充実の年です。",
 "帝旺":"運気の頂点にあたる年。勝負ごとや大きな挑戦に最適です。",
 "衰":"無理をせずペースを整える年。守りを固めるほど、次の飛躍が楽になります。",
-"病":"疲れをため込みやすい年。何よりも健康を最優先にしてください。",
+"病":"疲れをため込みやすい年。休む予定を先に入れ、ペースを落として整えるほど、次の流れに乗りやすくなります。",
 "死":"区切りと整理の年。手放したものの分だけ、翌年の余白が生まれます。",
 "墓":"蓄えと見直しの年。コツコツ貯めたものが、後で大きく効いてきます。",
 "絶":"先の見えにくい年ですが、焦って動かないことが最善手です。",
@@ -3216,6 +3303,48 @@ const TSU_YEAR_ACT={
 "偏印":"今年は学び直しが開運行動。気になっていた分野の勉強を、今年こそ始めてください。",
 "印綬":"今年は師や年長者から受け取る年。教えを乞うことを、どうか恥じないでください。"
 };
+// 年運：その年に「すること」（通変星ごと3つ）
+const TSU_YEAR_DO={
+"比肩":["自分発の小さな企画や発信を一つ立ち上げる","人と比べず、自分の基準（何をもって良しとするか）を書き出す","ひとりで決める場面では、期限を決めて決めきる"],
+"劫財":["仲間やライバルと組んで、一人では届かない目標に挑む","勝ち負けの気持ちは、練習量や工夫に変えて使う","お金の出入りと約束ごとを、紙に書いて見える化する"],
+"食神":["好きなこと・得意なことを、人に見せる形で続ける","食事・睡眠・遊びを整え、心と体のゆとりをつくる","「楽しい」と感じる人や場所に、自分から足を運ぶ"],
+"傷官":["感じたこと・考えたことを、文章・作品・話にして外に出す","専門性を一段深める学びや資格に取り組む","言いたいことは、相手が受け取りやすい言葉に一度直してから伝える"],
+"偏財":["誘われた場・紹介には、できるだけ顔を出す","人のために動き、ご縁と情報を循環させる","広げた分だけ、使ったお金と時間を月に一度見直す"],
+"正財":["家計・貯蓄・仕事の段取りを点検し、整える","約束と期日を守り、信用をこつこつ積み上げる","長く続けられる習慣（貯める・記録する）を一つ決める"],
+"偏官":["少し怖いと感じる挑戦を、一つ選んでやってみる","決断が必要な場面では、先に「やめること」を決める","体を動かす習慣と休む日を、予定に先に入れておく"],
+"正官":["資格・昇進・役割など「きちんとした挑戦」に取り組む","任された役目を、期日と品質を守ってやりとげる","生活のリズムとルールを整え、信頼される土台をつくる"],
+"偏印":["気になっていた分野の学びを始める・学び直す","ひとりで考える時間と、旅や新しい場所の刺激をつくる","思いついたことは、すぐ小さく試してみる"],
+"印綬":["先生・先輩・年長者に教えを乞い、受け取る","本や講座で、腰をすえて学ぶ時間をとる","受け取った知恵を、まとめて人に伝える準備をする"]
+};
+// 年運：気をつけたいこと（こわがらせない言い方で）
+const TSU_YEAR_CARE={
+"比肩":"自分のやり方にこだわりすぎると、まわりの助けが届きにくくなります。ときどき「手伝ってもらえる？」と口に出してみてください。",
+"劫財":"気持ちが熱くなる年なので、勢いでのお金の貸し借りや大きな買い物は、一晩おいてから決めると安心です。",
+"食神":"楽しさが先に立って、締め切りや段取りがゆるみやすい年。楽しみの前に、やることを一つだけ片づける習慣を。",
+"傷官":"感性がするどくなる分、言葉もするどくなりがちです。言いすぎたと思ったら、その日のうちに一言フォローを。",
+"偏財":"広げすぎて、時間とお金が散らばりやすい年。月に一度、「続けるもの」と「やめるもの」を分けてください。",
+"正財":"守りに入りすぎると、せっかくの機会を見送りがちです。慎重さは保ちつつ、小さな挑戦を一つ残しておいてください。",
+"偏官":"がんばりすぎて疲れをためやすい年。休む日を先に決め、無理な約束は引き受ける前に一度考えてから。",
+"正官":"「ちゃんとしなければ」と自分を縛りすぎると、息苦しくなります。完璧より、続けられる形を選んでください。",
+"偏印":"気持ちが移りやすく、始めたことが途中で止まりがち。続けるものを一つにしぼると、学びが実になります。",
+"印綬":"受け取るばかりで、動くのが遅れやすい年。学んだことは、小さくてもすぐ使ってみることで身につきます。"
+};
+// 年運：過去の年のふり返りの問い
+const TSU_YEAR_Q={
+"比肩":"この年、あなたが自分で決めて始めたことは何でしたか？",
+"劫財":"この年、刺激をくれた仲間やライバルは誰でしたか？",
+"食神":"この年、心から楽しめたこと・夢中になったことは何でしたか？",
+"傷官":"この年、あなたが形にした表現や、変えたかったことは何でしたか？",
+"偏財":"この年に広がったご縁で、いまも続いているものはありますか？",
+"正財":"この年に積み上げたもの（貯え・信用・習慣）は何でしたか？",
+"偏官":"この年に乗りこえた挑戦は何でしたか？ そのとき身についた力は？",
+"正官":"この年に任された役割や、きちんとやりとげたことは何でしたか？",
+"偏印":"この年に出会った新しい学びや考え方は何でしたか？",
+"印綬":"この年に教えを受けた人・支えてくれた人は誰でしたか？"
+};
+// 年運：天中殺（充電期間）の年の過ごし方
+const TCS_YEAR_TIPS="新しく大きく始めるより、整える・学ぶ・休む・人を助けることに向く2年です。始めたい計画があれば、この時期は準備と仕込みにあて、天中殺が明けてから本格的に動かすと実りやすくなります。こわがる必要はありません。季節でいえば「冬」です。";
+
 function renderReport(){
   const el=$("print-report");
   if(!_rA){el.innerHTML="";return;}

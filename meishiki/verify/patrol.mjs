@@ -47,13 +47,23 @@ function engineFrom(html) {
   const code = calcPart(html);
   if (!code) return null;
   const ctx = { console }; vm.createContext(ctx);
-  vm.runInContext(code, ctx);
+  vm.runInContext(code + '\nthis.__C = { KAN, SHI, KAN_Y };', ctx);
   const cache = new Map(), orig = ctx.setsuJD;
   ctx.setsuJD = (y, l) => { const k = y + ':' + l; if (!cache.has(k)) cache.set(k, orig(y, l)); return cache.get(k); };
   return ctx;
 }
 const localHtml = readFileSync(path.join(root, 'index.html'), 'utf8');
 const E = engineFrom(localHtml);
+
+// 大運の期待値：陽年の男性・陰年の女性は順行、それ以外は逆行。開始年齢＝節までの日数÷3（四捨五入・最低1）
+function expectDaiun(y, m, d, h, sex) {
+  const A = E.meishiki(y, m, d, h === null ? '' : String(h)); const { KAN, SHI, KAN_Y } = E.__C;
+  const yin = !!KAN_Y[(A.setsuYear - 4 + 1000) % 10];
+  const jun = sex === '男性' ? !yin : yin;
+  const start = Math.max(1, Math.round((jun ? A.nextSetsuDays : A.setsu.days) / 3));
+  const monNo = A.cols[1].no;
+  return Array.from({ length: 3 }, (_, i) => { const idx = ((monNo - 1 + (jun ? i + 1 : -(i + 1))) % 60 + 600) % 60; return `${start + i * 10}歳〜 ${KAN[idx % 10]}${SHI[idx % 12]}`; }).join(' / ');
+}
 
 /* ---- 1. 答え合わせ ---- */
 report.push('## 1. 計算の答え合わせ');
@@ -160,6 +170,17 @@ if (!quick) {
         people.forEach((p, i) => { if (shown[i] !== expect[i]) errs.push(`${p.slice(0, 3).join('-')} ${p[3] ?? '時刻なし'}：画面=${shown[i] || '（空）'} 計算=${expect[i]}`); });
         shown.forEach((s, i) => { if (i && s === shown[i - 1]) errs.push(`${people[i].slice(0, 3).join('-')}：前の人と同じ命式のまま`); });
         errs.length ? bad(`${people.length}人を続けて入れたときの表示`, errs.join('\n')) : ok(`${people.length}人を続けて入れて、毎回正しい命式に切りかわった`);
+        // 大運の向きと開始年齢（女性・男性の両方）。2026-11 に女性の大運が順行・年齢なしになる不具合があった
+        const dErr = [];
+        for (const [y, m, d, h, sex] of [[1998, 5, 14, 14, '女性'], [1983, 10, 26, 7, '男性'], [1966, 7, 3, null, '女性'], [2001, 1, 20, 18, '男性'], [1989, 11, 28, 10, '女性']]) {
+          const got = await evaluate(`(async()=>{const $=i=>document.getElementById(i);
+            $('birth').value='${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}'; $('sex').value='${sex}'; $('hour').value='${h ?? ''}';
+            $('go').click(); await new Promise(r=>setTimeout(r,900));
+            return [...document.querySelectorAll('.daiun-item')].slice(0,3).map(e=>{const t=e.innerText.split(String.fromCharCode(10)).map(s=>s.trim()).filter(Boolean);return t[0]+' '+t[1];}).join(' / ');})()`);
+          const exp = expectDaiun(y, m, d, h, sex);
+          if (got !== exp) dErr.push(`${y}-${m}-${d} ${sex}：画面=${got || '（空）'} 正しい=${exp}`);
+        }
+        dErr.length ? bad('大運の向きと開始年齢', dErr.join('\n')) : ok('大運の向きと開始年齢（女性3人・男性2人）が正しい');
 
         if (label === '手元のアプリ') {
           report.push('', '## 5. スマホからのPDF');
